@@ -19,15 +19,17 @@ import { HomeComponent } from './home/home.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { IncidentsComponent } from './incidents/incidents.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [			
     AppComponent,
     NavBarComponent,
       RegistrationComponentComponent,
       DashboardComponent,
       NavSideComponent,
-      HomeComponent
+      HomeComponent,
+      IncidentsComponent
    ],
   imports: [
     BrowserModule,
