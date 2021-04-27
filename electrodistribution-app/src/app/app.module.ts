@@ -20,6 +20,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { IncidentsComponent } from './incidents/incidents.component';
+import { MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [			
@@ -44,9 +47,14 @@ import { IncidentsComponent } from './incidents/incidents.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}
