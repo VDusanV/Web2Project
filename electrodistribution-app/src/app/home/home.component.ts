@@ -13,7 +13,7 @@ export class HomeComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 1, rows: 1 },
+          { title: 'Ne znam cemu ovo sluzi', cols: 1, rows: 1 },
           { title: 'Card 2', cols: 1, rows: 1 },
           { title: 'Card 3', cols: 1, rows: 1 },
           { title: 'Card 4', cols: 1, rows: 1 }
@@ -21,10 +21,10 @@ export class HomeComponent {
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Moji planovi', cols: 2, rows: 1 },
+        { title: 'Moji incidenti', cols: 1, rows: 1 },
+        { title: 'Moji bezbednosni dokumenti', cols: 1, rows: 2 },
+        { title: 'Moji nalozi za rad', cols: 1, rows: 1 }
       ];
     })
   );

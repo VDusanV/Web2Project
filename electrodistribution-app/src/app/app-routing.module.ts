@@ -9,28 +9,26 @@ import { RegistrationComponentComponent } from './registration-component/registr
 const routes: Routes = [
   {
     path: "",
-    component: NavBarComponent
+    component: HomeComponent
   },
   {
-    path: 'home', component:NavBarComponent,
-    children: [
-      {
-        path: '', // child route path
-        component: HomeComponent, // child route component that the router renders
-      },
-      {
-        path: 'dashboard', // child route path
-        component: HomeComponent, // child route component that the router renders
-      },
-      {
-        path: 'registration',
-        component: RegistrationComponentComponent, // another child route component that the router renders
-      },
-    ]
+    path: 'home',
+     component:HomeComponent,
+  
   },
   {
     path: "incidents",
-    component: IncidentsComponent
+    component: NavBarComponent,
+    children: [
+      {
+        path: '', // child route path
+        component: IncidentsComponent, // child route component that the router renders
+      },
+      {
+        path: 'table', // child route path
+        component: IncidentsComponent, // child route component that the router renders
+      },
+    ]
   },
 
 

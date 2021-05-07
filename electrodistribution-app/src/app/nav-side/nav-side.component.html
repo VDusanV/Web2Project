@@ -6,7 +6,7 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       
-      <a mat-list-item href="/home">Home<mat-icon class="icon">home</mat-icon></a>
+      <a (click)="myFunc( 'Homeeee' )" mat-list-item href="/home" >Home<mat-icon class="icon">home</mat-icon></a>
       <a mat-list-item href="/incidents">Incidents<mat-icon class="icon">warning</mat-icon></a>
       <a mat-list-item href="#">Map<mat-icon class="icon">language</mat-icon></a>
       <a mat-list-item href="#">Calls<mat-icon class="icon">phone</mat-icon></a>
@@ -26,7 +26,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Electrodistribution DBM</span>
+      <span>{{titleString}}</span>
       <div class="profilediv">
         <a mat-list-item href="#"><mat-icon>account_circle</mat-icon></a>
 

@@ -10,6 +10,8 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class NavSideComponent {
 
+  titleString ='';
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -18,4 +20,7 @@ export class NavSideComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
+  myFunc(str: string){
+    this.titleString = str;
+  }
 }
