@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "NjvBpuLNT9j35OdFOvS9VqFW1eSQQFrWt/6NgMChdTAFwq6Ppq1Z5NwQmuQGP1U918z9jRjhVwwGZA/BGJfDLg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bdobr\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bdobr\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}
