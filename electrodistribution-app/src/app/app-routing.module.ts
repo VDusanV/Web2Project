@@ -9,7 +9,7 @@ import { RegistrationComponentComponent } from './registration-component/registr
 const routes: Routes = [
   {
     path: "",
-    component: HomeComponent
+    component: RegistrationComponentComponent
   },
   {
     path: 'home',
@@ -18,17 +18,8 @@ const routes: Routes = [
   },
   {
     path: "incidents",
-    component: NavBarComponent,
-    children: [
-      {
-        path: '', // child route path
-        component: IncidentsComponent, // child route component that the router renders
-      },
-      {
-        path: 'table', // child route path
-        component: IncidentsComponent, // child route component that the router renders
-      },
-    ]
+    component: IncidentsComponent,
+    
   },
 
 
