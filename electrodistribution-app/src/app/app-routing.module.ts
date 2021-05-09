@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { IncidentsComponent } from './incidents/incidents.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavSideComponent } from './nav-side/nav-side.component'
 import { RegistrationComponentComponent } from './registration-component/registration-component.component';
 
 const routes: Routes = [
@@ -13,12 +14,23 @@ const routes: Routes = [
   },
   {
     path: 'home',
-     component:HomeComponent,
+     component:NavSideComponent,
   
   },
   {
+
     path: "incidents",
-    component: IncidentsComponent,
+    component: NavSideComponent,
+    children: [
+      {
+        path: '', // child route path
+        component: IncidentsComponent, // child route component that the router renders
+      },
+      {
+        path: 'table', // child route path
+        component: IncidentsComponent, // child route component that the router renders
+      },
+    ]
     
   },
 
