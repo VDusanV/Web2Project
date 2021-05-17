@@ -6,11 +6,13 @@ import { IncidentsComponent } from './incidents/incidents.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NavSideComponent } from './nav-side/nav-side.component'
 import { RegistrationComponentComponent } from './registration-component/registration-component.component';
+import { LoginComponent } from './login/login.component';
+
 
 const routes: Routes = [
   {
     path: "",
-    component: RegistrationComponentComponent
+    component: LoginComponent
   },
   {
     path: 'home',

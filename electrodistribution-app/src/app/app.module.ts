@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,9 @@ import { IncidentsComponent } from './incidents/incidents.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [			
@@ -32,7 +36,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
       DashboardComponent,
       NavSideComponent,
       HomeComponent,
-      IncidentsComponent
+      IncidentsComponent,
+      LoginComponent
    ],
   imports: [
     BrowserModule,
@@ -50,7 +55,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule,
+    HttpClientModule, 
+    JwtModule
   ],
   providers: [],
   bootstrap: [AppComponent]

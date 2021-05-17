@@ -1,12 +1,17 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Web2Backend.Data;
 using Web2Backend.Models;
+using Web2Backend.Models.FormModels;
 
 namespace Web2Backend.Controllers
 {
@@ -32,8 +37,8 @@ namespace Web2Backend.Controllers
         public async Task<ActionResult<UserModel>> AddUser()
         {
 
-            UserModel user1 = new UserModel() { Username = "admin2", Password = "admin2", Address = "Bulevar Cara Lazara 88", 
-                                                BirthDate = new DateTime(1990, 7, 11), ImageData = new byte[5], NameAndLastname = "Radoslav Markovic" };
+            UserModel user1 = new UserModel() { Username = "admin3", Password = "admin3", Address = "Bulevar Cara Lazara 90", 
+                                                BirthDate = new DateTime(1994, 7, 11), ImageData = new byte[5], NameAndLastname = "Njegoslav Radomirovic" };
 
             _context.Users.Add(user1);
 
@@ -43,7 +48,38 @@ namespace Web2Backend.Controllers
 
         }
 
+        [HttpPost]
+        [Route("Login")]
+        public IActionResult Login([FromBody]LoginModel loginForm)
+        {
+            if(loginForm == null)
+            {
+                return BadRequest("Invalid client request");
+            }
 
+            foreach(UserModel user in _context.Users)
+            {
+                if(user.Username == loginForm.UserName && user.Password == loginForm.Password)
+                {
+                    var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretKeysdfsdfsdf"));
+                    var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+                    var tokenOptions = new JwtSecurityToken(
+                        issuer: "https://localhost:5001",
+                        audience: "https://localhost:5001",
+                        claims: new List<Claim>(),
+                        expires: DateTime.Now.AddMinutes(60),
+                        signingCredentials: signingCredentials
+                        );
+
+                    var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+
+                    return Ok(new { Token = tokenString });
+                }
+            }
+
+            return Unauthorized();
+        }
 
 
     }
