@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -27,6 +28,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
+
+export function getToken() {
+  return localStorage.getItem("jwt");
+}
 
 @NgModule({
   declarations: [			
@@ -58,7 +63,13 @@ import { JwtModule } from "@auth0/angular-jwt";
     MatFormFieldModule,
     FormsModule,
     HttpClientModule, 
-    JwtModule
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: getToken, 
+        allowedDomains: ["localhost:44364"],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

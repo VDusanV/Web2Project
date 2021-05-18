@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -34,6 +35,7 @@ namespace Web2Backend.Controllers
 
         [HttpPost]
         [Route("AddUser")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<UserModel>> AddUser()
         {
 
@@ -64,6 +66,11 @@ namespace Web2Backend.Controllers
                     var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretKeysdfsdfsdf"));
                     var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Role, getRole(user))
+                    };
+
                     var tokenOptions = new JwtSecurityToken(
                         issuer: "https://localhost:5001",
                         audience: "https://localhost:5001",
@@ -81,6 +88,19 @@ namespace Web2Backend.Controllers
             return Unauthorized();
         }
 
+        private string getRole(UserModel user)
+        {
+
+            //Treba napraviti property u useru da se zna kog je tipa i na osnovu toga vratiti string tipa
+            if (user.Username == "admin")
+            {
+                return "Admin";
+            }
+            else
+            {
+                return "User";
+            }
+        }
 
     }
 }

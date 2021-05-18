@@ -7,6 +7,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NavSideComponent } from './nav-side/nav-side.component'
 import { RegistrationComponentComponent } from './registration-component/registration-component.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -17,12 +18,14 @@ const routes: Routes = [
   {
     path: 'home',
      component:NavSideComponent,
+     canActivate: [AuthGuard]
   
   },
   {
 
     path: "incidents",
     component: NavSideComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '', // child route path
