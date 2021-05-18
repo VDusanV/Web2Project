@@ -28,13 +28,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
+import { MapComponent } from './map/map.component';
 
 export function getToken() {
   return localStorage.getItem("jwt");
 }
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
     NavBarComponent,
       RegistrationComponentComponent,
@@ -42,7 +43,8 @@ export function getToken() {
       NavSideComponent,
       HomeComponent,
       IncidentsComponent,
-      LoginComponent
+      LoginComponent,
+      MapComponent
    ],
   imports: [
     BrowserModule,
