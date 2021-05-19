@@ -1,0 +1,25 @@
+
+<div>{{allElements.length}}</div>
+<div class="container">
+    <table class="table table-dark">
+      <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Coordinates</th>
+            <th scope="col">Address</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let element of allElements">
+        <td>{{element.id.toString()}}</td>
+        <td>{{element.name}}</td>
+        <td>{{element.type}}</td>
+        <td>{{element.coordinates}}</td>
+        <td>{{element.address}}</td>
+  
+      </tr>
+    </tbody>
+    </table>
+  </div>

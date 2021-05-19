@@ -18,6 +18,7 @@ namespace Web2Backend.Data
         public DbSet<DeviceModel> Devices { get; set; }
         public DbSet<IncidentBasicInfoModel> IncidentBasicInfoModels { get; set; }
         public DbSet<ResolutionModel> Resolutions { get; set; }
+        public DbSet<ElementModel> Elements { get; set; }
 
     }
 }

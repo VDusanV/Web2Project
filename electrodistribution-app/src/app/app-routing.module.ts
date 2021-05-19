@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { MapComponent } from './map/map.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ElementsPageComponent } from './elements-page/elements-page.component';
 
 
 const routes: Routes = [
@@ -64,6 +65,18 @@ const routes: Routes = [
     ]
     
   },
+  {
+    path: 'devices',
+     component:NavSideComponent,
+   //  canActivate: [AuthGuard],
+      children: [
+        {
+          path: '', // child route path
+        component: ElementsPageComponent, // child route component that the router renders
+        }
+      ]
+  
+  }
 
 
 
