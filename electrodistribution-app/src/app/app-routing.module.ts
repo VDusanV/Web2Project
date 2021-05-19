@@ -25,8 +25,14 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-     component:ProfileComponent,
-     canActivate: [AuthGuard]
+     component:NavSideComponent,
+     canActivate: [AuthGuard],
+     children: [
+      {
+        path: '', // child route path
+        component: ProfileComponent, // child route component that the router renders
+      }
+    ]
   
   },
   {
