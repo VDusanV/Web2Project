@@ -11,6 +11,7 @@ import { map, shareReplay } from 'rxjs/operators';
 export class NavSideComponent {
 
   titleString ='';
+  username = localStorage.username;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

@@ -25,7 +25,17 @@
   width: 100%;
 }
 .profilediv{
-
   position: absolute;
-  right:  20px;
+  right:  40px;
+}
+
+.username{
+  margin-right: 20px;
+  float: left;
+  vertical-align: middle;
+
+}
+
+.profileIcon{
+  vertical-align: middle;
 }

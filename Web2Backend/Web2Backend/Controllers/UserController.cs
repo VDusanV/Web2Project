@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Web2Backend.Data;
 using Web2Backend.Models;
 using Web2Backend.Models.FormModels;
+using Web2Backend.Models.UserModels;
 
 namespace Web2Backend.Controllers
 {
@@ -81,11 +82,34 @@ namespace Web2Backend.Controllers
 
                     var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
-                    return Ok(new { Token = tokenString });
+                    CurrentUserModel loggedInUser = new CurrentUserModel
+                    {
+                        Token = tokenString,
+                        Username = user.Username,
+                        NameAndLastname = user.NameAndLastname
+                    };
+
+                    return Ok(loggedInUser);
                 }
             }
 
             return Unauthorized();
+        }
+
+        [HttpGet("username")]
+        [Route("CurrentUser")]
+        public async Task<ActionResult<IEnumerable<UserModel>>> GetCurrentUser(string username)
+        {
+
+            foreach(UserModel user in _context.Users)
+            {
+                if(user.Username == username)
+                {
+                    return Ok(user);
+                }
+            }
+
+            return BadRequest("Wrong username");
         }
 
         private string getRole(UserModel user)

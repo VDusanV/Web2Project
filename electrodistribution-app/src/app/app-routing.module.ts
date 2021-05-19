@@ -9,6 +9,7 @@ import { RegistrationComponentComponent } from './registration-component/registr
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { MapComponent } from './map/map.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -19,13 +20,19 @@ const routes: Routes = [
   {
     path: 'home',
      component:NavSideComponent,
-   //  canActivate: [AuthGuard]
+     canActivate: [AuthGuard]
+  
+  },
+  {
+    path: 'profile',
+     component:ProfileComponent,
+     canActivate: [AuthGuard]
   
   },
   {
     path: 'map',
      component:NavSideComponent,
-   //  canActivate: [AuthGuard],
+     canActivate: [AuthGuard],
       children: [
         {
           path: '', // child route path
@@ -38,7 +45,7 @@ const routes: Routes = [
 
     path: "incidents",
     component: NavSideComponent,
-   // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '', // child route path

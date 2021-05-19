@@ -29,6 +29,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
 import { MapComponent } from './map/map.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export function getToken() {
   return localStorage.getItem("jwt");
@@ -44,7 +45,8 @@ export function getToken() {
       HomeComponent,
       IncidentsComponent,
       LoginComponent,
-      MapComponent
+      MapComponent,
+      ProfileComponent
    ],
   imports: [
     BrowserModule,
