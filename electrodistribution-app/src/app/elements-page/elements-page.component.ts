@@ -9,6 +9,9 @@ import { Element } from '../entities/element';
 })
 export class ElementsPageComponent implements OnInit {
   public allElements : Element[] = [];
+  public page = 10;
+  public pageSize = 3;
+
 
   constructor(private elementsService: ElementsService) { }
 
