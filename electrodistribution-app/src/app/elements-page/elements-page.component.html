@@ -1,6 +1,30 @@
 
 
 <div class="container">
+  <div class="table--modifiers">
+    <button class="table--modifiers__btn">
+      <mat-icon id="icon-absolute" class="icon">add_circle</mat-icon> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;New
+    </button>
+  
+    <div>
+     
+      <button class="table--modifiers__btn" id="filter-icon">
+        <mat-icon id="icon-absolute" class="icon">filter_alt</mat-icon> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+      </button>
+
+      <select class="table--modifiers__select" [(ngModel)]="type">
+        <option value=""></option>
+        <option value="prekidac">Prekidac</option>
+        <option value="osigurac">Osigurac</option>
+        <option value="transformator">Transformator</option>
+        <option value="diskonektor">Diskonektor</option>
+      </select>
+    </div>
+
+  </div>
+  
+  <br>
+
     <table class="table table-dark">
       <thead class="thead-dark">
         <tr>
@@ -12,7 +36,7 @@
         </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let element of allElements | slice: (page-1) * pageSize : page * pageSize">
+      <tr *ngFor="let element of allElements | tableFilter: type | slice: (page-1) * pageSize : page * pageSize">
         <td>{{element.id.toString()}}</td>
         <td>{{element.name}}</td>
         <td>{{element.type}}</td>

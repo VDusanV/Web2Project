@@ -7,6 +7,32 @@
 .container {
     margin-top: 50px;
 }
+
+.table--modifiers {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button {
+   position: relative;
+   text-align: center;
+    height: 30px;
+}
+select {
+    height: 30px;
+}
+
+mat-icon {
+    position: absolute;
+}
+#filter-icon {
+    cursor: default;
+}
+
+    
+
+
 /* PAGINATOR STYLING */
 /*ngb-pagination ::ng-deep a {
     color: white !important;

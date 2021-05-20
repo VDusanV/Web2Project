@@ -31,6 +31,7 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { MapComponent } from './map/map.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ElementsPageComponent } from './elements-page/elements-page.component';
+import { TableFilterPipe } from './pipes/table-filter.pipe';
 
 export function getToken() {
   return localStorage.getItem("jwt");
@@ -48,7 +49,8 @@ export function getToken() {
       LoginComponent,
       MapComponent,
       ProfileComponent,
-      ElementsPageComponent
+      ElementsPageComponent,
+      TableFilterPipe
    ],
   imports: [
     BrowserModule,

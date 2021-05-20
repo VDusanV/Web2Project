@@ -8,6 +8,7 @@ import { Element } from '../entities/element';
   styleUrls: ['./elements-page.component.css']
 })
 export class ElementsPageComponent implements OnInit {
+  type!: string;
   public allElements : Element[] = [];
   public page = 10;
   public pageSize = 3;
