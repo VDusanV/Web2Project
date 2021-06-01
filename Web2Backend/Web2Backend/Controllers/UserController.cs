@@ -95,7 +95,47 @@ namespace Web2Backend.Controllers
 
             return Unauthorized();
         }
+        [HttpPost]
+        [Route("Register")]
+        public IActionResult Register([FromBody] UserModel userForm)
+        {
+            if (userForm == null)
+            {
+                return BadRequest("Invalid client request");
+            }
+            UserModel user = userForm;
+            //_context.Users.Add(user);
+            
+          
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretKeysdfsdfsdf"));
+            var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Role, getRole(user))
+            };
+
+            var tokenOptions = new JwtSecurityToken(
+                issuer: "https://localhost:5001",
+                audience: "https://localhost:5001",
+                claims: new List<Claim>(),
+                expires: DateTime.Now.AddMinutes(60),
+                signingCredentials: signingCredentials
+                );
+
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+
+            CurrentUserModel loggedInUser = new CurrentUserModel
+            {
+                Token = tokenString,
+                Username = user.Username,
+                NameAndLastname = user.NameAndLastname
+            };
+
+            return Ok(loggedInUser);
+          
+            return Unauthorized();
+        }
         [HttpGet("username")]
         [Route("CurrentUser")]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetCurrentUser(string username)

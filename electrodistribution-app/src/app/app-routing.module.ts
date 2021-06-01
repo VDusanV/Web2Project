@@ -49,6 +49,18 @@ const routes: Routes = [
   
   },
   {
+    path: 'register',
+     component:NavSideComponent,
+     canActivate: [AuthGuard],
+      children: [
+        {
+          path: '', // child route path
+        component: RegistrationComponentComponent, // child route component that the router renders
+        }
+      ]
+  
+  },
+  {
 
     path: "incidents",
     component: NavSideComponent,

@@ -19,6 +19,15 @@ namespace Web2Backend.Models
         public string Email { get; set; }
         public string UserType { get; set; }
 
-
+        public UserModel()
+        {
+            Username = "+";
+            Password = "+";
+            NameAndLastname = "+";
+            BirthDate = DateTime.Now;
+            Address = "+";
+            Email = "+";
+            UserType = "+";
+        }
     }
 }
