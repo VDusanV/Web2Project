@@ -32,6 +32,7 @@ import { MapComponent } from './map/map.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ElementsPageComponent } from './elements-page/elements-page.component';
 import { TableFilterPipe } from './pipes/table-filter.pipe';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 export function getToken() {
   return localStorage.getItem("jwt");
@@ -50,7 +51,8 @@ export function getToken() {
       MapComponent,
       ProfileComponent,
       ElementsPageComponent,
-      TableFilterPipe
+      TableFilterPipe,
+      NotificationsComponent
    ],
   imports: [
     BrowserModule,

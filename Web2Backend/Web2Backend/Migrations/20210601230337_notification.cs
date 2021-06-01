@@ -7,7 +7,7 @@ namespace Web2Backend.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+           /* migrationBuilder.CreateTable(
                 name: "Notifications",
                 columns: table => new
                 {
@@ -31,7 +31,7 @@ namespace Web2Backend.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Notifications_Username",
                 table: "Notifications",
-                column: "Username");
+                column: "Username");*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

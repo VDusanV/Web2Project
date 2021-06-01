@@ -11,6 +11,7 @@ import { AuthGuard } from './auth.guard';
 import { MapComponent } from './map/map.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ElementsPageComponent } from './elements-page/elements-page.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 const routes: Routes = [
@@ -87,6 +88,18 @@ const routes: Routes = [
         component: ElementsPageComponent, // child route component that the router renders
         }
       ]
+  
+  },
+  {
+    path: 'notifications',
+     component:NavSideComponent,
+     canActivate: [AuthGuard],
+     children: [
+      {
+        path: '', // child route path
+        component: NotificationsComponent, // child route component that the router renders
+      }
+    ]
   
   }
 
