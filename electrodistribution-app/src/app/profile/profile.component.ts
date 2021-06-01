@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   fullname!: string;
   birthdate!: Date;
   address!: string;
+  email!: string;
+  userType!: string;
   
   constructor(private userService: UserService) { }
 
@@ -24,6 +26,8 @@ export class ProfileComponent implements OnInit {
         this.fullname = data.nameAndLastname;
         this.birthdate = data.birthdate;
         this.address = data.address;
+        this.email = data.email;
+        this.userType = data.usertype;
       }, 
       err => {
 
