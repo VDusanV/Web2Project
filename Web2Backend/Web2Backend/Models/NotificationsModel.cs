@@ -13,5 +13,6 @@ namespace Web2Backend.Models
         public string Type { get; set; }
         public string Text { get; set; }
         public DateTime TimeStamp { get; set; }
+        public UserModel User { get; set; }
     }
 }

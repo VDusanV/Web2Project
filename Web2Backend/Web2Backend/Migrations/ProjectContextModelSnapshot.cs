@@ -151,12 +151,12 @@ namespace Web2Backend.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserModelUsername")
+                    b.Property<string>("Username")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserModelUsername");
+                    b.HasIndex("Username");
 
                     b.ToTable("Notifications");
                 });
@@ -216,9 +216,11 @@ namespace Web2Backend.Migrations
 
             modelBuilder.Entity("Web2Backend.Models.NotificationsModel", b =>
                 {
-                    b.HasOne("Web2Backend.Models.UserModel", null)
+                    b.HasOne("Web2Backend.Models.UserModel", "User")
                         .WithMany("Notifications")
-                        .HasForeignKey("UserModelUsername");
+                        .HasForeignKey("Username");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Web2Backend.Models.UserModel", b =>

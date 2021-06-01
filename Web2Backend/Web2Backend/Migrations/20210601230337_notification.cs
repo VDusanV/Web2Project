@@ -15,23 +15,23 @@ namespace Web2Backend.Migrations
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TimeStamp = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserModelUsername = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Username = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Notifications", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Notifications_Users_UserModelUsername",
-                        column: x => x.UserModelUsername,
+                        name: "FK_Notifications_Users_Username",
+                        column: x => x.Username,
                         principalTable: "Users",
                         principalColumn: "Username",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Notifications_UserModelUsername",
+                name: "IX_Notifications_Username",
                 table: "Notifications",
-                column: "UserModelUsername");
+                column: "Username");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
