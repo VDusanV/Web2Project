@@ -19,6 +19,8 @@ namespace Web2Backend.Models
         public string Email { get; set; }
         public string UserType { get; set; }
 
+        public List<NotificationsModel> Notifications { get; set; }
+
         public UserModel()
         {
             Username = "+";
