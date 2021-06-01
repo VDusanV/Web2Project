@@ -5,7 +5,7 @@ namespace Web2Backend.Migrations
     public partial class elements : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        {/*
             migrationBuilder.CreateTable(
                 name: "Elements",
                 columns: table => new
@@ -20,7 +20,7 @@ namespace Web2Backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Elements", x => x.Id);
-                });
+                });*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

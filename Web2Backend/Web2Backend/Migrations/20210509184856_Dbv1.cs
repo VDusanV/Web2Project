@@ -6,7 +6,7 @@ namespace Web2Backend.Migrations
     public partial class Dbv1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        {/*
             migrationBuilder.CreateTable(
                 name: "Calls",
                 columns: table => new
@@ -91,7 +91,7 @@ namespace Web2Backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Username);
-                });
+                });*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
