@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -70,7 +70,8 @@ export function getToken() {
     MatPaginatorModule,
     MatFormFieldModule,
     FormsModule,
-    HttpClientModule, 
+    HttpClientModule,
+    ReactiveFormsModule, 
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken, 
