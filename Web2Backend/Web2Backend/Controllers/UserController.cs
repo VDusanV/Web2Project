@@ -69,13 +69,14 @@ namespace Web2Backend.Controllers
 
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Role, getRole(user))
+                        new Claim(ClaimTypes.Role, getRole(user)),
+                        new Claim(ClaimTypes.Name, user.Username)
                     };
 
                     var tokenOptions = new JwtSecurityToken(
                         issuer: "https://localhost:5001",
                         audience: "https://localhost:5001",
-                        claims: new List<Claim>(),
+                        claims: claims,
                         expires: DateTime.Now.AddMinutes(60),
                         signingCredentials: signingCredentials
                         );
@@ -118,7 +119,7 @@ namespace Web2Backend.Controllers
             var tokenOptions = new JwtSecurityToken(
                 issuer: "https://localhost:5001",
                 audience: "https://localhost:5001",
-                claims: new List<Claim>(),
+                claims: claims,
                 expires: DateTime.Now.AddMinutes(60),
                 signingCredentials: signingCredentials
                 );

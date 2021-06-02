@@ -6612,23 +6612,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TehnoCentar\\.nuget\\packages\\": {},
+    "C:\\Users\\bdobr\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\TehnoCentar\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
+      "projectUniqueName": "C:\\Users\\bdobr\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
       "projectName": "Web2Backend",
-      "projectPath": "C:\\Users\\TehnoCentar\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
-      "packagesPath": "C:\\Users\\TehnoCentar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\TehnoCentar\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\obj\\",
+      "projectPath": "C:\\Users\\bdobr\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
+      "packagesPath": "C:\\Users\\bdobr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bdobr\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\TehnoCentar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bdobr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6640,6 +6640,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -6651,6 +6652,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Google": {
             "target": "Package",
@@ -6709,6 +6711,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.13, 3.1.13]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -6717,7 +6725,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.409\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -64,6 +64,8 @@ namespace Web2Backend
 
             services.AddControllers();
 
+           
+
             services.AddDbContext<ProjectContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }

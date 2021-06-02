@@ -10,8 +10,8 @@ using Web2Backend.Data;
 namespace Web2Backend.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20210509184856_Dbv1")]
-    partial class Dbv1
+    [Migration("20210602150713_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,6 +66,30 @@ namespace Web2Backend.Migrations
                     b.ToTable("Devices");
                 });
 
+            modelBuilder.Entity("Web2Backend.Models.ElementModel", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Coordinates")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Elements");
+                });
+
             modelBuilder.Entity("Web2Backend.Models.IncidentBasicInfoModel", b =>
                 {
                     b.Property<string>("IncidentID")
@@ -115,6 +139,35 @@ namespace Web2Backend.Migrations
                     b.ToTable("IncidentBasicInfoModels");
                 });
 
+            modelBuilder.Entity("Web2Backend.Models.NotificationsModel", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Username");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("Web2Backend.Models.ResolutionModel", b =>
                 {
                     b.Property<string>("ResolutionId")
@@ -148,6 +201,9 @@ namespace Web2Backend.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<byte[]>("ImageData")
                         .HasColumnType("varbinary(max)");
 
@@ -157,9 +213,26 @@ namespace Web2Backend.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserType")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Username");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Web2Backend.Models.NotificationsModel", b =>
+                {
+                    b.HasOne("Web2Backend.Models.UserModel", "User")
+                        .WithMany("Notifications")
+                        .HasForeignKey("Username");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Web2Backend.Models.UserModel", b =>
+                {
+                    b.Navigation("Notifications");
                 });
 #pragma warning restore 612, 618
         }

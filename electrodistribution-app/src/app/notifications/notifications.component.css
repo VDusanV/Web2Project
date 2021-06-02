@@ -1,0 +1,17 @@
+.gridara{
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.not-options{
+    display: grid;
+    margin: 10%;
+    width: 50%;
+
+}
+
+.not-content{
+    display: grid;
+    margin: 3.33%;
+    grid-template-rows: repeat(5, 1fr);
+}
