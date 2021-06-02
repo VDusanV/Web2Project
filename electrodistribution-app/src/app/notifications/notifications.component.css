@@ -12,6 +12,6 @@
 
 .not-content{
     display: grid;
-    margin: 3.33%;
-    grid-template-rows: repeat(5, 1fr);
+    margin-top: 3.33%;
+    
 }

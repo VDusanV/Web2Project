@@ -1,6 +1,6 @@
 <div class="gridara">
 <div class="not-options">
-    <button class="button">All Notifications</button>
+    <button class="button" (click)="finish()">All Notifications</button>
     <button class="button">Unread Notifications</button>
     <button class="button">Errors</button>
     <button class="button">Info</button>
@@ -9,9 +9,14 @@
 
 </div>
 <div class="not-content">
-   <div>efsdfsdfsdf</div>
-   <div>adasdadad</div>
-   <div>gegfdfgdf</div>
-
+<div *ngFor="let notification of notifications | slice: (page-1) * pageSize : page * pageSize">
+     {{notification.id}} {{notification.text}} {{notification.type}} {{notification.timestamp}}
+</div>
+<div class="container__pagination">
+    <ngb-pagination 
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="notifications.length"></ngb-pagination>
+    </div>
 </div>
 </div>

@@ -14,7 +14,7 @@ namespace Web2Backend.Models
         public string Type { get; set; }
         public string Text { get; set; }
         public string Status { get; set; }
-        public DateTime TimeStamp { get; set; }
+        public string TimeStamp { get; set; }
         [JsonIgnore]
         public UserModel User { get; set; }
     }

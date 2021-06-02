@@ -35,6 +35,7 @@ import { TableFilterPipe } from './pipes/table-filter.pipe';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { CreateElementComponent } from './create-element/create-element.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
 
 export function getToken() {
   return localStorage.getItem("jwt");
@@ -86,7 +87,9 @@ export function getToken() {
       }
     })
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

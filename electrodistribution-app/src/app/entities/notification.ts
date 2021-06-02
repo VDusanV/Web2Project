@@ -2,7 +2,7 @@ export class Notification {
     id: number;
     type: string;
     text: string;
-    timestamp: Date;
+    timestamp: string;
     user: string;
 
     
@@ -11,7 +11,7 @@ export class Notification {
         id: number,
         type: string, 
         text: string,
-        timestamp: Date,
+        timestamp: string,
         user: string
         )       
     {

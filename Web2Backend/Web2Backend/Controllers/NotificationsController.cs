@@ -40,7 +40,7 @@ namespace Web2Backend.Controllers
                 Type = "Success",
                 Text = "Save successful",
                 Status = "Unread",
-                TimeStamp = DateTime.Now,
+                TimeStamp = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"),
                 User = _context.Users.FirstOrDefault(u => u.Username == "admin")
 
 
