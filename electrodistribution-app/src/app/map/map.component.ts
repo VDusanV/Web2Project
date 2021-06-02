@@ -45,6 +45,18 @@ export class MapComponent implements OnInit {
     L.marker([45.242769, 19.838032], {icon:minja}).addTo(this.map).bindPopup("Zivotinje");
     L.marker([45.247469, 19.832979], {icon:branja}).addTo(this.map).bindPopup("Matori");
 
+    //nakon klika na mapu kordinate se smestaju u ove dve promenjice
+    var xlng;
+    var xlat;
+
+    //klik na mapu
+    this.map.on('click', function(e:any){
+      console.log(e.latlng.lat,e.latlng.lng);
+      xlng=e.latlng.lng
+      xlat=e.latlng.lat
+    });
+
+
 
   }
 

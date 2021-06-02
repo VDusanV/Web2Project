@@ -6612,23 +6612,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bdobr\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bdobr\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
+      "projectUniqueName": "H:\\8 Semestar\\PuSGS\\PROJEKAT\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
       "projectName": "Web2Backend",
-      "projectPath": "C:\\Users\\bdobr\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
-      "packagesPath": "C:\\Users\\bdobr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bdobr\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\obj\\",
+      "projectPath": "H:\\8 Semestar\\PuSGS\\PROJEKAT\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "H:\\8 Semestar\\PuSGS\\PROJEKAT\\Web2Project\\Web2Backend\\Web2Backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\bdobr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6636,6 +6636,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\Microsoft SDKs\\Azure\\.NET SDK\\v2.9\\packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -6711,12 +6712,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.13, 3.1.13]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -6725,7 +6720,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
