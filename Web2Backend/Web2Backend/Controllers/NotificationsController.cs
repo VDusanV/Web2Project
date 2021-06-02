@@ -54,5 +54,49 @@ namespace Web2Backend.Controllers
 
         }
 
+        [HttpPost]
+        [Route("CreateNotification")]
+        public async Task<ActionResult<ElementModel>> CreateNotification(NotificationsModel model)
+        {
+
+            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            NotificationsModel notification = new NotificationsModel()
+            {
+                Type = model.Type,
+                Text = model.Text,
+                Status = model.Status,
+                TimeStamp = model.TimeStamp,
+                User = _context.Users.FirstOrDefault(u => u.Username == username)
+
+
+            };
+
+            _context.Notifications.Add(notification);
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("AddNotification", notification);
+
+        }
+
+        [HttpPut]
+        [Route("ModifyNotification")]
+        public async Task<ActionResult<ElementModel>> ModifyNotification(NotificationsModel model)
+        {
+
+
+            var notification = _context.Notifications.FirstOrDefault(n => n.Id == model.Id);
+
+            notification.Status = model.Status;
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("AddNotification", notification);
+
+        }
+
+
+
     }
 }
