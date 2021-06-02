@@ -15,7 +15,7 @@ export class NotificationsComponent implements OnInit {
 
   notifications: Notification[] = [];
   page = 10;
-  pageSize = 2;
+  pageSize = 4;
 
 
   constructor(private notService:NotificationService, private router:Router, private datePipe:DatePipe) { }

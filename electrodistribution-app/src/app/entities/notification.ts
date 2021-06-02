@@ -2,7 +2,7 @@ export class Notification {
     id: number;
     type: string;
     text: string;
-    timestamp: string;
+    timeStamp: string;
     user: string;
 
     
@@ -11,14 +11,14 @@ export class Notification {
         id: number,
         type: string, 
         text: string,
-        timestamp: string,
+        timeStamp: string,
         user: string
         )       
     {
         this.id = id;
         this.type = type;
         this.text = text;
-        this.timestamp = timestamp;
+        this.timeStamp = timeStamp;
         this.user = user;
         
     }
