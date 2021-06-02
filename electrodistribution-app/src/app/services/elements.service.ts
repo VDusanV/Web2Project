@@ -17,10 +17,11 @@ export class ElementsService {
 
 
   loadElements(): Observable<IElement[]>{
-    return this.http.get<IElement[]>("https://localhost:44364/api/Elements");
-
-
-    
+    return this.http.get<IElement[]>("https://localhost:44364/api/Elements"); 
+  }
+  
+  saveElement(element: Element) {
+    return this.http.post<Element>("https://localhost:44364/api/Elements/SaveElement", element); //httpoptions .pipe catch error..
   }
 
 

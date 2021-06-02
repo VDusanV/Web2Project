@@ -33,6 +33,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ElementsPageComponent } from './elements-page/elements-page.component';
 import { TableFilterPipe } from './pipes/table-filter.pipe';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { CreateElementComponent } from './create-element/create-element.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export function getToken() {
   return localStorage.getItem("jwt");
@@ -52,7 +54,8 @@ export function getToken() {
       ProfileComponent,
       ElementsPageComponent,
       TableFilterPipe,
-      NotificationsComponent
+      NotificationsComponent,
+      CreateElementComponent
    ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ export function getToken() {
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule, 
+    MatDialogModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken, 

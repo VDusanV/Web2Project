@@ -48,6 +48,30 @@ namespace Web2Backend.Controllers
 
         }
 
+        [HttpPost]
+        [Route("SaveElement")]
+        public async Task<ActionResult<ElementModel>> SaveElement(ElementModel element)
+        {
+            ElementModel element1 = new ElementModel()
+            {
+                Address = element.Address,
+                Coordinates = element.Coordinates,
+                Type = element.Type,
+                Name = element.Name  //name podesiti da racuna koji je po redu ELEMENT i prva tri slova tog el na osnovu tipa
+
+            };
+
+
+
+            _context.Elements.Add(element1);
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetElements", element1);
+
+        }
+
+
 
     }
 }
