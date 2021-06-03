@@ -10,7 +10,7 @@
 </div>
 <div class="not-content">
 <div *ngFor="let notification of notifications | slice: (page-1) * pageSize : page * pageSize">
-    {{notification.text}} {{notification.type}} {{notification.timeStamp}}
+    <div class="notification"><div class="text">{{notification.text}}</div> <div class="date">{{notification.timeStamp}}</div></div>
 </div>
 <div class="container__pagination">
     <ngb-pagination 

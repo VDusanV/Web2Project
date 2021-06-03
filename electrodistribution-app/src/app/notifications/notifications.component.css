@@ -1,6 +1,7 @@
 .gridara{
     display: grid;
     grid-template-columns: 25% 75%;
+    
 }
 
 .not-options{
@@ -13,5 +14,22 @@
 .not-content{
     display: grid;
     margin-top: 3.33%;
+    
+    
+}
+
+.notification{
+    display: flex;
+    background-color: lightgreen;
+    width: fit-content;
+    min-width: 40%;
+    height: 90%;
+    color: black;
+    justify-content: space-between;
+
+}
+
+.container__pagination{
+    margin-left: 15%;
     
 }
