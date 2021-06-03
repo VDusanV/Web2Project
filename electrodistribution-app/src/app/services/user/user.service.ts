@@ -19,6 +19,31 @@ getCurrentUser(): Observable<any> {
   httpOptions.params = param;
   return this.http.get("https://localhost:44364/api/User/CurrentUser", httpOptions);
 }
+loadUsers(): Observable<IUser[]>{
+  return this.http.get<IUser[]>("https://localhost:44364/api/User")
+}
+activateUser(username:string) {
+  const params = new HttpParams().append('username',username);
+ 
+  console.log("aaaaaabbbbssss"+username);
+  this.http.put("https://localhost:44364/api/User/Verification",null,{params: params})
+  .subscribe(
+    error=>console.log('oops',error)
+  );
 
+  return;
+}
 
+}
+export interface IUser{
+  username: string;
+  password: string;
+  nameAndLastname: string;
+  birthDate: string;
+  address: string;
+  imageData: any;
+  email: string;
+  userType: string;
+  notifications: Array<Notification>;
+  activeStatus: boolean;
 }

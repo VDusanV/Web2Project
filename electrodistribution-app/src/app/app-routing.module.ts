@@ -12,6 +12,7 @@ import { MapComponent } from './map/map.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ElementsPageComponent } from './elements-page/elements-page.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { RegistrationVerificationComponent } from './registration-verification/registration-verification.component';
 
 
 const routes: Routes = [
@@ -56,7 +57,7 @@ const routes: Routes = [
       children: [
         {
           path: '', // child route path
-        component: RegistrationComponentComponent, // child route component that the router renders
+        component: RegistrationVerificationComponent, // child route component that the router renders
         }
       ]
   

@@ -37,6 +37,7 @@ import { CreateElementComponent } from './create-element/create-element.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { NotificationsFilterPipe } from './pipes/notifications-filter.pipe';
+import { RegistrationVerificationComponent } from './registration-verification/registration-verification.component';
 
 export function getToken() {
   return localStorage.getItem("jwt");
@@ -58,7 +59,8 @@ export function getToken() {
       TableFilterPipe,
       NotificationsComponent,
       CreateElementComponent,
-      NotificationsFilterPipe
+      NotificationsFilterPipe,
+      RegistrationVerificationComponent
    ],
   imports: [
     BrowserModule,

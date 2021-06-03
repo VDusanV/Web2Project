@@ -31,6 +31,7 @@ namespace Web2Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
         {
+           
             return await _context.Users.ToListAsync();
         }
 
@@ -152,7 +153,25 @@ namespace Web2Backend.Controllers
 
             return BadRequest("Wrong username");
         }
+        [HttpPut]
+        [Route("Verification")]
+        public async Task<ActionResult<UserModel>> Verification(string username)
+        {
+            UserModel u1 = new UserModel();
+            foreach (UserModel user in _context.Users)
+            {
+                if (user.Username == username)
+                {
+                    u1 = user;
+                    break;
 
+                }
+            }
+            u1.ActiveStatus = true;
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("GetUsers", u1);
+
+        }
         private string getRole(UserModel user)
         {
 
