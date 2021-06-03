@@ -1,6 +1,6 @@
 <div class="gridara">
 <div class="not-options">
-    <button class="button" (click)="finish()">All Notifications</button>
+    <button class="button">All Notifications</button>
     <button class="button">Unread Notifications</button>
     <button class="button">Errors</button>
     <button class="button">Info</button>
@@ -10,7 +10,7 @@
 </div>
 <div class="not-content">
 <div *ngFor="let notification of notifications | slice: (page-1) * pageSize : page * pageSize">
-    <div class="notification"><div class="text">{{notification.text}}</div> <div class="date">{{notification.timeStamp}}</div></div>
+    <div [ngStyle]="getBackgroundColor(notification.type)" [(ngModel)]="notification.id" (click)="finish(notification.id)" ngDefaultControl class  class="notification"><div class="text">{{notification.text}}</div> <div class="date">{{notification.timeStamp}}</div></div>
 </div>
 <div class="container__pagination">
     <ngb-pagination 

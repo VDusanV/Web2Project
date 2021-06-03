@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import {Notification} from 'src/app/entities/notification';
 
 import {NotificationService} from 'src/app/services/notifications/notification.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-notifications',
@@ -26,9 +27,30 @@ export class NotificationsComponent implements OnInit {
 
   }
 
-finish(){
-  console.log(this.notifications);
+finish(id:Number){
+  console.log(id);
+  this.notService.modifyNotifcation(id);
+}
+
+getBackgroundColor(type:string){
   
+  if(type === "Success")
+  {
+  return {'background-color' : 'lightgreen'};
+  console.log(type);
+  }else if(type === "Warning")
+  {
+  return {'background-color' : 'lightsalmon'};
+  console.log(type);
+  }else if(type === "Info")
+  {
+    return {'background-color' : 'lightblue'};
+    console.log(type);
+  }else
+  {
+      return {'background-color' : 'orangered'};
+      console.log(type);
+  }
 }
 
 }

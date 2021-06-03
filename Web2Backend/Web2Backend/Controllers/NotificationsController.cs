@@ -37,8 +37,8 @@ namespace Web2Backend.Controllers
 
             NotificationsModel notification = new NotificationsModel()
             {
-                Type = "Success",
-                Text = "Save successful",
+                Type = "Info",
+                Text = "Document Info",
                 Status = "Unread",
                 TimeStamp = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"),
                 User = _context.Users.FirstOrDefault(u => u.Username == "admin")
@@ -82,13 +82,13 @@ namespace Web2Backend.Controllers
 
         [HttpPut]
         [Route("ModifyNotification")]
-        public async Task<ActionResult<ElementModel>> ModifyNotification(NotificationsModel model)
+        public async Task<ActionResult<ElementModel>> ModifyNotification(long id)
         {
 
 
-            var notification = _context.Notifications.FirstOrDefault(n => n.Id == model.Id);
+            var notification = _context.Notifications.FirstOrDefault(n => n.Id == id);
 
-            notification.Status = model.Status;
+            notification.Status = "Read";
 
             await _context.SaveChangesAsync();
 
