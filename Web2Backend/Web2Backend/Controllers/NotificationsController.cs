@@ -23,9 +23,24 @@ namespace Web2Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<NotificationsModel>>> GetElements()
+        public List<NotificationsModel> GetNotifications()
         {
-            return await _context.Notifications.ToListAsync();
+            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            List<NotificationsModel> notifications = new List<NotificationsModel>();
+
+            List<NotificationsModel> allNotifications = _context.Notifications.Include(n => n.User).ToList();
+
+            foreach (NotificationsModel not in _context.Notifications.Include(n => n.User))
+            {
+                if (not.Deleted == false && not.User.Username.Equals(username))
+                {
+                    notifications.Add(not);
+                }
+            }
+
+
+            return notifications;
         }
 
         [HttpPost]
@@ -101,14 +116,44 @@ namespace Web2Backend.Controllers
         public async Task<ActionResult<NotificationsModel>> MarkAllAsRead()
         {
 
-            foreach(NotificationsModel not in _context.Notifications)
+            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            foreach (NotificationsModel not in _context.Notifications.Include(n => n.User))
             {
-                not.Status = "Read";
+                if (not.User.Username.Equals(username))
+                {
+                    not.Status = "Read";
+                }
             }
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("MarkAllAsRead", "Succes");
+            NotificationsModel notification = _context.Notifications.FirstOrDefault();
+
+            return CreatedAtAction("MarkAllAsRead", notification);
+
+        }
+
+        [HttpPost]
+        [Route("ClearAll")]
+        public async Task<ActionResult<NotificationsModel>> ClearAll()
+        {
+
+            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            foreach (NotificationsModel not in _context.Notifications.Include(n => n.User))
+            {
+                if (not.User.Username.Equals(username))
+                {
+                    not.Deleted = true;
+                }
+            }
+
+            NotificationsModel notification = _context.Notifications.FirstOrDefault();
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("MarkAllAsRead", notification);
 
         }
 

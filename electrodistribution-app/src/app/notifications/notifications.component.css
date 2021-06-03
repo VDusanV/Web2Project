@@ -29,6 +29,12 @@
 }
 
 .container__pagination{
-    justify-content: center;
-    
+    display: grid;
+    grid-template-columns: 10% 12% 10%;
+    column-gap: 3%;
+    height: 3%;
+}
+
+.notButton{
+    height: 2.5em;
 }

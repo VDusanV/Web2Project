@@ -27,9 +27,18 @@ export class NotificationService {
     }
 
     markAllAsRead(){
-      this.http.post("https://localhost:44364/api/Notifications/MarkAllAsRead", null)
+      let params = new HttpParams();
+      this.http.post("https://localhost:44364/api/Notifications/MarkAllAsRead", null, {params: params})
     .subscribe(
-      error => console.log('oops', error)
+      data => console.log('oops', data)
+    );
+    }
+
+    clearAll(){
+      let params = new HttpParams();
+      this.http.post("https://localhost:44364/api/Notifications/ClearAll", null, {params: params})
+    .subscribe(
+      data => console.log('oops', data)
     );
     }
 
