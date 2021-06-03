@@ -1,5 +1,6 @@
 export class Notification {
     id: number;
+    status: string;
     type: string;
     text: string;
     timeStamp: string;
@@ -9,6 +10,7 @@ export class Notification {
 
     constructor(
         id: number,
+        status: string,
         type: string, 
         text: string,
         timeStamp: string,
@@ -16,6 +18,7 @@ export class Notification {
         )       
     {
         this.id = id;
+        this.status = status;
         this.type = type;
         this.text = text;
         this.timeStamp = timeStamp;

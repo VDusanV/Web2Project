@@ -17,6 +17,7 @@ export class NotificationsComponent implements OnInit {
   notifications: Notification[] = [];
   page = 10;
   pageSize = 4;
+  option:string = "All";
 
 
   constructor(private notService:NotificationService, private router:Router, private datePipe:DatePipe) { }
@@ -51,6 +52,11 @@ getBackgroundColor(type:string){
       return {'background-color' : 'orangered'};
       console.log(type);
   }
+}
+
+btnClick(type:string){
+  this.option = type;
+  console.log(this.option);
 }
 
 }

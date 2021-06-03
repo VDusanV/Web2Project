@@ -24,12 +24,20 @@ export class NotificationService {
     .subscribe(
       error => console.log('oops', error)
     );
+    }
+
+    markAllAsRead(){
+      this.http.post("https://localhost:44364/api/Notifications/MarkAllAsRead", null)
+    .subscribe(
+      error => console.log('oops', error)
+    );
+    }
 
 
     
   }
 
-}
+
 
 
 

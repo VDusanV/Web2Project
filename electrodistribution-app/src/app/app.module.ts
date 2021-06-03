@@ -36,6 +36,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { CreateElementComponent } from './create-element/create-element.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
+import { NotificationsFilterPipe } from './pipes/notifications-filter.pipe';
 
 export function getToken() {
   return localStorage.getItem("jwt");
@@ -56,7 +57,8 @@ export function getToken() {
       ElementsPageComponent,
       TableFilterPipe,
       NotificationsComponent,
-      CreateElementComponent
+      CreateElementComponent,
+      NotificationsFilterPipe
    ],
   imports: [
     BrowserModule,

@@ -56,7 +56,7 @@ namespace Web2Backend.Controllers
 
         [HttpPost]
         [Route("CreateNotification")]
-        public async Task<ActionResult<ElementModel>> CreateNotification(NotificationsModel model)
+        public async Task<ActionResult<NotificationsModel>> CreateNotification(NotificationsModel model)
         {
 
             string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
@@ -82,7 +82,7 @@ namespace Web2Backend.Controllers
 
         [HttpPut]
         [Route("ModifyNotification")]
-        public async Task<ActionResult<ElementModel>> ModifyNotification(long id)
+        public async Task<ActionResult<NotificationsModel>> ModifyNotification(long id)
         {
 
 
@@ -93,6 +93,22 @@ namespace Web2Backend.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("AddNotification", notification);
+
+        }
+
+        [HttpPost]
+        [Route("MarkAllAsRead")]
+        public async Task<ActionResult<NotificationsModel>> MarkAllAsRead()
+        {
+
+            foreach(NotificationsModel not in _context.Notifications)
+            {
+                not.Status = "Read";
+            }
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("MarkAllAsRead", "Succes");
 
         }
 
