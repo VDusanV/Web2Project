@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule, Type } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +13,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { ElementsPageComponent } from './elements-page/elements-page.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { RegistrationVerificationComponent } from './registration-verification/registration-verification.component';
+import { ViewGuard } from './guards/view.guard';
+import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
+import { SettingsComponent } from './settings/settings.component';
+//import { Type } from '@angular/compiler';
 
 
 const routes: Routes = [
@@ -102,6 +106,18 @@ const routes: Routes = [
       }
     ]
   
+  },
+  {
+    path: 'settings',
+     component:NavSideComponent,
+     canActivate: [AuthGuard],
+     children: [
+      {
+        path: '', // child route path
+        component: getSettingsComponent(), // child route component that the router renders
+      }
+    ]
+  
   }
 
 
@@ -113,3 +129,19 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+export function getSettingsComponent(): Type<Component> {
+
+  if(ViewGuard.prototype.canActivate()){
+
+    return <Type<Component>>AdminSettingsComponent;
+
+  }else{
+
+    return <Type<Component>>SettingsComponent;
+
+  }
+
+
+}
+

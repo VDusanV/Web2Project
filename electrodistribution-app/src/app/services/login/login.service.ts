@@ -12,6 +12,7 @@ logOut(): void {
 
   localStorage.removeItem("jwt");
   localStorage.removeItem("username");
+  localStorage.removeItem("type");
   this.router.navigate(["home"]);
 
 }

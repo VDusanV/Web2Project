@@ -10,6 +10,7 @@ namespace Web2Backend.Models.UserModels
         public string Token { get; set; }
         public string Username { get; set; }
         public string NameAndLastname { get; set; }
+        public string Type { get; set; }
 
 
 

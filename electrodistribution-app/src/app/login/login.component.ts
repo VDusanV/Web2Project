@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("jwt", token);
       const username = (<any>response).username;
       localStorage.setItem("username", username);
+      const type = (<any>response).type;
+      localStorage.setItem("type", type);
       this.invalidLogin = false;
       this.router.navigate(["home"]);
     }, err => {

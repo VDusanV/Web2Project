@@ -61,6 +61,7 @@ namespace Web2Backend.Controllers
                 return BadRequest("Invalid client request");
             }
 
+
             foreach(UserModel user in _context.Users)
             {
                 if(user.Username == loginForm.UserName && user.Password == loginForm.Password)
@@ -88,7 +89,9 @@ namespace Web2Backend.Controllers
                     {
                         Token = tokenString,
                         Username = user.Username,
-                        NameAndLastname = user.NameAndLastname
+                        NameAndLastname = user.NameAndLastname,
+                        Type = user.UserType
+                       
                     };
 
                     return Ok(loggedInUser);
@@ -170,6 +173,28 @@ namespace Web2Backend.Controllers
             u1.ActiveStatus = true;
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetUsers", u1);
+
+        }
+
+        [HttpPut]
+        [Route("ChangePassword")]
+        public async Task<ActionResult<UserModel>> ChangePassword([FromBody] LoginModel passwordForm)
+        {
+            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            UserModel u1 = new UserModel();
+            foreach (UserModel user in _context.Users)
+            {
+                if (user.Username == username)
+                {
+                    u1 = user;
+                    break;
+
+                }
+            }
+            u1.Password = passwordForm.Password;
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("ChangePassword", u1);
 
         }
         private string getRole(UserModel user)
