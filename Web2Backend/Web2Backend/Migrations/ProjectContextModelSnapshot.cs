@@ -144,6 +144,9 @@ namespace Web2Backend.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
@@ -205,8 +208,8 @@ namespace Web2Backend.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("ImageData")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("ImageData")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameAndLastname")
                         .HasColumnType("nvarchar(max)");

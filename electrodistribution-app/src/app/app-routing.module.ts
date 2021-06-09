@@ -49,7 +49,7 @@ const routes: Routes = [
       children: [
         {
           path: '', // child route path
-        component: MapComponent, // child route component that the router renders
+        component: RegistrationComponentComponent, // child route component that the router renders
         }
       ]
   

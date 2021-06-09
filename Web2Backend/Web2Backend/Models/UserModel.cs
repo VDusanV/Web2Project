@@ -14,7 +14,7 @@ namespace Web2Backend.Models
         public string NameAndLastname { get; set; }
         public DateTime BirthDate { get; set; }
         public string Address { get; set; }
-        public byte[] ImageData { get; set; }
+        public string ImageData { get; set; }
 
         public string Email { get; set; }
         public string UserType { get; set; }

@@ -52,8 +52,8 @@
           </select>
         </div>
         <div class="form-group col-md-6">
-          <label for="inputImage" style="width: 100%;">Image</label>
-          <input type="file" ngModel name="image" (change)="onFileSelected($event)" class="form-control" accept="image/*">
+          <label for="inputImage"  style="width: 100%;">Image</label>
+          <input type="file" #file (change)="uploadFile(file.files)" accept="image/*" ngModel name="imagedata" class="form-control"  (change)="handleFileInput($event)">
         </div>
         
       </div>
@@ -67,7 +67,15 @@
   </div>
   <div class="col-md-4">
     <div class="col align-self-end">
-      <img  width="300" height="400" src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg">
+      <img  width="300" height="400" [src]="imageUrl">
+      <div class="col-md-12">
+        <span class="upload" *ngIf="progress > 0">
+          {{progress}}%
+        </span>
+        <span class="upload" *ngIf="message">
+          {{message}}
+        </span>
+      </div>
     </div>
   </div>
 </div>

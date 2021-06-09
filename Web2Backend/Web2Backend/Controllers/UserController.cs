@@ -6,7 +6,9 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +44,7 @@ namespace Web2Backend.Controllers
         {
 
             UserModel user1 = new UserModel() { Username = "admin3", Password = "admin3", Address = "Bulevar Cara Lazara 90", 
-                                                BirthDate = new DateTime(1994, 7, 11), ImageData = new byte[5], NameAndLastname = "Njegoslav Radomirovic" };
+                                                BirthDate = new DateTime(1994, 7, 11), ImageData = "", NameAndLastname = "Njegoslav Radomirovic" };
 
             _context.Users.Add(user1);
 
@@ -102,16 +104,17 @@ namespace Web2Backend.Controllers
         }
         [HttpPost]
         [Route("Register")]
-        public IActionResult Register([FromBody] UserModel userForm)
+        public async Task<ActionResult<ElementModel>> Register([FromBody] UserModel userForm)
         {
             if (userForm == null)
             {
                 return BadRequest("Invalid client request");
             }
             UserModel user = userForm;
-            //_context.Users.Add(user);
+            _context.Users.Add(user);
             
-          
+            await _context.SaveChangesAsync();
+
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretKeysdfsdfsdf"));
             var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
@@ -139,8 +142,42 @@ namespace Web2Backend.Controllers
 
             return Ok(loggedInUser);
           
-            return Unauthorized();
         }
+
+
+        [HttpPost, DisableRequestSizeLimit]
+        [Route("Upload")]
+        public IActionResult Upload()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                var folderName = Path.Combine("Resources", "Images");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                if (file.Length > 0)
+                {
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fullPath = Path.Combine(pathToSave, fileName);
+
+                    var dbPath = Path.Combine(folderName, fileName);
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    return Ok(new { dbPath });
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+
+
         [HttpGet("username")]
         [Route("CurrentUser")]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetCurrentUser(string username)
