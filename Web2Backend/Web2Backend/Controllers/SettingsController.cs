@@ -57,6 +57,25 @@ namespace Web2Backend.Controllers
 
         }
 
+        [HttpPut]
+        [Route("ResetPriority")]
+        public async Task<ActionResult<StreetModel>> ResetPriority()
+        {
+            var street1 = new StreetModel();
+
+            foreach (StreetModel street in _context.Streets)
+            {
+                street1 = street;
+                street1.cPriority = street1.dPriority;
+            }
+
+          
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("ResetPriority", street1);
+            
+
+        }
+
 
 
 
