@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from '../services/user/user.service';
@@ -9,6 +9,7 @@ import { JsonObjectExpression } from 'typescript';
 import { SettingsService } from '../services/settings/settings.service';
 import { Street } from '../entities/street';
 import { ChangePriority } from '../entities/streetPriority';
+
 
 @Component({
   selector: 'app-admin-settings',
@@ -20,15 +21,25 @@ export class AdminSettingsComponent implements OnInit {
   minimumCharacters:boolean = false;
   invalidPassword:boolean = false;
 
+  //Prioriteti za ulice
+
   streetForm = new FormGroup({
     streetName: new FormControl(''),
     streetPriority: new FormControl(''),
   });
 
   streets:Street[] = [];
-
   priorities:number[] = [1, 2, 3, 4, 5];
 
+  //Notifikacije
+  options:any = ['All', 'Success', 'Warning', 'Info', 'Error'];
+ 
+  notForm = new FormGroup({
+    type: new FormControl('')
+  });
+
+  selected:string[] = [];
+ 
 
   constructor(private router:Router, private http:HttpClient, private userService:UserService, private settingsService:SettingsService) { }
 
@@ -71,6 +82,12 @@ export class AdminSettingsComponent implements OnInit {
     console.log(this.streetForm.value);
     this.settingsService.changePriority(new Street(this.streetForm.value.streetName, 0, parseInt(this.streetForm.value.streetPriority)));
 
+  }
+
+  onSubmit2(){
+    this.selected = this.notForm.value.type;
+    console.log(this.selected);
+    this.settingsService.visibleNotifications(this.selected);
   }
 
 }

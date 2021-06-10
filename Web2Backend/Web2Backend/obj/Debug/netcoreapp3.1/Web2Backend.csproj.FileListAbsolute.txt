@@ -208,3 +208,6 @@ H:\8 Semestar\PuSGS\PROJEKAT\Web2Project\Web2Backend\Web2Backend\obj\Debug\netco
 H:\8 Semestar\PuSGS\PROJEKAT\Web2Project\Web2Backend\Web2Backend\obj\Debug\netcoreapp3.1\Web2Backend.dll
 H:\8 Semestar\PuSGS\PROJEKAT\Web2Project\Web2Backend\Web2Backend\obj\Debug\netcoreapp3.1\Web2Backend.pdb
 H:\8 Semestar\PuSGS\PROJEKAT\Web2Project\Web2Backend\Web2Backend\obj\Debug\netcoreapp3.1\Web2Backend.genruntimeconfig.cache
+C:\Users\bdobr\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\bdobr\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+C:\Users\bdobr\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

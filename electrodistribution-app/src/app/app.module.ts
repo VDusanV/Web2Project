@@ -40,7 +40,8 @@ import { NotificationsFilterPipe } from './pipes/notifications-filter.pipe';
 import { RegistrationVerificationComponent } from './registration-verification/registration-verification.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgSelectModule } from '@ng-select/ng-select';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -85,7 +86,9 @@ export function getToken() {
     MatFormFieldModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    NgSelectModule,
     MatDialogModule,
     JwtModule.forRoot({
       config: {

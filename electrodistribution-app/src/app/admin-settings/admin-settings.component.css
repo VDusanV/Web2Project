@@ -1,3 +1,4 @@
+
 .title{
     display: flex;
     justify-content: center;
@@ -17,7 +18,7 @@
     grid-template-rows: 50% 50%;
 }
 
-.streets{
+.streets, .notifications{
     display: flex;
     flex-direction: column;
     margin-left: 5%;

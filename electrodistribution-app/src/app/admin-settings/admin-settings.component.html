@@ -40,13 +40,26 @@
 
 </div>
 
+<div class="notifications">
+    <p class="title">Visible notifications</p>
+    <form [formGroup]="notForm" (ngSubmit)="onSubmit2()">
+    <ng-select [items]="options"
+               bindLabel="name"
+               placeholder="Select Category"
+               appendTo="body"
+               [multiple]="true"
+               formControlName='type'>
+</ng-select>
+<button class="btn btn-lg btn-primary btn-block" type="submit">Save Changes</button>
+</form>
+  
+</div>
+
 
 </div>
 
 
 
-<div class="">
 
-</div>
 
 
