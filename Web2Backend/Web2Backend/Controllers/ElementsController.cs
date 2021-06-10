@@ -44,6 +44,8 @@ namespace Web2Backend.Controllers
 
             await _context.SaveChangesAsync();
 
+            //SaveStreet("sdfsdf");
+
             return CreatedAtAction("GetElements", element1);
 
         }
@@ -69,6 +71,44 @@ namespace Web2Backend.Controllers
 
             return CreatedAtAction("GetElements", element1);
 
+        }
+
+        public async Task<ActionResult<string>> SaveStreet(string address)
+        {
+            char[] separators = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+            string streetName = address.Split(separators, 2)[0].Trim();
+
+            List<ElementModel> lista = _context.Elements.ToList();
+
+
+            /*List<string> streets = new List<string>();
+
+            foreach (ElementModel element in lista)
+            {
+                string streetName = element.Address.Split(separators, 2)[0].Trim();
+                Random rand = new Random();
+
+                StreetModel street = new StreetModel
+                {
+                    Name = streetName,
+                    dPriority = rand.Next(1, 6),
+                    cPriority = rand.Next(1, 6)
+                };
+
+
+
+                if (!streets.Contains(streetName))
+                {
+                    _context.Streets.Add(street);
+                }
+                streets.Add(streetName);
+
+            }
+
+            await _context.SaveChangesAsync();*/
+
+            return "ok";
         }
 
 

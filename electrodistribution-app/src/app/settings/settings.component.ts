@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from '../services/user/user.service';
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { JsonObjectExpression } from 'typescript';
+import { SettingsService } from '../services/settings/settings.service';
 
 @Component({
   selector: 'app-settings',

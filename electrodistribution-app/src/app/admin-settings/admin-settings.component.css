@@ -16,3 +16,10 @@
     grid-template-columns: 20% 20% 20% 20% 20%;
     grid-template-rows: 50% 50%;
 }
+
+.streets{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    justify-content: flex-start;
+}

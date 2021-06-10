@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from '../services/user/user.service';
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { JsonObjectExpression } from 'typescript';
+import { SettingsService } from '../services/settings/settings.service';
+import { Street } from '../entities/street';
+import { ChangePriority } from '../entities/streetPriority';
 
 @Component({
   selector: 'app-admin-settings',
@@ -17,7 +20,17 @@ export class AdminSettingsComponent implements OnInit {
   minimumCharacters:boolean = false;
   invalidPassword:boolean = false;
 
-  constructor(private router:Router, private http:HttpClient, private userService:UserService) { }
+  streetForm = new FormGroup({
+    streetName: new FormControl(''),
+    streetPriority: new FormControl(''),
+  });
+
+  streets:Street[] = [];
+
+  priorities:number[] = [1, 2, 3, 4, 5];
+
+
+  constructor(private router:Router, private http:HttpClient, private userService:UserService, private settingsService:SettingsService) { }
 
   changePassword(form:NgForm){
     var form1 = form;
@@ -45,7 +58,19 @@ export class AdminSettingsComponent implements OnInit {
     return true;
   }
 
+
   ngOnInit(): void {
+    this.settingsService.loadStreets().subscribe
+      (data => { this.streets = data
+      this.streets = data});
+      
+    
+  }
+
+  onSubmit(){
+    console.log(this.streetForm.value);
+    this.settingsService.changePriority(new Street(this.streetForm.value.streetName, 0, parseInt(this.streetForm.value.streetPriority)));
+
   }
 
 }
