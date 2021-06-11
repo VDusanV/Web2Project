@@ -13,6 +13,7 @@ namespace Web2Backend.Models
         public long Id { get; set; }
 
         public bool Deleted { get; set; }
+        public bool Visible { get; set; }
         public string Type { get; set; }
         public string Text { get; set; }
         public string Status { get; set; }

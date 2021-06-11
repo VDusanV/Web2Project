@@ -33,7 +33,7 @@ namespace Web2Backend.Controllers
 
             foreach (NotificationsModel not in _context.Notifications.Include(n => n.User))
             {
-                if (not.Deleted == false && not.User.Username.Equals(username))
+                if (not.Deleted == false && not.User.Username.Equals(username) && not.Visible == true)
                 {
                     notifications.Add(not);
                 }

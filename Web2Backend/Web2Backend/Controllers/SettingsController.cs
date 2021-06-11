@@ -80,17 +80,107 @@ namespace Web2Backend.Controllers
         [Route("VisibleNotifications")]
         public async Task<ActionResult<string>> VisibleNotifications([FromBody] string[] str)
         {
-            var street1 = new StreetModel();
 
-            foreach (StreetModel street in _context.Streets)
+            if (str.Contains("All"))
             {
-                street1 = street;
-                street1.cPriority = street1.dPriority;
+                foreach(NotificationsModel not in _context.Notifications)
+                {
+                    not.Visible = true;
+                }
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("VisibleNotifications", "Ok");
             }
 
 
+            if (str.Contains("Warning"))
+            {
+                foreach (NotificationsModel not in _context.Notifications)
+                {
+                    if (not.Type == "Warning")
+                    {
+                        not.Visible = true;
+                    }
+                }
+            }
+            else
+            {
+                foreach (NotificationsModel not in _context.Notifications)
+                {
+                    if (not.Type == "Warning")
+                    {
+                        not.Visible = false;
+                    }
+                }
+            }
+
+            if (str.Contains("Success"))
+            {
+                foreach (NotificationsModel not in _context.Notifications)
+                {
+                    if (not.Type == "Success")
+                    {
+                        not.Visible = true;
+                    }
+                }
+            }
+            else
+            {
+                foreach (NotificationsModel not in _context.Notifications)
+                {
+                    if (not.Type == "Success")
+                    {
+                        not.Visible = false;
+                    }
+                }
+            }
+
+            if (str.Contains("Info"))
+            {
+                foreach (NotificationsModel not in _context.Notifications)
+                {
+                    if (not.Type == "Info")
+                    {
+                        not.Visible = true;
+                    }
+                }
+            }
+            else
+            {
+                foreach (NotificationsModel not in _context.Notifications)
+                {
+                    if (not.Type == "Info")
+                    {
+                        not.Visible = false;
+                    }
+                }
+            }
+
+            if (str.Contains("Error"))
+            {
+                foreach (NotificationsModel not in _context.Notifications)
+                {
+                    if (not.Type == "Error")
+                    {
+                        not.Visible = true;
+                    }
+                }
+            }
+            else
+            {
+                foreach (NotificationsModel not in _context.Notifications)
+                {
+                    if (not.Type == "Error")
+                    {
+                        not.Visible = false;
+                    }
+                }
+            }
+
+
+
+
             await _context.SaveChangesAsync();
-            return CreatedAtAction("ResetPriority", street1);
+            return CreatedAtAction("VisibleNotifications", "Ok");
 
 
         }
