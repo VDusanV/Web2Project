@@ -46,6 +46,10 @@ changeProfile(user:User){
   );
 }
 
+loadUserRequests(): Observable<any>{
+  return this.http.get<any>("https://localhost:44364/api/User/UserRequests")
+}
+
 changeUserPassword(credentials:any){
   const params = new HttpParams().append('password', credentials.password);
   console.log("kod metode" + credentials);

@@ -42,6 +42,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { RequestsComponent } from './requests/requests.component';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -65,7 +66,8 @@ export function getToken() {
       NotificationsFilterPipe,
       RegistrationVerificationComponent,
       SettingsComponent,
-      AdminSettingsComponent
+      AdminSettingsComponent,
+      RequestsComponent
    ],
   imports: [
     BrowserModule,

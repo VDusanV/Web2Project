@@ -16,6 +16,7 @@ import { RegistrationVerificationComponent } from './registration-verification/r
 import { ViewGuard } from './guards/view.guard';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { SettingsComponent } from './settings/settings.component';
+import { RequestsComponent } from './requests/requests.component';
 //import { Type } from '@angular/compiler';
 
 
@@ -115,6 +116,19 @@ const routes: Routes = [
       {
         path: '', // child route path
         component: getSettingsComponent(), // child route component that the router renders
+      }
+    ]
+  
+  },
+  {
+    path: 'requests',
+     component:NavSideComponent,
+     canActivate: [AuthGuard],
+     children: [
+      {
+        path: '', // child route path
+        canActivate: [ViewGuard],
+        component: RequestsComponent, // child route component that the router renders
       }
     ]
   

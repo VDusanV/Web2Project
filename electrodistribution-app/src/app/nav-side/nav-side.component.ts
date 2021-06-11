@@ -13,6 +13,7 @@ export class NavSideComponent {
 
   titleString ='';
   username = localStorage.username;
+  isAdmin:boolean = true;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -22,13 +23,25 @@ export class NavSideComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, private loginService: LoginService) {}
 
+  ngOnInit(): void {
+    const type = localStorage.getItem('type');
+    if(type === 'Admin'){
+      this.isAdmin = true;
+    }else{
+      this.isAdmin = false;
+    }
+    console.log(this.isAdmin);
+  }
+
   myFunc(str: string){
     this.titleString = str;
   }
 
   logOut(): void {
 
-this.loginService.logOut();
+  this.loginService.logOut();
+  this.isAdmin = false;
+
 
   }
 }

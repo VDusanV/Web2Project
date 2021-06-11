@@ -21,6 +21,7 @@ namespace Web2Backend.Data
         public DbSet<ElementModel> Elements { get; set; }
         public DbSet<NotificationsModel> Notifications { get; set; }
         public DbSet<StreetModel> Streets { get; set; }
+        public DbSet<UserRequestModel> UserRequests { get; set; }
 
     }
 }

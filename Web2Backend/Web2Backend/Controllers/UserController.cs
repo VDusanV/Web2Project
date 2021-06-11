@@ -251,16 +251,62 @@ namespace Web2Backend.Controllers
 
                 }
             }
-            u1.Username = userF.Username;
-            u1.NameAndLastname = userF.NameAndLastname;
-            u1.Email = userF.Email;
-            u1.UserType = userF.UserType;
-            u1.Address = userF.Address;
+            if (u1.UserType.Equals(userF.UserType))
+            {
+                u1.Username = userF.Username;
+                u1.NameAndLastname = userF.NameAndLastname;
+                u1.Email = userF.Email;
+                u1.Address = userF.Address;
 
-            await _context.SaveChangesAsync();
-            return CreatedAtAction("ChangeProfile", u1);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("ChangeProfile", u1);
+            }
+            else
+            {
+                u1.Username = userF.Username;
+                u1.NameAndLastname = userF.NameAndLastname;
+                u1.Email = userF.Email;
+                u1.Address = userF.Address;
+                UserRequestModel newRequest = new UserRequestModel
+                {
+                    Username = userF.Username,
+                    NameAndLastname = userF.NameAndLastname,
+                    Email = userF.Email,
+                    Address = userF.Address,
+                    BirthDate = userF.BirthDate,
+                    UserType = userF.UserType
+                };
+
+                _context.UserRequests.Add(newRequest);
+
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("ChangeProfile", u1);
+            }
 
         }
+
+        [HttpGet]
+        [Route("UserRequests")]
+        public async Task<ActionResult<IEnumerable<UserRequestModel>>> GetUnverifiedUsers()
+        {
+
+            /*List<UserModel> users = new List<UserModel>();
+
+            foreach(UserRequestModel u in _context.UserRequests)
+            {
+                foreach(UserModel um in _context.Users)
+                {
+                    if (u.Username.Equals(um.Username) && !u.UserType.Equals(um.UserType))
+                    {
+                        new UserModel user1 =
+                        users.Add(um);
+                    }
+                }
+            }*/
+
+            return await _context.UserRequests.ToListAsync();
+        }
+
         private string getRole(UserModel user)
         {
 
