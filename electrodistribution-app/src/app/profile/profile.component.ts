@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import {UserService } from '../services/user/user.service';
+import { User } from '../entities/user';
 
 
 @Component({
@@ -11,12 +12,12 @@ import {UserService } from '../services/user/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  username!: string;
+  /*username!: string;
   fullname!: string;
   birthdate!: Date;
   address!: string;
   email!: string;
-  userType!: string;
+  userType!: string;*/
 
   userTypes = [
     {name: "TeamMember"},
@@ -25,7 +26,19 @@ export class ProfileComponent implements OnInit {
     {name: "Admin"}
   ]
 
-  control!: FormControl;
+  //control!: FormControl;
+
+  user!:User;
+
+  date!:string;
+
+  profileForm =new FormGroup({
+    username: new FormControl(''),
+    fullname: new FormControl(''),
+    address: new FormControl(''),
+    email: new FormControl(''),
+    userType: new FormControl('')
+  });
   
   constructor(private userService: UserService) { }
 
@@ -33,18 +46,43 @@ export class ProfileComponent implements OnInit {
 
     this.userService.getCurrentUser().subscribe(
       data => {
-        this.username = data.username;
-        this.fullname = data.nameAndLastname;
-        this.birthdate = data.birthdate;
-        this.address = data.address;
-        this.email = data.email;
-        this.control = new FormControl(data.userType);
+        this.profileForm.setValue({
+          username: data.username,
+          fullname: data.nameAndLastname,
+          address: data.address,
+          email: data.email,
+          userType: data.userType
+        })
+        this.date = data.birthdate;
       }, 
       err => {
 
       }
     )
+
     
+  }
+
+  onSubmit(){
+    if(this.validate()){
+      this.user = new User(
+        this.profileForm.controls.username.value,
+        this.profileForm.controls.email.value,
+        'a',
+        this.profileForm.controls.fullname.value,
+        this.profileForm.controls.address.value,
+        this.date,
+        this.profileForm.controls.userType.value,
+      );
+
+      this.userService.changeProfile(this.user);
+
+    }
+
+  }
+
+  validate():boolean{
+    return true;
   }
 
   get selectOptions(){

@@ -234,6 +234,33 @@ namespace Web2Backend.Controllers
             return CreatedAtAction("ChangePassword", u1);
 
         }
+
+        [HttpPut]
+        [Route("ChangeProfile")]
+        public async Task<ActionResult<UserModel>> ChangeProfile([FromBody] UserModel userF)
+        {
+            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            UserModel u1 = new UserModel();
+            foreach (UserModel user in _context.Users)
+            {
+                if (user.Username == username)
+                {
+                    u1 = user;
+                    break;
+
+                }
+            }
+            u1.Username = userF.Username;
+            u1.NameAndLastname = userF.NameAndLastname;
+            u1.Email = userF.Email;
+            u1.UserType = userF.UserType;
+            u1.Address = userF.Address;
+
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("ChangeProfile", u1);
+
+        }
         private string getRole(UserModel user)
         {
 
