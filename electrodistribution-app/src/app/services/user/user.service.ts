@@ -50,6 +50,15 @@ loadUserRequests(): Observable<any>{
   return this.http.get<any>("https://localhost:44364/api/User/UserRequests")
 }
 
+confirmUserRequest(username:string) {
+  const params = new HttpParams().append('username',username);
+ 
+  this.http.put("https://localhost:44364/api/User/UserRequest",null,{params: params})
+  .subscribe(
+    error=>console.log('oops',error)
+  );
+}
+
 changeUserPassword(credentials:any){
   const params = new HttpParams().append('password', credentials.password);
   console.log("kod metode" + credentials);

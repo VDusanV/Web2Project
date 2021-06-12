@@ -241,6 +241,7 @@ namespace Web2Backend.Controllers
         {
             string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
 
+
             UserModel u1 = new UserModel();
             foreach (UserModel user in _context.Users)
             {
@@ -251,6 +252,12 @@ namespace Web2Backend.Controllers
 
                 }
             }
+
+            if(u1.UserType == null)
+            {
+                u1.UserType = "Worker";
+            }
+
             if (u1.UserType.Equals(userF.UserType))
             {
                 u1.Username = userF.Username;
@@ -290,21 +297,40 @@ namespace Web2Backend.Controllers
         public async Task<ActionResult<IEnumerable<UserRequestModel>>> GetUnverifiedUsers()
         {
 
-            /*List<UserModel> users = new List<UserModel>();
-
-            foreach(UserRequestModel u in _context.UserRequests)
-            {
-                foreach(UserModel um in _context.Users)
-                {
-                    if (u.Username.Equals(um.Username) && !u.UserType.Equals(um.UserType))
-                    {
-                        new UserModel user1 =
-                        users.Add(um);
-                    }
-                }
-            }*/
 
             return await _context.UserRequests.ToListAsync();
+        }
+
+        [HttpPut]
+        [Route("UserRequest")]
+        public async Task<ActionResult<UserModel>> UserRequest(string username)
+        {
+            UserModel u1 = new UserModel();
+            foreach (UserModel user in _context.Users)
+            {
+                if (user.Username == username)
+                {
+                    u1 = user;
+                    break;
+
+                }
+            }
+
+            UserRequestModel ur1 = new UserRequestModel();
+            foreach(UserRequestModel ur in _context.UserRequests)
+            {
+                if(ur.Username == username)
+                {
+                    ur1 = ur;
+                    break;
+                }
+            }
+
+            u1.UserType = ur1.UserType;
+            _context.UserRequests.Remove(ur1);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("GetUsers", u1);
+
         }
 
         private string getRole(UserModel user)

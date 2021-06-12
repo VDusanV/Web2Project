@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../entities/user';
+import { runInThisContext } from 'node:vm';
+import { UserRequest } from '../entities/userRequest';
 import { UserService } from '../services/user/user.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from '../services/user/user.service';
 })
 export class RequestsComponent implements OnInit {
 
-  public allUsers : User[] = [];
+  public allUsers : UserRequest[] = [];
   public page = 10;
   public pageSize = 5;
 
@@ -18,9 +19,14 @@ export class RequestsComponent implements OnInit {
   ngOnInit(): void {
       this.userService.loadUserRequests().subscribe(data => this.allUsers = data);
   }
-  activate(username:string){
-    this.userService.activateUser(username);
-    location.reload();
+  activate(username:string, id:number){
+    this.userService.confirmUserRequest(username);
+    this.allUsers.forEach((item, index) => {
+      if(item.id === id){
+        this.allUsers.splice(index, 1);
+      }
+    } )
+    console.log(this.allUsers);
   }
 
 }
