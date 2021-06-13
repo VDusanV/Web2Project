@@ -264,6 +264,10 @@ namespace Web2Backend.Controllers
                 u1.NameAndLastname = userF.NameAndLastname;
                 u1.Email = userF.Email;
                 u1.Address = userF.Address;
+                if (userF.ImageData != null)
+                {
+                    u1.ImageData = userF.ImageData;
+                }
 
                 await _context.SaveChangesAsync();
                 return CreatedAtAction("ChangeProfile", u1);

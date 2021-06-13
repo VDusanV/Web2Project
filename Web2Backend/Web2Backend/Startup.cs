@@ -75,8 +75,8 @@ namespace Web2Backend
 
 
             services.AddControllers();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
 
-           
 
             services.AddDbContext<ProjectContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -91,7 +91,7 @@ namespace Web2Backend
             }
 
             app.UseHttpsRedirection();
-
+            app.UseDefaultFiles();
             app.UseCors("CORS");
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
