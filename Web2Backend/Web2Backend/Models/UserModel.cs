@@ -20,7 +20,9 @@ namespace Web2Backend.Models
         public string UserType { get; set; }
 
         public List<NotificationsModel> Notifications { get; set; }
-        public bool ActiveStatus { get; set; }
+
+        public string ActiveStatus { get; set; }
+
 
         public UserModel()
         {
@@ -31,7 +33,7 @@ namespace Web2Backend.Models
             Address = "+";
             Email = "+";
             UserType = "+";
-            ActiveStatus = false;
+           // ActiveStatus = false;
         }
     }
 }

@@ -207,7 +207,7 @@ namespace Web2Backend.Controllers
 
                 }
             }
-            u1.ActiveStatus = true;
+            //u1.ActiveStatus = true;
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetUsers", u1);
 

@@ -82,5 +82,5 @@ export interface IUser{
   email: string;
   userType: string;
   notifications: Array<Notification>;
-  activeStatus: boolean;
+  activeStatus: string;
 }

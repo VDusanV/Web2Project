@@ -211,3 +211,6 @@ H:\8 Semestar\PuSGS\PROJEKAT\Web2Project\Web2Backend\Web2Backend\obj\Debug\netco
 C:\Users\bdobr\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Users\bdobr\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\System.Web.Http.dll
 C:\Users\bdobr\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\TehnoCentar\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\TehnoCentar\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+C:\Users\TehnoCentar\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
