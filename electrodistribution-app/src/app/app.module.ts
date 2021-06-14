@@ -43,6 +43,8 @@ import { AdminSettingsComponent } from './admin-settings/admin-settings.componen
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { RequestsComponent } from './requests/requests.component';
+import { BasicInformationComponent } from './basic-information/basic-information.component';
+import { SafetyDocumentsPageComponent } from './safety-documents-page/safety-documents-page.component';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -67,7 +69,9 @@ export function getToken() {
       RegistrationVerificationComponent,
       SettingsComponent,
       AdminSettingsComponent,
-      RequestsComponent
+      RequestsComponent,
+      BasicInformationComponent,
+      SafetyDocumentsPageComponent
    ],
   imports: [
     BrowserModule,
