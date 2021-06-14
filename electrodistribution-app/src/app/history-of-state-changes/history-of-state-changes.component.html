@@ -1,0 +1,19 @@
+
+    <div class="container">
+        <form [formGroup]="elementForm">
+        <label>Name History
+            <input type="text" formControlName="elementName">
+        </label>
+        <label>Address History
+            <input type="text" formControlName="elementAddress">
+        </label>
+
+        <div class="table--modifiers" (click)="onSave()">
+            <button class="table--modifiers__btn">
+                <mat-icon id="icon-absolute" class="icon">save</mat-icon>
+            </button>
+        </div>
+        </form>
+    </div>
+
+

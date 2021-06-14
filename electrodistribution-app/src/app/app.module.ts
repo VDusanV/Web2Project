@@ -45,6 +45,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { RequestsComponent } from './requests/requests.component';
 import { BasicInformationComponent } from './basic-information/basic-information.component';
 import { SafetyDocumentsPageComponent } from './safety-documents-page/safety-documents-page.component';
+import { NewSafetyDocumentComponent } from './new-safety-document/new-safety-document.component';
+import { HistoryOfStateChangesComponent } from './history-of-state-changes/history-of-state-changes.component';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -71,7 +73,9 @@ export function getToken() {
       AdminSettingsComponent,
       RequestsComponent,
       BasicInformationComponent,
-      SafetyDocumentsPageComponent
+      SafetyDocumentsPageComponent,
+      NewSafetyDocumentComponent,
+      HistoryOfStateChangesComponent
    ],
   imports: [
     BrowserModule,

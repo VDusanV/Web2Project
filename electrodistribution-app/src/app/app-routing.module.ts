@@ -17,6 +17,10 @@ import { ViewGuard } from './guards/view.guard';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { SettingsComponent } from './settings/settings.component';
 import { RequestsComponent } from './requests/requests.component';
+import { SafetyDocumentsPageComponent } from './safety-documents-page/safety-documents-page.component';
+import { BasicInformationComponent } from './basic-information/basic-information.component';
+import { HistoryOfStateChangesComponent } from './history-of-state-changes/history-of-state-changes.component';
+import { NewSafetyDocumentComponent } from './new-safety-document/new-safety-document.component';
 //import { Type } from '@angular/compiler';
 
 
@@ -131,6 +135,33 @@ const routes: Routes = [
         component: RequestsComponent, // child route component that the router renders
       }
     ]
+  
+  },
+  {
+    path: 'safety-documents',
+     component:NavSideComponent,
+   //  canActivate: [AuthGuard],
+      children: [
+        {
+          path: '', // child route path
+        component: SafetyDocumentsPageComponent,
+        children: [{
+          path: 'new',
+          component: NewSafetyDocumentComponent,
+          children: [
+            {
+              path: 'basic-info',
+              component: BasicInformationComponent
+            },
+            {
+              path: 'history-of-state-changes',
+              component: HistoryOfStateChangesComponent
+            }
+          ]
+        }
+        ] // child route component that the router renders
+        }
+      ]
   
   }
 
