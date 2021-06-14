@@ -8,7 +8,9 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http.Headers;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -207,10 +209,48 @@ namespace Web2Backend.Controllers
 
                 }
             }
-            //u1.ActiveStatus = true;
+            u1.ActiveStatus = "Accpeted";
             await _context.SaveChangesAsync();
+            sendEmail(u1.Email, "Accepted");
             return CreatedAtAction("GetUsers", u1);
 
+        }
+        [HttpPut]
+        [Route("Declineverification")]
+        public async Task<ActionResult<UserModel>> Declineverification(string username)
+        {
+            UserModel u1 = new UserModel();
+            foreach (UserModel user in _context.Users)
+            {
+                if (user.Username == username)
+                {
+                    u1 = user;
+                    break;
+
+                }
+            }
+            u1.ActiveStatus = "Refused";
+            await _context.SaveChangesAsync();
+            sendEmail(u1.Email, "Refused");
+            return CreatedAtAction("GetUsers", u1);
+
+        }
+        private void sendEmail(string email, string msg)
+        {
+            using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
+            {
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential("veselinovicdusan98@gmail.com", "privremenalozinka");
+                MailMessage msgObj = new MailMessage();
+                msgObj.To.Add(email);
+                msgObj.From = new MailAddress("veselinovicdusan98@gmail.com");
+                msgObj.Subject = "Account Verification";
+                msgObj.Body = "Your account has been " + msg.ToUpper();
+                client.Send(msgObj);
+
+            }
         }
 
         [HttpPut]

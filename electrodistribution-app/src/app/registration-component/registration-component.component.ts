@@ -34,10 +34,7 @@ export class RegistrationComponentComponent implements OnInit {
   handleFileInput(event : Event){
     const element = event.currentTarget as HTMLInputElement;
     let fileList: FileList | null = element.files;
-    if (fileList) {
-      console.log("FileUpload -> files", fileList);
-    }
-
+ 
       this.fileToUpload = fileList?.item(0)
 
       var reader = new FileReader();
@@ -48,19 +45,12 @@ export class RegistrationComponentComponent implements OnInit {
 
     }
 
-
+  //register
   public register = (form: NgForm) => {
     console.log(form.value.imagedata);
     form.value.imagedata = this.imagePath.dbPath;
      this.credentials = JSON.stringify(form.value);
-    console.log(this.fileToUpload);
 
-    console.log("kredenac --- "+ this.fileToUpload.name + this.credentials);
-
-    const formData : FormData = new FormData();
-    formData.append("",this.credentials);
-    formData.append(this.credentials,this.fileToUpload,this.fileToUpload.name)
-    
     this.http.post("https://localhost:44364/api/User/Register", this.credentials, {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
@@ -82,12 +72,11 @@ export class RegistrationComponentComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  //slanje slike
   public uploadFile = (files:any) => {
     if (files.length === 0) {
       return;
     }
-    console.log("jebem ti mater");
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);

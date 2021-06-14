@@ -26,7 +26,6 @@ loadUsers(): Observable<IUser[]>{
 activateUser(username:string) {
   const params = new HttpParams().append('username',username);
  
-  console.log("aaaaaabbbbssss"+username);
   this.http.put("https://localhost:44364/api/User/Verification",null,{params: params})
   .subscribe(
     error=>console.log('oops',error)
@@ -34,7 +33,15 @@ activateUser(username:string) {
 
   return;
 }
+declineUser(username:string) {
+  const params = new HttpParams().append('username',username);
+  this.http.put("https://localhost:44364/api/User/Declineverification",null,{params: params})
+  .subscribe(
+    error=>console.log('oops',error)
+  );
 
+  return;
+}
 changeProfile(user:User){
   console.log(JSON.stringify(user));
   this.http.put<User>("https://localhost:44364/api/User/ChangeProfile", JSON.stringify(user), {

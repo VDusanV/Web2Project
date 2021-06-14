@@ -20,7 +20,9 @@
       <td>{{user.address}}</td>
       <td>{{user.userType}}</td>
       <td>{{user.activeStatus}}</td>
-        <td><button *ngIf="!user.activeStatus" type="submit" (click)="activate(user.username)">Verify</button></td>
+      <td><button *ngIf="user.activeStatus == 'Pending'" type="submit" (click)="activate(user.username)">Verify</button></td>
+      <td><button *ngIf="user.activeStatus == 'Pending'" type="submit" (click)="decline(user.username)">Decline</button></td>
+
     </tr>
   </tbody>
   </table>

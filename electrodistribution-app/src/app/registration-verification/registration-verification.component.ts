@@ -18,11 +18,13 @@ export class RegistrationVerificationComponent implements OnInit {
 
   ngOnInit(): void {
       this.userService.loadUsers().subscribe(data => this.allUsers = data);
-
-      console.log("aaaaaaaa" + JSON.stringify(this.allUsers));
   }
   activate(username:string){
     this.userService.activateUser(username);
+    location.reload();
+  }
+  decline(username:string){
+    this.userService.declineUser(username);
     location.reload();
   }
 }
