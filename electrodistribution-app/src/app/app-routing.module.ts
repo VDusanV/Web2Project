@@ -21,6 +21,12 @@ import { SafetyDocumentsPageComponent } from './safety-documents-page/safety-doc
 import { BasicInformationComponent } from './basic-information/basic-information.component';
 import { HistoryOfStateChangesComponent } from './history-of-state-changes/history-of-state-changes.component';
 import { NewSafetyDocumentComponent } from './new-safety-document/new-safety-document.component';
+import { NavbarSpComponent } from './switching-plan/navbar-sp/navbar-sp.component';
+import { MultimediaSpComponent } from './switching-plan/multimedia-sp/multimedia-sp.component';
+import { BasicInfoSpComponent } from './switching-plan/basic-info-sp/basic-info-sp.component';
+import { HistorySpComponent } from './switching-plan/history-sp/history-sp.component';
+import { EquipmentSpComponent } from './switching-plan/equipment-sp/equipment-sp.component';
+import { InstructionsSpComponent } from './switching-plan/instructions-sp/instructions-sp.component';
 //import { Type } from '@angular/compiler';
 
 
@@ -162,6 +168,46 @@ const routes: Routes = [
         ] // child route component that the router renders
         }
       ]
+  
+  },
+  {
+    path: 'switching-plans',
+     component:NavSideComponent,
+     canActivate: [AuthGuard],
+     children: [
+      {
+        path: 'new', // child route path
+        canActivate: [AuthGuard],
+        component: NavbarSpComponent, // child route component that the router renders
+        children: [
+          {
+            path: 'basic-info',
+            canActivate: [AuthGuard],
+            component: BasicInfoSpComponent
+          },
+          {
+            path: 'history-state',
+            canActivate: [AuthGuard],
+            component: HistorySpComponent
+          },
+          {
+            path: 'multimedia',
+            canActivate: [AuthGuard],
+            component: MultimediaSpComponent
+          },
+          {
+            path: 'equipment',
+            canActivate: [AuthGuard],
+            component: EquipmentSpComponent
+          },
+          {
+            path: 'instructions',
+            canActivate: [AuthGuard],
+            component: InstructionsSpComponent
+          }
+        ]
+      }
+    ]
   
   }
 

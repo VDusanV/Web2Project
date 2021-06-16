@@ -1,0 +1,26 @@
+
+<ng-container [formGroup]="form">
+    <mat-card class="form-container">
+    <div>
+      <mat-card-title class="title">History of state changes</mat-card-title>
+    </div>
+    <div>
+  
+      <!-- Type -->
+      <mat-form-field>
+        <mat-select placeholder="Select state" formControlName="newStatus">
+            <mat-option value="Approve">Approve</mat-option>
+            <mat-option value="Deny">Deny</mat-option>
+            <mat-option value="Cancel">Cancel</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+    
+    </div>
+    
+    <div class="button">
+        <button (click)="back()" class="btn btn-primary button">Back</button>
+        <button (click)="save()" class="btn btn-primary button">Save changes</button>
+    </div>
+    </mat-card>
+  </ng-container>

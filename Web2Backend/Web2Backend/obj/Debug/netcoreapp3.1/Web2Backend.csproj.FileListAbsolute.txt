@@ -137,7 +137,6 @@ C:\Users\bdobr\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\obj\Debug\ne
 C:\Users\bdobr\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\obj\Debug\netcoreapp3.1\Web2Backend.pdb
 C:\Users\bdobr\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\obj\Debug\netcoreapp3.1\Web2Backend.genruntimeconfig.cache
 C:\Users\TehnoCentar\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\obj\Debug\netcoreapp3.1\Web2Backend.csprojAssemblyReference.cache
-C:\Users\bdobr\Documents\GitHub\Web2Project\Web2Backend\Web2Backend\obj\Debug\netcoreapp3.1\Web2Backend.csprojAssemblyReference.cache
 H:\8 Semestar\PuSGS\PROJEKAT\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\appsettings.Development.json
 H:\8 Semestar\PuSGS\PROJEKAT\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\appsettings.json
 H:\8 Semestar\PuSGS\PROJEKAT\Web2Project\Web2Backend\Web2Backend\bin\Debug\netcoreapp3.1\Web2Backend.exe

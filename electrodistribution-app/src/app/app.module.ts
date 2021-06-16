@@ -47,6 +47,18 @@ import { BasicInformationComponent } from './basic-information/basic-information
 import { SafetyDocumentsPageComponent } from './safety-documents-page/safety-documents-page.component';
 import { NewSafetyDocumentComponent } from './new-safety-document/new-safety-document.component';
 import { HistoryOfStateChangesComponent } from './history-of-state-changes/history-of-state-changes.component';
+import { SwitchingPlanComponent } from './switching-plan/switching-plan.component';
+import { NewSpComponent } from './switching-plan/new-sp/new-sp.component';
+import { BasicInfoSpComponent } from './switching-plan/basic-info-sp/basic-info-sp.component';
+import { HistorySpComponent } from './switching-plan/history-sp/history-sp.component';
+import { MultimediaSpComponent } from './switching-plan/multimedia-sp/multimedia-sp.component';
+import { EquipmentSpComponent } from './switching-plan/equipment-sp/equipment-sp.component';
+import { InstructionsSpComponent } from './switching-plan/instructions-sp/instructions-sp.component';
+import { NavbarSpComponent } from './switching-plan/navbar-sp/navbar-sp.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -75,7 +87,15 @@ export function getToken() {
       BasicInformationComponent,
       SafetyDocumentsPageComponent,
       NewSafetyDocumentComponent,
-      HistoryOfStateChangesComponent
+      HistoryOfStateChangesComponent,
+      SwitchingPlanComponent,
+      NewSpComponent,
+      BasicInfoSpComponent,
+      HistorySpComponent,
+      MultimediaSpComponent,
+      EquipmentSpComponent,
+      InstructionsSpComponent,
+      NavbarSpComponent
    ],
   imports: [
     BrowserModule,
@@ -100,6 +120,10 @@ export function getToken() {
     NgMultiSelectDropDownModule.forRoot(),
     NgSelectModule,
     MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken, 
@@ -109,7 +133,8 @@ export function getToken() {
     })
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    MatNativeDateModule
   ],
   bootstrap: [AppComponent]
 })
