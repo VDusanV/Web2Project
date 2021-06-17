@@ -33,6 +33,9 @@ import { MultimediaWrComponent } from './work-requests/multimedia-wr/multimedia-
 import { HistoryWrComponent } from './work-requests/history-wr/history-wr.component';
 import { BasicInfWrComponent } from './work-requests/basic-inf-wr/basic-inf-wr.component';
 import { NavbarWrComponent } from './work-requests/navbar-wr/navbar-wr.component';
+import { MultimediaAttachmentsComponent } from './multimedia-attachments/multimedia-attachments.component';
+import { DevicesComponent } from './devices/devices.component';
+import { ChecklistComponent } from './checklist/checklist.component';
 //import { Type } from '@angular/compiler';
 
 
@@ -168,6 +171,21 @@ const routes: Routes = [
             {
               path: 'history-of-state-changes',
               component: HistoryOfStateChangesComponent
+            }
+            ,
+            {
+              path: 'multimedia-attachments',
+              component: MultimediaAttachmentsComponent
+            }
+            ,
+            {
+              path: 'document-devices',
+              component: DevicesComponent
+            }
+            ,
+            {
+              path: 'checklist',
+              component: ChecklistComponent
             }
           ]
         }

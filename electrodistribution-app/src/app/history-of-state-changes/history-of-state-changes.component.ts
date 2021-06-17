@@ -16,6 +16,9 @@ export class HistoryOfStateChangesComponent implements OnInit {
     elementAddress: new FormControl(''),
   });
 
+  public component = "history-of-state-changes";
+  public toNavbar = ["", this.component];
+
   constructor(private _sharedService: SharedService, private router: Router, 
               private navigationService: NavigationService) { }
 
@@ -24,9 +27,9 @@ export class HistoryOfStateChangesComponent implements OnInit {
 
   onSave() {
     //console.log(this.elementForm.value.elementName) 
-    this._sharedService.emitChange(this.elementForm.value.elementName);
-    this.navigationService.navigation.next(false); //da bi se ponovo prikazao content safety docs komponente
-    this.router.navigate(['/safety-documents/']);
+    this._sharedService.emitChange(this.toNavbar);
+    //this.navigationService.navigation.next(false); //da bi se ponovo prikazao content safety docs komponente
+    this.router.navigate(['/safety-documents/new/multimedia-attachments']);
   }
 
 

@@ -67,6 +67,9 @@ import { EquipmentWrComponent } from './work-requests/equipment-wr/equipment-wr.
 import { HistoryWrComponent } from './work-requests/history-wr/history-wr.component';
 import { MultimediaWrComponent } from './work-requests/multimedia-wr/multimedia-wr.component';
 import { NavbarWrComponent } from './work-requests/navbar-wr/navbar-wr.component';
+import { MultimediaAttachmentsComponent } from './multimedia-attachments/multimedia-attachments.component';
+import { DevicesComponent } from './devices/devices.component';
+import { ChecklistComponent } from './checklist/checklist.component';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -109,7 +112,10 @@ export function getToken() {
       EquipmentWrComponent,
       HistoryWrComponent,
       MultimediaWrComponent,
-      NavbarWrComponent
+      NavbarWrComponent,
+      MultimediaAttachmentsComponent,
+      DevicesComponent,
+      ChecklistComponent
    ],
   imports: [
     BrowserModule,

@@ -64,6 +64,21 @@ export class NavBarComponent implements OnInit {
       this.activeId = 2;
       //console.log(this.activeId);
     }
+    if (this.currentTab === 'multimedia-attachments')
+    {
+      this.activeId = 3;
+      //console.log(this.activeId);
+    }
+    if (this.currentTab === 'document-devices')
+    {
+      this.activeId = 4;
+      //console.log(this.activeId);
+    }
+    if (this.currentTab === 'checklist')
+    {
+      this.activeId = 5;
+      //console.log(this.activeId);
+    }
 
   }
 
