@@ -59,6 +59,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { WorkRequestsComponent } from './work-requests/work-requests.component';
+import { MatSortModule } from '@angular/material/sort';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { BasicInfWrComponent } from './work-requests/basic-inf-wr/basic-inf-wr.component';
+import { EquipmentWrComponent } from './work-requests/equipment-wr/equipment-wr.component';
+import { HistoryWrComponent } from './work-requests/history-wr/history-wr.component';
+import { MultimediaWrComponent } from './work-requests/multimedia-wr/multimedia-wr.component';
+import { NavbarWrComponent } from './work-requests/navbar-wr/navbar-wr.component';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -95,7 +103,13 @@ export function getToken() {
       MultimediaSpComponent,
       EquipmentSpComponent,
       InstructionsSpComponent,
-      NavbarSpComponent
+      NavbarSpComponent,
+      WorkRequestsComponent,
+      BasicInfWrComponent,
+      EquipmentWrComponent,
+      HistoryWrComponent,
+      MultimediaWrComponent,
+      NavbarWrComponent
    ],
   imports: [
     BrowserModule,
@@ -130,7 +144,9 @@ export function getToken() {
         allowedDomains: ["localhost:44364"],
         disallowedRoutes: []
       }
-    })
+    }),
+    MatSortModule,
+    MatCheckboxModule
   ],
   providers: [
     DatePipe,

@@ -1,0 +1,20 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="activeId" class="nav-tabs">
+ 
+  <li [ngbNavItem]="1">
+    <a ngbNavLink class="inactiveLink" routerLink="/work-requests/new/basic-info" > Basic information</a>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink class="inactiveLink" routerLink="/work-requests/new/history"> History of state changes</a>
+  </li>
+  <li ngbNavItem [ngbNavItem]="3">
+    <a ngbNavLink class="inactiveLink" routerLink="/work-requests/new/multimedia"> Multimedia attachments</a>
+  </li>
+  <li ngbNavItem [ngbNavItem]="4">
+    <a ngbNavLink class="inactiveLink" routerLink="/work-requests/new/equipment"> Equipment</a>
+  </li>
+
+  
+</ul>
+
+<div [ngbNavOutlet]="nav"></div>
+<router-outlet></router-outlet>

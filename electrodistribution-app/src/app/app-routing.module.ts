@@ -27,6 +27,12 @@ import { BasicInfoSpComponent } from './switching-plan/basic-info-sp/basic-info-
 import { HistorySpComponent } from './switching-plan/history-sp/history-sp.component';
 import { EquipmentSpComponent } from './switching-plan/equipment-sp/equipment-sp.component';
 import { InstructionsSpComponent } from './switching-plan/instructions-sp/instructions-sp.component';
+import { WorkRequestsComponent } from './work-requests/work-requests.component';
+import { EquipmentWrComponent } from './work-requests/equipment-wr/equipment-wr.component';
+import { MultimediaWrComponent } from './work-requests/multimedia-wr/multimedia-wr.component';
+import { HistoryWrComponent } from './work-requests/history-wr/history-wr.component';
+import { BasicInfWrComponent } from './work-requests/basic-inf-wr/basic-inf-wr.component';
+import { NavbarWrComponent } from './work-requests/navbar-wr/navbar-wr.component';
 //import { Type } from '@angular/compiler';
 
 
@@ -60,7 +66,7 @@ const routes: Routes = [
       children: [
         {
           path: '', // child route path
-        component: RegistrationComponentComponent, // child route component that the router renders
+        component: MapComponent, // child route component that the router renders
         }
       ]
   
@@ -169,6 +175,40 @@ const routes: Routes = [
         }
       ]
   
+  },
+  {
+    path: 'work-requests',
+    component:NavSideComponent,
+    canActivate: [AuthGuard],
+     children: [
+       {
+         path: '', // child route path
+         component: WorkRequestsComponent, // child route component that the router renders
+       },
+       {
+            path: 'new',
+            component: NavbarWrComponent,
+            children:[
+              {
+                path:'basic-info',
+                component: BasicInfWrComponent
+              },
+              {
+                path:'history',
+                component:HistoryWrComponent
+              },
+              {
+                path:'multimedia',
+                component:MultimediaWrComponent
+              },
+              {
+                path:'equipment',
+                component:EquipmentWrComponent
+              }
+
+            ]
+        }
+      ]
   },
   {
     path: 'switching-plans',

@@ -1,0 +1,48 @@
+.full-width-table {
+  width: 100%;
+}
+.data-table{
+  width: 80%;
+  margin: 20px auto;
+}
+.container__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.table--modifiers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+ position: relative;
+ text-align: center;
+  height: 30px;
+}
+select {
+  height: 30px;
+}
+
+mat-icon {
+  position: absolute;
+}
+#filter-icon {
+  cursor: default;
+}
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+  
+.example-margin {
+  margin: 0 10px;
+}
