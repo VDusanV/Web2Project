@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { NavigationService } from '../services/navigation/navigation.service';
 import { SharedService } from '../services/shared/shared.service';
@@ -9,6 +10,10 @@ import { SharedService } from '../services/shared/shared.service';
   styleUrls: ['./checklist.component.css']
 })
 export class ChecklistComponent implements OnInit {
+  color: ThemePalette = 'primary';
+  checked = false;
+  disabled = false;
+
 
   public component = "checklist";
   public toNavbar = ["", this.component];

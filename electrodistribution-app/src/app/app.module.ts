@@ -70,6 +70,7 @@ import { NavbarWrComponent } from './work-requests/navbar-wr/navbar-wr.component
 import { MultimediaAttachmentsComponent } from './multimedia-attachments/multimedia-attachments.component';
 import { DevicesComponent } from './devices/devices.component';
 import { ChecklistComponent } from './checklist/checklist.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -141,6 +142,7 @@ export function getToken() {
     NgSelectModule,
     MatDialogModule,
     MatInputModule,
+    MatSlideToggleModule,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
