@@ -1,3 +1,23 @@
-<p>
-  history-wr works!
-</p>
+<form [formGroup]="historyForm">
+  <div class="container">
+  <div class="form-group">
+    <label>State:
+    </label>
+    <select name="types" id="types" class="form-control" formControlName="state">
+        <option value="Approve">Approve</option>
+        <option value="Deny">Deny</option>
+        <option value="Cancel">Cancel</option>
+
+        
+      </select>
+
+      <br><br>
+      <div class="form-group">
+          <label></label>
+          <button class="btn btn-dark" (click)="onSave()" type="button"> <!--type=button-->
+             Save
+          </button>
+      </div>
+    </div >
+  </div>
+</form>
