@@ -38,7 +38,7 @@ export class ElementsPageComponent implements OnInit {
 
       //dodati provjere da li je Cancel ili Save -- za sad ima samo Save i svaki put cuva
                         //type address name id coordinates
-      let element = new Element(result.elementType, 40324, result.elementName, result.elementAddress, result.elementCoordinates);
+      let element = new Element(result.elementType, 40324, result.elementName, result.elementAddress, result.elementCoordinates, false);
       this.elementsService.saveElement(element)
                           .subscribe(sEelement => this.allElements.push(sEelement));
 

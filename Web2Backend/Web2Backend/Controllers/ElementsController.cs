@@ -25,6 +25,23 @@ namespace Web2Backend.Controllers
         {
             return await _context.Elements.ToListAsync();
         }
+        
+        [HttpGet]
+        public List<ElementModel> GetUsedElements()
+        {
+            List<ElementModel> allElements = _context.Elements.ToList();
+            List<ElementModel> usedElements = new List<ElementModel>();
+
+            foreach(ElementModel element in allElements)
+            {
+                
+            }
+
+
+
+
+            return usedElements;
+        }
 
         [HttpPost]
         [Route("AddElement")]

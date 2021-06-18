@@ -33,6 +33,7 @@ export interface IElement {
     name: string;
     address: string;
     coordinates: string;
+    inSafetyDocument: boolean;
 
 }
 

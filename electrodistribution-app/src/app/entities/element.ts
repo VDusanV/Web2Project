@@ -5,6 +5,7 @@ export class Element {
     name: string;
     address: string;
     coordinates: string;
+    inSafetyDocument: boolean;
 
     
 
@@ -13,7 +14,8 @@ export class Element {
         id: number,
         name: string,
         address: string,
-        coordinates: string
+        coordinates: string,
+        inSafetyDocument: boolean
         )       
     {
         this.id = id;
@@ -21,6 +23,7 @@ export class Element {
         this.address = address;
         this.name = name;
         this.coordinates = coordinates;
+        this.inSafetyDocument = inSafetyDocument;
         
     }
 }

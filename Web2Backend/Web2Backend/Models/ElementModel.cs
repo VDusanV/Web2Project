@@ -16,5 +16,7 @@ namespace Web2Backend.Models
                                          //PRE1, PRE2, PRE3
         public string Address { get; set; } //max br elemenata u ulici je 100
         public string Coordinates { get; set; }
+
+        public bool InSafetyDocument { get; set; }
     }
 }
