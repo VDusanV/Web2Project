@@ -76,14 +76,9 @@ const routes: Routes = [
   },
   {
     path: 'register',
-     component:NavSideComponent,
-     canActivate: [AuthGuard],
-      children: [
-        {
-          path: '', // child route path
-        component: RegistrationVerificationComponent, // child route component that the router renders
-        }
-      ]
+     component:RegistrationComponentComponent,
+   
+    
   
   },
   {
