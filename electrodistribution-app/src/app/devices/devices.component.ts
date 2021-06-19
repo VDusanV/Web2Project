@@ -19,7 +19,9 @@ export class DevicesComponent implements OnInit {
   public usedElements : Element[] = [];
   allElementsList: Element[][];
   public page = 10;
+  public pageUsed = 10;
   public pageSize = 3;
+  public pageSizeUsed = 3;
   
   constructor(private router: Router, private _sharedService: SharedService, private elementsService: ElementsService) { 
     this.allElementsList = new Array<Array<Element>>();
@@ -28,8 +30,20 @@ export class DevicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.elementsService.loadElements()
-    .subscribe(data => this.allElements = data);
-    this.usedElements = this.elementsService.loadUsedElements(this.allElements);
+    .subscribe(data => {
+        for(let i=0; i<data.length; i++)
+        {
+          if(data[i].inSafetyDocument === false)
+          {
+            this.allElements.push(data[i]);
+          } else {
+            this.usedElements.push(data[i]);
+          } 
+          
+        }
+      }
+      );
+    //this.usedElements = this.elementsService.loadUsedElements(this.allElements);
     
   }
 
@@ -47,7 +61,8 @@ export class DevicesComponent implements OnInit {
   onSelect(elementId : string) {
    console.log(elementId);
    this.usedElements = this.elementsService.moveElementToUsedElements(elementId, this.usedElements);
- 
+   this.allElements = this.allElements.filter(item => item.id.toString() != elementId);
+   
   }
 
 }

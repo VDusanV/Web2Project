@@ -11,7 +11,7 @@
     </tr>
 </thead>
 <tbody>
-  <tr *ngFor="let element of usedElements | slice: (page-1) * pageSize : page * pageSize">
+  <tr *ngFor="let element of usedElements | slice: (pageUsed-1) * pageSizeUsed : pageUsed * pageSizeUsed">
     <td>{{element.id.toString()}}</td>
     <td>{{element.name}}</td>
     <td>{{element.type}}</td>
@@ -26,9 +26,9 @@
 <br> <br>
 <div class="container__pagination">
   <ngb-pagination 
-    [(page)]="page"
-    [pageSize]="pageSize"
-    [collectionSize]="allElements.length"></ngb-pagination>
+    [(page)]="pageUsed"
+    [pageSize]="pageSizeUsed"
+    [collectionSize]="usedElements.length"></ngb-pagination>
   </div>
 <p>TO CHOSE FROM:</p>
 <table class="table table-dark">

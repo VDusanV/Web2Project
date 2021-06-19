@@ -22,6 +22,8 @@ export class ElementsService {
   }
   loadUsedElements(allElementsInput : IElement[]): IElement[]{
   
+    
+
     let allElements = allElementsInput;
     let usedElements = Array<IElement>();
 
@@ -35,20 +37,6 @@ export class ElementsService {
 
    
     return usedElements;
-  }
-
-  moveElementToUsed(allElementsList : Element[], elementId : string) {
-    
-    for(let i = 0; i < allElementsList.length; i++) {
-      console.log("red br " + i + allElementsList[i])
-      if (allElementsList[i].id.toString() === elementId) {
-        console.log("hit");
-        return this.http.post<Element>("https://localhost:44364/api/Elements/ChangeElement", allElementsList[i])                           
-                                      ;
-      }
-    }
-    //nece uci
-    return this.http.post<Element>("https://localhost:44364/api/Elements/ChangeElement", allElementsList[0]);
   }
 
   moveElementToUsedElements(id: string, usedElements: Element[]) : Element[]{
