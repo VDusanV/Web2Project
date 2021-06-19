@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import {UserService } from '../services/user/user.service';
 import { User } from '../entities/user';
 import { HttpClient, HttpHeaders, HttpParams, HttpEventType } from '@angular/common/http';
+import { AbstractControl } from '@angular/forms';
 
 
 @Component({
@@ -13,12 +14,6 @@ import { HttpClient, HttpHeaders, HttpParams, HttpEventType } from '@angular/com
 })
 export class ProfileComponent implements OnInit {
 
-  /*username!: string;
-  fullname!: string;
-  birthdate!: Date;
-  address!: string;
-  email!: string;
-  userType!: string;*/
 
   userTypes = [
     {name: "TeamMember"},
@@ -39,12 +34,23 @@ export class ProfileComponent implements OnInit {
 
   image: string = "";
 
+  usernameR:boolean = false;
+  fullnameR:boolean = false;
+  addressR:boolean = false;
+  emailR:boolean = false;
+  userTypeR:boolean = false;
+  usernameL:boolean = false;
+  usernameS:boolean = false;
+  usernameW:boolean = false;
+  usernameCW:boolean = false;
+  emailV:boolean = false;
+
   profileForm =new FormGroup({
-    username: new FormControl(''),
-    fullname: new FormControl(''),
-    address: new FormControl(''),
-    email: new FormControl(''),
-    userType: new FormControl(''),
+    username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]),
+    fullname: new FormControl('', Validators.required), 
+    address: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    userType: new FormControl('', Validators.required),
     imageData: new FormControl('')
   });
   
@@ -94,7 +100,74 @@ export class ProfileComponent implements OnInit {
   }
 
   validate():boolean{
-    return true;
+    let retVal = true;
+    if(this.profileForm.controls.username.hasError('required')){
+      this.usernameR = true;
+      retVal = false;
+    }else{
+      this.usernameR = false;
+    }
+    if(this.profileForm.controls.fullname.hasError('required')){
+      this.fullnameR = true;
+      retVal = false;
+    }else{
+      this.fullnameR = false;
+    }
+    if(this.profileForm.controls.address.hasError('required')){
+      this.addressR = true;
+      retVal = false;
+    }else{
+      this.addressR = false;
+    }
+    if(this.profileForm.controls.email.hasError('required')){
+      this.emailR = true;
+      retVal = false;
+    }else{
+      this.emailR = false;
+    }
+    if(this.profileForm.controls.email.hasError('email') && !this.emailR){
+      this.emailV = true;
+      retVal = false;
+    }else{
+      this.emailV = false;
+    }
+    if(this.profileForm.controls.userType.hasError('required')){
+      this.userTypeR = true;
+      retVal = false;
+    }else{
+      this.userTypeR = false;
+    }
+    const str = this.profileForm.controls.username.value;
+    const regex = /^$|\s+/
+    const invalid = regex.test(str);
+    if(regex.test(str) && !this.usernameR){
+      this.usernameW = true;
+      retVal = false;
+    }else{
+      this.usernameW = false;
+    }
+    if(this.profileForm.controls.username.hasError('minlength') && !this.usernameR && !this.usernameW){
+      this.usernameS = true;
+      retVal = false;
+    }else{
+      this.usernameS = false;
+    }
+    if(this.profileForm.controls.username.hasError('maxlength') && !this.usernameW){
+      this.usernameL = true;
+      retVal = false;
+    }else{
+      this.usernameL = false;
+    }
+    
+    
+    return retVal;
+  }
+
+   removeSpaces(control: AbstractControl):any {
+    if (control && control.value && !control.value.replace(/\s/g, '').length) {
+      control.setValue('');
+    }
+    return null;
   }
 
   imagePath(path:string): string {

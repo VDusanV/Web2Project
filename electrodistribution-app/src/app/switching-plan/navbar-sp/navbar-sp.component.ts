@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SwpInteractionService } from 'src/app/services/switching-plan/swp-interaction.service';
 import { SwitchingPlan } from 'src/app/entities/switchingPlan';
 import { DocumentService } from 'src/app/services/document/document.service';
@@ -32,18 +32,18 @@ export class NavbarSpComponent implements OnInit {
     this.spForm = this.fb.group({
       basicInfo: this.fb.group({
         id: [],
-        type: [],
+        type: ['', [Validators.required]],
         workRequest: [],
         status: 'Draft',
         incident: [],
-        street: [],
-        startDate: [],
-        endDate: [],
+        street: ['', [Validators.required]],
+        startDate: ['', [Validators.required]],
+        endDate: ['', [Validators.required]],
         crew: [],
         createdBy: localStorage.getItem('username'),
         notes: [],
-        company: [],
-        phoneNo: [],
+        company: ['', [Validators.required]],
+        phoneNo: ['', [Validators.required]],
         dateCreated: []
       }),
       historyState: this.fb.group({

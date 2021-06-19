@@ -58,7 +58,7 @@ export class InstructionsSpComponent implements OnInit {
       this.basicInfo.controls.incident.value, this.basicInfo.controls.street.value, this.basicInfo.controls.startDate.value,
       this.basicInfo.controls.endDate.value, this.basicInfo.controls.crew.value, this.basicInfo.controls.createdBy.value,
       this.basicInfo.controls.notes.value, this.basicInfo.controls.company.value, this.basicInfo.controls.phoneNo.value,
-      this.basicInfo.controls.dateCreated.value, this.multimedia.controls.imageData.value, this.equipment.controls.equipmentId.value.toString());
+      this.basicInfo.controls.dateCreated.value, this.multimedia.controls.imageData.value, this.equipment.controls.equipmentId.value);
 
       console.log('Result: ' + switchingPlan);
 

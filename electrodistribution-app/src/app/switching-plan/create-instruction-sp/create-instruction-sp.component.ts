@@ -1,5 +1,6 @@
+import { ResolvedStaticSymbol } from '@angular/compiler';
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ElementsService } from 'src/app/services/elements.service';
 import { Element } from '../../entities/element';
@@ -12,9 +13,11 @@ import { Element } from '../../entities/element';
 export class CreateInstructionSpComponent implements OnInit {
 
   instructionForm = new FormGroup({
-    action: new FormControl(''),
+    action: new FormControl('', Validators.required),
     element: new FormControl('')
   });
+
+  actionR:boolean = false;
 
   elements:Element[] = [];
 
@@ -28,14 +31,27 @@ export class CreateInstructionSpComponent implements OnInit {
   }
 
   save() {
-    console.log(this.instructionForm.value)
-    this.dialogRef.close(this.instructionForm.value);
+    if(this.validation()){
+      console.log(this.instructionForm.value)
+      this.dialogRef.close(this.instructionForm.value);
+    }
   }
 
   cancel(){
     this.dialogRef.close(null);
   }
 
+  validation():boolean{
+    let retVal = true;
+    if(this.instructionForm.controls.action.hasError('required')){
+      this.actionR = true;
+      retVal = false;
+    }else{
+      this.actionR = false;
+    }
 
+    return retVal;
+
+  }
 
 }

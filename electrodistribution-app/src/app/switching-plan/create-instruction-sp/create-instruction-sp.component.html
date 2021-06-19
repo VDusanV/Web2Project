@@ -1,7 +1,7 @@
-
 <form [formGroup]="instructionForm">
     <label>Action</label>
     <input class="action" type="text"  formControlName="action">
+    <span *ngIf="actionR" style="color: red;">Action required</span>
     
 
     <ng-select [items]="elements"

@@ -34,7 +34,7 @@ export class SettingsService {
   
   visibleNotifications(value:string[]){
         const credentials = JSON.stringify(value.values);
-        this.http.put("https://localhost:44364/api/Settings/VisibleNotifications", credentials, {headers : this.header})
+        this.http.put("https://localhost:44364/api/Settings/VisibleNotifications", value)
         .subscribe(
           error => console.log('oops', error)
         );

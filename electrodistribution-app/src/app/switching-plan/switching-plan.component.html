@@ -17,7 +17,7 @@
       <tbody>
         <tr *ngFor="let switchingPlan of switchingPlans | slice: (page-1) * pageSize : page * pageSize">
           <td>{{switchingPlan.id.toString()}}</td>
-          <td>{{switchingPlan.startDate}}</td>
+          <td>{{formatDate(switchingPlan.startDate)}}</td>
           <td>{{switchingPlan.phone}}</td>
           <td>{{switchingPlan.status}}</td>
           <td>{{switchingPlan.street}}</td>

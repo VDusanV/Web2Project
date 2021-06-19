@@ -61,4 +61,12 @@ export class SwitchingPlanComponent implements OnInit {
 
   }
 
+  formatDate(dat:string):string{
+    let retVal = new Date(dat);
+
+    console.log(retVal.toLocaleString().split(',')[0])
+
+    return retVal.toLocaleString().split(',')[0];
+  }
+
 }

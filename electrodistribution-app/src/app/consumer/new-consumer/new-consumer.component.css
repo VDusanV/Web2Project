@@ -15,3 +15,7 @@
     margin: 1%;
     width: 25%;
 }
+
+.mat-hint{
+    color: red;
+}
