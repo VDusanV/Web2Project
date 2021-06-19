@@ -64,5 +64,12 @@ export class DevicesComponent implements OnInit {
    this.allElements = this.allElements.filter(item => item.id.toString() != elementId);
    
   }
+  onRemove(elementId : string) {
+    
+   console.log(elementId);
+   this.allElements = this.elementsService.moveElementToAllElements(elementId, this.allElements);
+   this.usedElements = this.usedElements.filter(item => item.id.toString() != elementId);
+   
+  }
 
 }

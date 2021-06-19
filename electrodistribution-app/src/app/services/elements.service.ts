@@ -22,7 +22,7 @@ export class ElementsService {
   }
   loadUsedElements(allElementsInput : IElement[]): IElement[]{
   
-    
+
 
     let allElements = allElementsInput;
     let usedElements = Array<IElement>();
@@ -48,7 +48,19 @@ export class ElementsService {
       data => usedElements.push(data as Element)
     );
     return usedElements;
-    }
+  }
+  
+  moveElementToAllElements(id: string, allElements: Element[]) : Element[]{
+    
+    console.log("Pomjerammm u sve");
+    let params = new HttpParams();
+    params = params.append("id", id);
+    this.http.put("https://localhost:44364/api/Elements/RemoveElement", null, {params: params})
+    .subscribe(
+      data => allElements.push(data as Element)
+    );
+    return allElements;
+  }
   
   saveElement(element: Element) {
     return this.http.post<Element>("https://localhost:44364/api/Elements/SaveElement", element); //httpoptions .pipe catch error..

@@ -65,6 +65,21 @@ namespace Web2Backend.Controllers
             return CreatedAtAction("GetElements", element1);
 
         }
+        [HttpPut]
+        [Route("RemoveElement")]
+        public async Task<ActionResult<ElementModel>> RemoveElement(long id)
+        {
+
+
+            var element1 = _context.Elements.FirstOrDefault(n => n.Id == id);
+
+            element1.InSafetyDocument = false;
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetElements", element1);
+
+        }
 
 
 
