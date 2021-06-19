@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HistoryState } from '../entities/spHistoryState';
 import { NavigationService } from '../services/navigation/navigation.service';
 import { SharedService } from '../services/shared/shared.service';
 
@@ -11,18 +12,24 @@ import { SharedService } from '../services/shared/shared.service';
 })
 export class HistoryOfStateChangesComponent implements OnInit {
 
-  elementForm = new FormGroup({
-    elementName: new FormControl(''),
-    elementAddress: new FormControl(''),
+  form = new FormGroup({
+    newStatus: new FormControl('Draft'),
+    usersThatModified: new FormControl('')
+    
   });
+  historyStates: HistoryState[] = [];
+  public page = 10;
+  public pageSize = 3;
 
   public component = "history-of-state-changes";
-  public toNavbar = ["", this.component];
+  public toNavbar = [this.form, this.component];
+  public displayStateChange = false;
 
   constructor(private _sharedService: SharedService, private router: Router, 
               private navigationService: NavigationService) { }
 
   ngOnInit(): void {
+    //ako je lista izmjena od strane korisnika prazna.. ostaje display false
   }
 
   onSave() {

@@ -12,11 +12,13 @@ export class SafetyDocument {
     details?: string;
     notes?: string;
     //History of state changes
+    newState?: string;
+    usersThatChangedDocument?: string;
 
     //Multimedia attachments
-
+    file?: string;
     //Devices
-
+    devicesSelected?: string;
     //Checklist
     
     constructor(
@@ -29,7 +31,11 @@ export class SafetyDocument {
         phoneNum?: string,
         fieldCrew?: string,
         details?: string,
-        notes?: string
+        notes?: string,
+        newState?: string,
+        usersThatChangedDocument?: string,
+        file?:string,
+        devicesSelected?:string
         )       
     {
         this.type = type;
@@ -42,6 +48,9 @@ export class SafetyDocument {
         this.fieldCrew = fieldCrew;
         this.details = details;
         this.notes = notes;
-        
+        this.newState = newState;
+        this.usersThatChangedDocument = usersThatChangedDocument;   
+        this.file = file;     
+        this.devicesSelected = devicesSelected;     
     }
 }

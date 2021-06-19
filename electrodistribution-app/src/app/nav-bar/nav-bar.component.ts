@@ -28,7 +28,40 @@ export class NavBarComponent implements OnInit {
                                                      text[0].value.fieldCrew, text[0].value.details,
                                                      text[0].value.notes
                                                     );
-            // console.log(JSON.stringify(this.safetyDocument) + "ovo je sejfti")
+            console.log(JSON.stringify(this.safetyDocument) + "ovo je sejfti")
+          }
+          if (text[1] === 'history-of-state-changes')
+          {
+           
+            //prebaciti u servis
+            this.safetyDocument.newState = text[0].value.newStatus;
+            this.safetyDocument.usersThatChangedDocument = text[0].value.usersThatModified;
+
+            console.log(JSON.stringify(this.safetyDocument) + "ovo je sa historijem")
+          }
+          if (text[1] === 'multimedia-attachments')
+          {
+           
+            //prebaciti u servis
+            this.safetyDocument.file = text[0].value.filePath.value.dbPath;
+
+            console.log(JSON.stringify(this.safetyDocument) + "ovo je sa img")
+          }
+          if (text[1] === 'devices')
+          {
+           
+            //prebaciti u servis
+            this.safetyDocument.devicesSelected = text[0].value.devicesSelected.value;
+
+            console.log(JSON.stringify(this.safetyDocument) + "ovo je sa devices");
+          }
+          if (text[1] === 'checklist')
+          {
+           
+            //prebaciti u servis
+            //dodati polja u entity
+
+            console.log(JSON.stringify(this.safetyDocument) + "ovo je sa devices");
           }
           
 

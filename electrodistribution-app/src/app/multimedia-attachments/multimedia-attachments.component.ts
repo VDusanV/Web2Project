@@ -12,11 +12,12 @@ import { SharedService } from '../services/shared/shared.service';
 export class MultimediaAttachmentsComponent implements OnInit {
 
   multimediaForm = new FormGroup({
-    file: new FormControl('')
+    file: new FormControl(''),
+    filePath: new FormControl('')
   });
 
   public component = "multimedia-attachments";
-  public toNavbar = ["", this.component];
+  public toNavbar = [this.multimediaForm, this.component];
 
 
   imageUrl="";
@@ -68,6 +69,7 @@ export class MultimediaAttachmentsComponent implements OnInit {
           this.onUploadFinished.emit(event.body);
           console.log(event.body);
           this.imagePath = event.body as {dbPath: ''};
+          this.multimediaForm.value.filePath = new FormControl(this.imagePath);
           console.log(this.imagePath);
         }
     });

@@ -12,12 +12,12 @@ export class BasicInformationComponent implements OnInit {
   basicInfoForm = new FormGroup({
     elementType: new FormControl(''),
     status: new FormControl('Draft'),
-    switchingPlan: new FormControl(''),
-    safetyDocType: new FormControl(''),
-    dateCreated: new FormControl(''),
+    switchingPlan: new FormControl('plan-id'),
+    //safetyDocType: new FormControl(''),
+    dateCreated: new FormControl(new Date().toLocaleDateString()),
     createdByUser: new FormControl(localStorage.username),
     phoneNum: new FormControl(''),
-    fieldCrew: new FormControl(''),
+    fieldCrew: new FormControl('crew-id'),
     details: new FormControl(''),
     notes: new FormControl(''),
     
