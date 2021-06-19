@@ -71,6 +71,13 @@ import { MultimediaAttachmentsComponent } from './multimedia-attachments/multime
 import { DevicesComponent } from './devices/devices.component';
 import { ChecklistComponent } from './checklist/checklist.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { IncidentsBasicInfoComponent } from './incidents-basic-info/incidents-basic-info.component';
+import { IncidentsDevicesComponent } from './incidents-devices/incidents-devices.component';
+import { ResolutionComponent } from './resolution/resolution.component';
+import { CallsComponent } from './calls/calls.component';
+import { CrewComponent } from './crew/crew.component';
+import { IncidentsMultimediaAttachmentsComponent } from './incidents-multimedia-attachments/incidents-multimedia-attachments.component';
+import { IncidentsNavComponent } from './incidents-nav/incidents-nav.component';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -116,7 +123,14 @@ export function getToken() {
       NavbarWrComponent,
       MultimediaAttachmentsComponent,
       DevicesComponent,
-      ChecklistComponent
+      ChecklistComponent,
+      IncidentsBasicInfoComponent,
+      IncidentsDevicesComponent,
+      ResolutionComponent,
+      CallsComponent,
+      CrewComponent,
+      IncidentsMultimediaAttachmentsComponent,
+      IncidentsNavComponent
    ],
   imports: [
     BrowserModule,
