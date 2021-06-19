@@ -8151,23 +8151,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Users\\TehnoCentar\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\8 Semestar\\PuSGS\\PROJEKAT\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
+      "projectUniqueName": "C:\\Users\\TehnoCentar\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
       "projectName": "Web2Backend",
-      "projectPath": "H:\\8 Semestar\\PuSGS\\PROJEKAT\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "H:\\8 Semestar\\PuSGS\\PROJEKAT\\Web2Project\\Web2Backend\\Web2Backend\\obj\\",
+      "projectPath": "C:\\Users\\TehnoCentar\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\Web2Backend.csproj",
+      "packagesPath": "C:\\Users\\TehnoCentar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\TehnoCentar\\Documents\\GitHub\\Web2Project\\Web2Backend\\Web2Backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\TehnoCentar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8175,12 +8175,10 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\Microsoft SDKs\\Azure\\.NET SDK\\v2.9\\packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -8192,7 +8190,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNet.WebApi.Core": {
             "target": "Package",
@@ -8263,7 +8260,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.410\\RuntimeIdentifierGraph.json"
       }
     }
   },

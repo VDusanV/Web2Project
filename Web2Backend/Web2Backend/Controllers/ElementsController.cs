@@ -75,6 +75,8 @@ namespace Web2Backend.Controllers
 
             element1.InSafetyDocument = false;
 
+
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetElements", element1);
