@@ -15,6 +15,8 @@ namespace Web2Backend.Models
         public string Action { get; set; }
 
         public string Element { get; set; }
+        public bool Deleted { get; set; }
+        public bool Executed { get; set; }
 
 
     }

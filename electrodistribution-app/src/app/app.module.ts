@@ -78,6 +78,10 @@ import { CallsComponent } from './calls/calls.component';
 import { CrewComponent } from './crew/crew.component';
 import { IncidentsMultimediaAttachmentsComponent } from './incidents-multimedia-attachments/incidents-multimedia-attachments.component';
 import { IncidentsNavComponent } from './incidents-nav/incidents-nav.component';
+import { ConsumersComponent } from './consumer/consumers/consumers.component';
+import { NewConsumerComponent } from './consumer/new-consumer/new-consumer.component';
+import { ModifyConsumerComponent } from './consumer/modify-consumer/modify-consumer.component';
+import { CreateInstructionSpComponent } from './switching-plan/create-instruction-sp/create-instruction-sp.component';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -131,7 +135,11 @@ export function getToken() {
       CrewComponent,
       IncidentsMultimediaAttachmentsComponent,
       IncidentsNavComponent,
-      CrewComponent
+      CrewComponent,
+      ConsumersComponent,
+      NewConsumerComponent,
+      ModifyConsumerComponent,
+      CreateInstructionSpComponent
    ],
   imports: [
     BrowserModule,

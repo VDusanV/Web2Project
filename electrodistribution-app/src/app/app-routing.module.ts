@@ -37,6 +37,10 @@ import { MultimediaAttachmentsComponent } from './multimedia-attachments/multime
 import { DevicesComponent } from './devices/devices.component';
 import { ChecklistComponent } from './checklist/checklist.component';
 import { CrewComponent } from './crew/crew.component';
+import { SwitchingPlanComponent } from './switching-plan/switching-plan.component';
+import { ConsumersComponent } from './consumer/consumers/consumers.component';
+import { NewConsumerComponent } from './consumer/new-consumer/new-consumer.component';
+import { ModifyConsumerComponent } from './consumer/modify-consumer/modify-consumer.component';
 //import { Type } from '@angular/compiler';
 
 
@@ -230,44 +234,91 @@ const routes: Routes = [
   },
   {
     path: 'switching-plans',
-     component:NavSideComponent,
-     canActivate: [AuthGuard],
-     children: [
+    component:NavSideComponent,
+    canActivate: [AuthGuard],
+    children: [
       {
-        path: 'new', // child route path
+        path: '',
+        component: SwitchingPlanComponent,
         canActivate: [AuthGuard],
-        component: NavbarSpComponent, // child route component that the router renders
-        children: [
-          {
-            path: 'basic-info',
-            canActivate: [AuthGuard],
-            component: BasicInfoSpComponent
-          },
-          {
-            path: 'history-state',
-            canActivate: [AuthGuard],
-            component: HistorySpComponent
-          },
-          {
-            path: 'multimedia',
-            canActivate: [AuthGuard],
-            component: MultimediaSpComponent
-          },
-          {
-            path: 'equipment',
-            canActivate: [AuthGuard],
-            component: EquipmentSpComponent
-          },
-          {
-            path: 'instructions',
-            canActivate: [AuthGuard],
-            component: InstructionsSpComponent
-          }
-        ]
-      }
-    ]
-  
-  }
+      },
+         {
+           path: 'new', // child route path
+           canActivate: [AuthGuard],
+           component: NavbarSpComponent, // child route component that the router renders
+           children: [
+             {
+               path: 'basic-info',
+               canActivate: [AuthGuard],
+               component: BasicInfoSpComponent
+             },
+             {
+               path: 'history-state',
+               canActivate: [AuthGuard],
+               component: HistorySpComponent
+             },
+             {
+               path: 'multimedia',
+               canActivate: [AuthGuard],
+               component: MultimediaSpComponent
+             },
+             {
+               path: 'equipment',
+               canActivate: [AuthGuard],
+               component: EquipmentSpComponent
+             },
+             {
+               path: 'instructions',
+               canActivate: [AuthGuard],
+               component: InstructionsSpComponent
+             }
+           ]
+         }
+   
+ 
+   ]
+ 
+ },
+ {
+
+   path: 'consumers',
+    component:NavSideComponent,
+    canActivate: [AuthGuard],
+    children: [
+     {
+       path: '', // child route path
+       canActivate: [ViewGuard],
+       component: ConsumersComponent, // child route component that the router renders
+     }
+   ]
+ },
+ {
+
+   path: 'newConsumer',
+    component:NavSideComponent,
+    canActivate: [AuthGuard],
+    children: [
+     {
+       path: '', // child route path
+       canActivate: [ViewGuard],
+       component: NewConsumerComponent, // child route component that the router renders
+     }
+   ]
+ },
+ {
+
+     path: 'modifyConsumer',
+      component:NavSideComponent,
+      canActivate: [AuthGuard],
+      children: [
+       {
+         path: '', // child route path
+         canActivate: [ViewGuard],
+         component: ModifyConsumerComponent, // child route component that the router renders
+       }
+     ]
+   
+ }
 
 
 

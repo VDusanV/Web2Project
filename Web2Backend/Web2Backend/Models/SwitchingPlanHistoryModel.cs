@@ -10,6 +10,7 @@ namespace Web2Backend.Models
     {
         [Key]
         public long Id { get; set; }
+        public long DocumentId { get; set; }
         public string DateChange { get; set; }
         public string ChangeBy { get; set; }
         public string NewStatus { get; set; }

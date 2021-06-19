@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SwpInteractionService } from 'src/app/services/switching-plan/swp-interaction.service';
+import { HistoryState } from 'src/app/entities/spHistoryState';
+import { DocumentService } from 'src/app/services/document/document.service';
 
 @Component({
   selector: 'app-history-sp',
@@ -10,15 +12,27 @@ import { SwpInteractionService } from 'src/app/services/switching-plan/swp-inter
 })
 export class HistorySpComponent implements OnInit {
 
+  basicInfo!: FormGroup
   form!: FormGroup
+  historyStates: HistoryState[] = [];
 
+  public page = 10;
+  public pageSize = 3;
  
 
-  constructor(private rootFormGroup: FormGroupDirective, private router:Router, private swpService: SwpInteractionService) { }
+  constructor(private documentService: DocumentService, private rootFormGroup: FormGroupDirective, private router:Router, private swpService: SwpInteractionService) { }
 
   ngOnInit(): void {
     this.form = this.rootFormGroup.control.get('historyState') as FormGroup
-   
+    this.basicInfo = this.rootFormGroup.control.get('basicInfo') as FormGroup
+    
+    if(this.basicInfo.controls.id.value != null){
+    this.documentService.getHistoryStates(this.basicInfo.controls.id.value).subscribe(
+      data => {
+        this.historyStates = data as HistoryState[];
+      }
+    )
+    }
   }
 
   
@@ -26,6 +40,16 @@ export class HistorySpComponent implements OnInit {
   save(){
     if(this.validate()){
       console.log("tu sam")
+      if(this.basicInfo.controls.id.value != null){
+      if(this.form.controls.newStatus.value != null){
+        console.log("Speman novo stanje")
+        let newState = new HistoryState(localStorage.getItem('username') || "", this.basicInfo.controls.id.value, this.form.controls.newStatus.value);
+        this.documentService.saveHistoryState(newState);
+      }
+    }else{
+      console.log("Dokument jos ne postoji");
+    }
+
       this.router.navigate(['/switching-plans/new/multimedia']);
       this.swpService.sendMessage(3);
     }

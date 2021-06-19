@@ -11,8 +11,8 @@ import { SwpInteractionService } from 'src/app/services/switching-plan/swp-inter
 export class BasicInfoSpComponent implements OnInit {
 
   form!: FormGroup
-
-  @Output() newItemEvent = new EventEmitter<string>();
+  startStatus: string = "Draft";
+  userCreatedBy: string = localStorage.getItem("username") || "";
 
 
   constructor(private rootFormGroup: FormGroupDirective, private router:Router, private swpService:SwpInteractionService ) { }
@@ -21,9 +21,7 @@ export class BasicInfoSpComponent implements OnInit {
     this.form = this.rootFormGroup.control.get('basicInfo') as FormGroup
   }
 
-  addNewItem(value: number) {
-    this.newItemEvent.emit('2');
-  }
+  
 
   save(){
     if(this.validate()){

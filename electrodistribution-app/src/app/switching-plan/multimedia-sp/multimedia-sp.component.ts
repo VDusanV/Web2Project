@@ -24,6 +24,8 @@ export class MultimediaSpComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.rootFormGroup.control.get('multimedia') as FormGroup
+    //console.log('Forma: ' + this.form.controls.imageData.value);
+    this.image = this.form.controls.imageData.value;
   }
 
 
@@ -67,9 +69,13 @@ export class MultimediaSpComponent implements OnInit {
         else if (event.type === HttpEventType.Response) {
           console.log(event.body);
           this.imagePath1 = event.body as {dbPath: ''};
-          this.image = this.imagePath1.dbPath;
+          this.image = this.imagePath1.dbPath.toString();
           this.form.value.imageData = this.image;
-          console.log(this.form.value.imageData)
+          console.log("Upload zavrsen" + this.form.value.imageData)
+          this.form.setValue({
+              imageData: this.image 
+            
+          })
         }
     });
 
@@ -77,7 +83,8 @@ export class MultimediaSpComponent implements OnInit {
   }
 
   imagePath(path:string): string {
-    if(!(path === "")){
+    if(!(path == null || path == "")){
+      console.log(path);
     const retVal = 'https://localhost:44364/' + path;
     return retVal;
     }else{

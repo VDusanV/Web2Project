@@ -1,0 +1,75 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Consumer } from 'src/app/entities/consumer';
+import { Router } from '@angular/router';
+import { validateHorizontalPosition } from '@angular/cdk/overlay';
+import { ConsumerService } from 'src/app/services/consumer/consumer.service';
+
+@Component({
+  selector: 'app-modify-consumer',
+  templateUrl: './modify-consumer.component.html',
+  styleUrls: ['./modify-consumer.component.css']
+})
+export class ModifyConsumerComponent implements OnInit {
+
+  consumerForm!:FormGroup;
+
+  consumer!:Consumer;
+
+  activeId!: number;
+
+  constructor(private fb: FormBuilder, private consumerService:ConsumerService, private router:Router) { }
+
+  ngOnInit(): void {
+
+    this.consumerForm = this.fb.group({
+        name: [],
+        surname: [],
+        street: [],
+        city: [],
+        postal: [],
+        phone: [],
+        type: []
+    })
+
+    this.activeId = this.consumerService.getIdValue();
+
+    this.consumerService.getConsumer(this.activeId).subscribe(
+      data => {
+        this.consumer = data as Consumer;
+        console.log(this.consumer);
+        this.consumerForm.setValue({
+          name: this.consumer.name,
+          surname: this.consumer.surname,
+          street: this.consumer.street,
+          city: this.consumer.city,
+          postal: this.consumer.postal,
+          phone: this.consumer.phone,
+          type: this.consumer.type
+        })
+      }
+    )
+
+  }
+
+
+  save(){
+    if(this.validate()){
+      let consumer = new Consumer(this.consumerForm.controls.name.value, this.consumerForm.controls.surname.value, 
+        this.consumerForm.controls.street.value, this.consumerForm.controls.city.value, this.consumerForm.controls.postal.value,
+        this.consumerForm.controls.phone.value, this.consumerForm.controls.type.value);
+        consumer.id = this.activeId;
+
+      this.consumerService.modifyConsumer(consumer);
+      console.log(consumer);
+      this.consumerService.setIdValue(-1);
+      this.router.navigate(['/consumers']);
+      
+      }
+  }
+
+  validate():boolean{
+    return true;
+  }
+
+}

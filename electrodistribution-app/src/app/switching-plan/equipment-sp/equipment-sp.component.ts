@@ -15,6 +15,7 @@ export class EquipmentSpComponent implements OnInit {
   form!:FormGroup;
 
   elements:Element[] = [];
+  selection!:string;
 
 
   constructor(private rootFormGroup: FormGroupDirective, private router:Router, private elementService:ElementsService, private swpService:SwpInteractionService) { }
@@ -24,6 +25,7 @@ export class EquipmentSpComponent implements OnInit {
     this.elementService.loadElements().subscribe(data =>
       this.elements = data
       );
+      this.selection = this.form.controls.equipmentId.value;
   }
 
 
@@ -42,6 +44,15 @@ export class EquipmentSpComponent implements OnInit {
   back(){
     this.router.navigate(['/switching-plans/new/multimedia']);
     this.swpService.sendMessage(3);
+  }
+
+  compareWith(item:any, selected:any){
+    //console.log(item);
+    //console.log(selected);
+
+    console.log('Poredjenje: ' + item.id +  " " + selected)
+
+    return item.id.toString() === selected.toString();
   }
 
 }

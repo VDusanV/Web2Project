@@ -23,6 +23,10 @@ namespace Web2Backend.Data
         public DbSet<StreetModel> Streets { get; set; }
         public DbSet<UserRequestModel> UserRequests { get; set; }
         public DbSet<CrewModel> CrewRequests { get; set; }
+        public DbSet<SwitchingPlanModel> SwitchingPlans { get; set; }
+        public DbSet<SwitchingPlanHistoryModel> SwitchingPlanHistory { get; set; }
+        public DbSet<InstructionModel> Instructions { get; set; }
+        public DbSet<ConsumerModel> Consumers { get; set; }
 
 
     }
