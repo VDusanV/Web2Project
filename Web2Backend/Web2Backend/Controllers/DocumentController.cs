@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -56,6 +57,7 @@ namespace Web2Backend.Controllers
 
         [HttpGet]
         [Route("GetSwitchingPlans")]
+        //[Authorize(Roles = "Admin, Worker")]
         public async Task<ActionResult<IEnumerable<SwitchingPlanModel>>> GetSwitchingPlans()
         {
             return await _context.SwitchingPlans.ToListAsync();

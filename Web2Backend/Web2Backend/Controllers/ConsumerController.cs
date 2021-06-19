@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace Web2Backend.Controllers
 
         [HttpGet]
         [Route("GetConsumers")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<ConsumerModel>>> GetConsumers()
         {
             List<ConsumerModel> consumers = new List<ConsumerModel>();

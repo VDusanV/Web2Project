@@ -395,10 +395,21 @@ namespace Web2Backend.Controllers
         private string getRole(UserModel user)
         {
 
-            //Treba napraviti property u useru da se zna kog je tipa i na osnovu toga vratiti string tipa
-            if (user.Username == "admin")
+            if (user.UserType == "Admin")
             {
                 return "Admin";
+            }
+            else if (user.UserType == "TeamMember")
+            {
+                return "TeamMember";
+            }
+            else if (user.UserType == "Dispatcher")
+            {
+                return "Dispatcher";
+            }
+            else if (user.UserType == "Worker")
+            {
+                return "Worker";
             }
             else
             {

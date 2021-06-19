@@ -8,6 +8,7 @@ using Web2Backend.Models;
 using Web2Backend.Models.FormModels;
 using Web2Backend.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web2Backend.Controllers
 {
@@ -31,6 +32,7 @@ namespace Web2Backend.Controllers
 
         [HttpPut]
         [Route("ChangePriority")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<StreetModel>> ChangePriority(StreetModel cp)
         {
             var street1 = new StreetModel();
@@ -59,6 +61,7 @@ namespace Web2Backend.Controllers
 
         [HttpPut]
         [Route("ResetPriority")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<StreetModel>> ResetPriority()
         {
             var street1 = new StreetModel();
@@ -78,6 +81,7 @@ namespace Web2Backend.Controllers
 
         [HttpPut]
         [Route("VisibleNotifications")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<string>> VisibleNotifications([FromBody] string[] str)
         {
 
