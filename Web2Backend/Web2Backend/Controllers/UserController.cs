@@ -38,6 +38,21 @@ namespace Web2Backend.Controllers
            
             return await _context.Users.ToListAsync();
         }
+        [HttpGet]
+        [Route("TeamMembers")]
+        public ActionResult<IEnumerable<UserModel>> GetTeamMembers()
+        {
+            List<UserModel> memberUsers = new List<UserModel>();
+            foreach (var item in _context.Users)
+            {
+                if (item.UserType == "Team member" && item.ActiveStatus == "Accepted")
+                {
+                    memberUsers.Add(item);
+                    Console.WriteLine(item.Username);
+                }
+            }
+            return memberUsers;
+        }
 
         [HttpPost]
         [Route("AddUser")]
@@ -209,7 +224,7 @@ namespace Web2Backend.Controllers
 
                 }
             }
-            u1.ActiveStatus = "Accpeted";
+            u1.ActiveStatus = "Accepted";
             await _context.SaveChangesAsync();
             sendEmail(u1.Email, "Accepted");
             return CreatedAtAction("GetUsers", u1);

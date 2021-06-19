@@ -83,7 +83,7 @@ export function getToken() {
 }
 
 @NgModule({
-  declarations: [				
+  declarations: [					
     AppComponent,
     NavBarComponent,
       RegistrationComponentComponent,
@@ -130,7 +130,8 @@ export function getToken() {
       CallsComponent,
       CrewComponent,
       IncidentsMultimediaAttachmentsComponent,
-      IncidentsNavComponent
+      IncidentsNavComponent,
+      CrewComponent
    ],
   imports: [
     BrowserModule,

@@ -23,6 +23,9 @@ getCurrentUser(): Observable<any> {
 loadUsers(): Observable<IUser[]>{
   return this.http.get<IUser[]>("https://localhost:44364/api/User")
 }
+getTeamMembers(): Observable<IUser[]>{
+  return this.http.get<IUser[]>("https://localhost:44364/api/User/TeamMembers")
+}
 activateUser(username:string) {
   const params = new HttpParams().append('username',username);
  

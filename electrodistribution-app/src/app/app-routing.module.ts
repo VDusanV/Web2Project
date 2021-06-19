@@ -36,6 +36,7 @@ import { NavbarWrComponent } from './work-requests/navbar-wr/navbar-wr.component
 import { MultimediaAttachmentsComponent } from './multimedia-attachments/multimedia-attachments.component';
 import { DevicesComponent } from './devices/devices.component';
 import { ChecklistComponent } from './checklist/checklist.component';
+import { CrewComponent } from './crew/crew.component';
 //import { Type } from '@angular/compiler';
 
 
@@ -75,10 +76,14 @@ const routes: Routes = [
   
   },
   {
-    path: 'register',
-     component:RegistrationComponentComponent,
-   
-    
+    path: 'crew',
+     component:NavSideComponent,
+     children: [
+      {
+        path: '', // child route path
+      component: CrewComponent, // child route component that the router renders
+      }
+    ]
   
   },
   {
