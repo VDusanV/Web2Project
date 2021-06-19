@@ -25,23 +25,48 @@ namespace Web2Backend.Controllers
         {
             return await _context.Elements.ToListAsync();
         }
-        
-        [HttpGet]
+
+        /*[HttpGet]
+        [Route("GetUsedElements")]
         public List<ElementModel> GetUsedElements()
         {
+            List<List<ElementModel>> elementsLists = new List<List<ElementModel>>();
             List<ElementModel> allElements = _context.Elements.ToList();
             List<ElementModel> usedElements = new List<ElementModel>();
 
             foreach(ElementModel element in allElements)
             {
-                
+                if(element.InSafetyDocument)
+                {
+                    usedElements.Add(element);
+                    allElements.Remove(element);
+                }
             }
 
+            elementsLists.Add(usedElements);
+            elementsLists.Add(allElements);
 
 
 
-            return usedElements;
+            return allElements;
+        }*/
+        [HttpPut]
+        [Route("ChangeElement")]
+        public async Task<ActionResult<ElementModel>> ChangeElement(long id)
+        {
+
+
+            var element1 = _context.Elements.FirstOrDefault(n => n.Id == id);
+
+            element1.InSafetyDocument = true;
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetElements", element1);
+
         }
+
+
 
         [HttpPost]
         [Route("AddElement")]

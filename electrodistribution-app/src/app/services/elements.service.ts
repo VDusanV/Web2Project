@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 
 import { Element } from 'src/app/entities/element';
@@ -19,6 +20,47 @@ export class ElementsService {
   loadElements(): Observable<IElement[]>{
     return this.http.get<IElement[]>("https://localhost:44364/api/Elements"); 
   }
+  loadUsedElements(allElementsInput : IElement[]): IElement[]{
+  
+    let allElements = allElementsInput;
+    let usedElements = Array<IElement>();
+
+   
+    for(let element of allElements) {
+      if (element.inSafetyDocument == true) {
+        usedElements.push(element);
+        
+      }
+    }
+
+   
+    return usedElements;
+  }
+
+  moveElementToUsed(allElementsList : Element[], elementId : string) {
+    
+    for(let i = 0; i < allElementsList.length; i++) {
+      console.log("red br " + i + allElementsList[i])
+      if (allElementsList[i].id.toString() === elementId) {
+        console.log("hit");
+        return this.http.post<Element>("https://localhost:44364/api/Elements/ChangeElement", allElementsList[i])                           
+                                      ;
+      }
+    }
+    //nece uci
+    return this.http.post<Element>("https://localhost:44364/api/Elements/ChangeElement", allElementsList[0]);
+  }
+
+  moveElementToUsedElements(id: string, usedElements: Element[]) : Element[]{
+    
+    let params = new HttpParams();
+    params = params.append("id", id);
+    this.http.put("https://localhost:44364/api/Elements/ChangeElement", null, {params: params})
+    .subscribe(
+      data => usedElements.push(data as Element)
+    );
+    return usedElements;
+    }
   
   saveElement(element: Element) {
     return this.http.post<Element>("https://localhost:44364/api/Elements/SaveElement", element); //httpoptions .pipe catch error..
