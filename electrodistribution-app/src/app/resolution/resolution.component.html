@@ -1,1 +1,40 @@
-<p>resolution works!</p>
+<br>
+<br>
+
+<form [formGroup]="resolutionForm">
+    <div class="main-container">
+    
+        <div class="container">
+        <div class="container__element">
+            <label>Cause: 
+            </label>
+            <input type="text" formControlName="cause">
+        </div>
+        <div class="container__element">
+            <label>Subcause: 
+            </label>
+            <input type="text" formControlName="subcause">
+        </div>
+        <div class="container__element">
+            <label>Construction type: 
+            </label>
+            <input type="text" formControlName="constructionType">
+        </div>
+        <div class="container__element">
+            <label>Material:
+            </label>
+            <input type="text" formControlName="material">
+        </div>  
+
+        <br><br>
+        <div class="container__element">
+            <label></label>
+            <button class="table--modifiers__btn" (click)="onSave()" type="button"> <!--type=button-->
+                <mat-icon id="icon-absolute" class="icon">save</mat-icon>
+            </button>
+        </div>
+    </div>
+    </div>
+
+    
+</form>

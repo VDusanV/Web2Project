@@ -44,14 +44,19 @@ export class IncidentsNavComponent implements OnInit {
       this.activeId = 3;
       //console.log(this.activeId);
     }
-    if (this.currentTab === 'document-devices')
+    if (this.currentTab === 'calls')
     {
       this.activeId = 4;
       //console.log(this.activeId);
     }
-    if (this.currentTab === 'checklist')
+    if (this.currentTab === 'incident-crew')
     {
       this.activeId = 5;
+      //console.log(this.activeId);
+    }
+    if (this.currentTab === 'multimedia-attachments')
+    {
+      this.activeId = 6;
       //console.log(this.activeId);
     }
 
