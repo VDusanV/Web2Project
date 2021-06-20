@@ -41,6 +41,7 @@ namespace Web2Backend.Controllers
             };*/
             SafetyDocumentModel sd = new SafetyDocumentModel()
             {
+                SafetyDocumentId = Guid.NewGuid().ToString(),
                 Type = safeDoc.Type,
                 Status = safeDoc.Status,
                 SwitchingPlan = safeDoc.Status,

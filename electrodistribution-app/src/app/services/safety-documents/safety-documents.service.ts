@@ -13,12 +13,12 @@ export class SafetyDocumentsService {
 
   saveSafetyDocument(safetyDocument: SafetyDocument){
 
-    const httpOptions = {
+    /*const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
-    }
+    }*/
 
     
-    this.http.post("https://localhost:44364/api/SafetyDocuments/AddSafetyDocument", safetyDocument, httpOptions)
+    this.http.post("https://localhost:44364/api/SafetyDocuments/AddSafetyDocument", safetyDocument/*, httpOptions*/)
   .subscribe(
     data => console.log('oops', data)
   );

@@ -24,10 +24,10 @@ namespace Web2Backend.Models
         public string UsersThatChangedDocument { get; set; }
         public string File { get; set; }
         public string DevicesSelected { get; set; }
-        public string OperationsCompleted { get; set; }
-        public string TagsRemoved { get; set; }
-        public string GroundingRemoved { get; set; }
-        public string ReadyForService { get; set; }
+        public bool OperationsCompleted { get; set; }
+        public bool TagsRemoved { get; set; }
+        public bool GroundingRemoved { get; set; }
+        public bool ReadyForService { get; set; }
 
 
 

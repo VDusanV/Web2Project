@@ -17,18 +17,18 @@
                 <th scope="col">Start date</th>
                 <th scope="col">Phone No.</th>
                 <th scope="col">Status</th>
-                <th scope="col">Address</th>
+                
             </tr>
         </thead>
         <tbody>
-          <!--<tr *ngFor="let document of allDocuments | slice: (page-1) * pageSize : page * pageSize">
-            <td>{{document.id.toString()}}</td>
-            <td>{{document.startDate}}</td>
-            <td>{{document.phoneNo}}</td>
+          <tr *ngFor="let document of allSafetyDocuments | slice: (page-1) * pageSize : page * pageSize">
+            <td>{{document.safetyDocumentId.toString()}}</td>
+            <td>{{document.dateCreated}}</td>
+            <td>{{document.phoneNum}}</td>
             <td>{{document.status}}</td>
-            <td>{{document.address}}</td>
+            
       
-          </tr> -->
+          </tr> 
         </tbody>
         </table>
     

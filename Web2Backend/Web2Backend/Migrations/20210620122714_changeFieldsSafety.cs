@@ -1,0 +1,85 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace Web2Backend.Migrations
+{
+    public partial class changeFieldsSafety : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<bool>(
+                name: "TagsRemoved",
+                table: "SafetyDocuments",
+                type: "bit",
+                nullable: false,
+                defaultValue: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<bool>(
+                name: "ReadyForService",
+                table: "SafetyDocuments",
+                type: "bit",
+                nullable: false,
+                defaultValue: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<bool>(
+                name: "OperationsCompleted",
+                table: "SafetyDocuments",
+                type: "bit",
+                nullable: false,
+                defaultValue: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<bool>(
+                name: "GroundingRemoved",
+                table: "SafetyDocuments",
+                type: "bit",
+                nullable: false,
+                defaultValue: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<string>(
+                name: "TagsRemoved",
+                table: "SafetyDocuments",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(bool),
+                oldType: "bit");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "ReadyForService",
+                table: "SafetyDocuments",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(bool),
+                oldType: "bit");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "OperationsCompleted",
+                table: "SafetyDocuments",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(bool),
+                oldType: "bit");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "GroundingRemoved",
+                table: "SafetyDocuments",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(bool),
+                oldType: "bit");
+        }
+    }
+}

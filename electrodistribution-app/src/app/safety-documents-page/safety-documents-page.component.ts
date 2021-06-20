@@ -11,6 +11,9 @@ import { SafetyDocumentsService } from '../services/safety-documents/safety-docu
 export class SafetyDocumentsPageComponent implements OnInit {
   public displaySafetyDocumentContent = true;
   public allSafetyDocuments: SafetyDocument[] = [];
+
+  public page = 10;
+  public pageSize = 3;
   
   
 

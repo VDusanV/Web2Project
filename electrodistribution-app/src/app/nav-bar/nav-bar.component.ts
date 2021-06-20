@@ -72,9 +72,9 @@ export class NavBarComponent implements OnInit {
 
             //send to backend
 
-            let sdTest = new SafetyDocument("id", "tip", "status", "plan", "doctype", "datecreated", "by", "numb", "fieldcr", "det",
-              "notes", "novost", "usersthatchang", "file", "devsel", true, false, false, true);
-            this._safetyDocumentsService.saveSafetyDocument(sdTest);
+            /*let sdTest = new SafetyDocument("id", "tip", "status", "plan", "doctype", "datecreated", "by", "numb", "fieldcr", "det",
+              "notes", "novost", "usersthatchang", "file", "devsel", true, false, false, true);*/
+            this._safetyDocumentsService.saveSafetyDocument(this.safetyDocument);
 
 
             console.log(JSON.stringify(this.safetyDocument) + "FIN VERZ---------------");
