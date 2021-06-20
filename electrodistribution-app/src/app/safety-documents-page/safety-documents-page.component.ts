@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { SafetyDocument } from '../entities/safety-document';
 import { NavigationService } from '../services/navigation/navigation.service';
+import { SafetyDocumentsService } from '../services/safety-documents/safety-documents.service';
 
 @Component({
   selector: 'app-safety-documents-page',
@@ -8,14 +10,16 @@ import { NavigationService } from '../services/navigation/navigation.service';
 })
 export class SafetyDocumentsPageComponent implements OnInit {
   public displaySafetyDocumentContent = true;
-
+  public allSafetyDocuments: SafetyDocument[] = [];
   
   
 
-  constructor(private navigationService: NavigationService, private cdref: ChangeDetectorRef) { }
+  constructor(private navigationService: NavigationService, private cdref: ChangeDetectorRef, private _safetyDocumentsService: SafetyDocumentsService) { }
 
   ngOnInit(): void {
-    
+    this._safetyDocumentsService.loadSafetyDocuments()
+                                .subscribe(data => this.allSafetyDocuments = data);
+
   }
 
   ngAfterContentChecked() {

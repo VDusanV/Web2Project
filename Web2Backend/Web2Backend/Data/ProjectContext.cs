@@ -27,6 +27,7 @@ namespace Web2Backend.Data
         public DbSet<SwitchingPlanHistoryModel> SwitchingPlanHistory { get; set; }
         public DbSet<InstructionModel> Instructions { get; set; }
         public DbSet<ConsumerModel> Consumers { get; set; }
+        public DbSet<SafetyDocumentModel> SafetyDocuments { get; set; }
 
 
     }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { NavigationService } from '../services/navigation/navigation.service';
@@ -14,9 +15,17 @@ export class ChecklistComponent implements OnInit {
   checked = false;
   disabled = false;
 
+  checklistForm = new FormGroup({
+    operationsCompleted: new FormControl(false),
+    tagsRemoved: new FormControl(false),
+    groundingRemoved: new FormControl(false),
+    readyForService: new FormControl(false)
+    
+  });
+
 
   public component = "checklist";
-  public toNavbar = ["", this.component];
+  public toNavbar = [this.checklistForm, this.component];
 
   constructor(private router: Router, private _sharedService: SharedService, private navigationService: NavigationService) { }
 

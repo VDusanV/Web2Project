@@ -1,6 +1,7 @@
 
 export class SafetyDocument {
     //Basic Information
+    safetyDocumentId?: string;
     type?: string;
     status?: string;
     switchingPlan?: string;
@@ -20,8 +21,13 @@ export class SafetyDocument {
     //Devices
     devicesSelected?: string;
     //Checklist
+    operationsCompleted?: boolean;
+    tagsRemoved?: boolean;
+    groundingRemoved?: boolean;
+    readyForService?: boolean;
     
     constructor(
+        safetyDocumentId?: string,
         type?: string, 
         status?: string,
         switchingPlan?: string,
@@ -35,9 +41,16 @@ export class SafetyDocument {
         newState?: string,
         usersThatChangedDocument?: string,
         file?:string,
-        devicesSelected?:string
+        devicesSelected?:string,
+        operationsCompleted?:boolean,
+        tagsRemoved?:boolean,
+        groundingRemoved?:boolean,
+        readyForService?:boolean,
+
+
         )       
     {
+        this.safetyDocumentId = safetyDocumentId;
         this.type = type;
         this.status = status;
         this.switchingPlan = switchingPlan;
@@ -51,6 +64,10 @@ export class SafetyDocument {
         this.newState = newState;
         this.usersThatChangedDocument = usersThatChangedDocument;   
         this.file = file;     
-        this.devicesSelected = devicesSelected;     
+        this.devicesSelected = devicesSelected;  
+        this.operationsCompleted = operationsCompleted;
+        this.tagsRemoved = tagsRemoved;
+        this.groundingRemoved = groundingRemoved;
+        this.readyForService = readyForService;       
     }
 }
