@@ -12,7 +12,7 @@ namespace Web2Backend.Models
         public string Name { get; set; }
 
         public int dPriority { get; set; }
-
+        [ConcurrencyCheck]
         public int cPriority { get; set; }
     }
 }

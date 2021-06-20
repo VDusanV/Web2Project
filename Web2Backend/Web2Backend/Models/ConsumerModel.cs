@@ -11,19 +11,28 @@ namespace Web2Backend.Models
         [Key]
         public long Id { get; set; }
         [Required]
+        [ConcurrencyCheck]
         public string Name { get; set; }
         [Required]
+        [ConcurrencyCheck]
         public string Surname { get; set; }
         [Required]
+        [ConcurrencyCheck]
         public string Street { get; set; }
         [Required]
+        [ConcurrencyCheck]
         public string City { get; set; }
+        [ConcurrencyCheck]
         public string Postal { get; set; }
+        [ConcurrencyCheck]
         public int Priority { get; set; }
         [Required]
+        [ConcurrencyCheck]
         public string Phone { get; set; }
         [Required]
+        [ConcurrencyCheck]
         public string Type { get; set; }
+        [ConcurrencyCheck]
         public bool Deleted { get; set; }
 
 
