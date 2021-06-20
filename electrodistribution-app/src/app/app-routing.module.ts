@@ -151,7 +151,7 @@ const routes: Routes = [
     path: 'requests',
      component:NavSideComponent,
      canActivate: [AuthGuard],
-     children: [
+     children: [ 
       {
         path: '', // child route path
         canActivate: [ViewGuard],

@@ -42,6 +42,10 @@ export class SafetyDocumentsPageComponent implements OnInit {
       } else 
       {
         this.displaySafetyDocumentContent = true;
+        //
+        this._safetyDocumentsService.loadSafetyDocuments()
+                                .subscribe(data => this.allSafetyDocuments = data);
+
       }
     });
   }
