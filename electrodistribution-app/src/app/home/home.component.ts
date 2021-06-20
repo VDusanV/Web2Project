@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { WorkRequest } from '../entities/work-request';
 
 @Component({
   selector: 'app-home',
@@ -15,18 +16,18 @@ export class HomeComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Ne znam cemu ovo sluzi', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'Map', cols: 2, rows: 2 },
+          { title: 'My Work Requests', cols: 2, rows: 2 },
+          { title: 'Card 3', cols: 2, rows: 2 },
+          { title: 'Card 4', cols: 2, rows: 2 }
         ];
       }
 
       return [
-        { title: 'Moji planovi', cols: 2, rows: 1 },
-        { title: 'Moji incidenti', cols: 1, rows: 1 },
+        { title: 'Map', cols: 1, rows: 2 },
+        { title: 'My Work Requests', cols: 1, rows: 2 },
         { title: 'Moji bezbednosni dokumenti', cols: 1, rows: 2 },
-        { title: 'Moji nalozi za rad', cols: 1, rows: 1 }
+        { title: 'Crews', cols: 1, rows: 2 }
       ];
     })
   );

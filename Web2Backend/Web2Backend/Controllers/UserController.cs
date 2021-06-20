@@ -45,7 +45,7 @@ namespace Web2Backend.Controllers
             List<UserModel> memberUsers = new List<UserModel>();
             foreach (var item in _context.Users)
             {
-                if (item.UserType == "Team member" && item.ActiveStatus == "Accepted")
+                if ((item.UserType == "Team member" || item.UserType == "Teammember") && item.ActiveStatus == "Accepted")
                 {
                     memberUsers.Add(item);
                     Console.WriteLine(item.Username);

@@ -33,7 +33,7 @@ namespace Web2Backend.Models
             Address = "+";
             Email = "+";
             UserType = "+";
-           // ActiveStatus = false;
+            ActiveStatus = "Pending";
         }
     }
 }

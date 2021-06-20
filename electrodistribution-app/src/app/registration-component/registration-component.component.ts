@@ -22,7 +22,10 @@ export class RegistrationComponentComponent implements OnInit {
   progress: any;
   message: any;
   imagePath!: {dbPath: ''};
-  
+  confirmPass=false;
+  pass2 = "";
+  pass1 = "";
+
 
   @Output() public onUploadFinished = new EventEmitter();
 
@@ -46,7 +49,12 @@ export class RegistrationComponentComponent implements OnInit {
 
   //register
   public register = (form: NgForm) => {
-    console.log(form.value.imagedata);
+    if(this.pass1 != this.pass2){
+      this.confirmPass=true;
+      return;
+    }
+    console.log( " rrrrr " + this.pass1 + " rrrrr "  +this.pass2 +  " rrrrr ");
+    console.log( "eee"+ form.value.imagedata);
     form.value.imagedata = this.imagePath.dbPath;
      this.credentials = JSON.stringify(form.value);
 

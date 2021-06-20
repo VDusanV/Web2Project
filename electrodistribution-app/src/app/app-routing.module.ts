@@ -59,8 +59,13 @@ const routes: Routes = [
   {
     path: 'home',
      component:NavSideComponent,
-     canActivate: [AuthGuard]
-  
+     canActivate: [AuthGuard],
+     children: [
+      {
+        path: '', // child route path
+        component: HomeComponent, // child route component that the router renders
+      }
+    ]
   },
   {
     path: 'profile',

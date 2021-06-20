@@ -12,10 +12,12 @@
           <label>Password</label>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <input type="password" ngModel name="password" class="form-control"  placeholder="Password" required #passwordControl="ngModel" [class.is-invalid] = "passwordControl.invalid && passwordControl.touched">
+              <input type="password" [(ngModel)]="pass1" ngModel name="password" class="form-control"  placeholder="Password" required #passwordControl="ngModel" [class.is-invalid] = "passwordControl.invalid && passwordControl.touched">
             </div>
             <div class="form-group col-md-6">
-              <input type="password" name="password" class="form-control"  placeholder=" Confirm Password" required>
+              <input type="password" [(ngModel)]="pass2" ngModel name="confirmpassword" class="form-control"  placeholder=" Confirm Password" #confirmpasswordControl="ngModel"  required>
+              <div  *ngIf=confirmPass><p class="text-danger">Passwords must match</p></div>
+              
             </div>
         </div>
         </div>
