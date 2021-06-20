@@ -17,17 +17,15 @@ export class HomeComponent {
       if (matches) {
         return [
           { title: 'Map', cols: 2, rows: 2 },
-          { title: 'My Work Requests', cols: 2, rows: 2 },
-          { title: 'Card 3', cols: 2, rows: 2 },
-          { title: 'Card 4', cols: 2, rows: 2 }
+          { title: 'My Work Requests', cols: 2, rows: 2 }
+         
         ];
       }
 
       return [
         { title: 'Map', cols: 1, rows: 2 },
-        { title: 'My Work Requests', cols: 1, rows: 2 },
-        { title: 'Moji bezbednosni dokumenti', cols: 1, rows: 2 },
-        { title: 'Crews', cols: 1, rows: 2 }
+        { title: 'My Work Requests', cols: 1, rows: 2 }
+     
       ];
     })
   );

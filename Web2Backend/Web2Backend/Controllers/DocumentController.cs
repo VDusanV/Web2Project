@@ -28,27 +28,64 @@ namespace Web2Backend.Controllers
         {
             if (ModelState.IsValid)
             {
-                SwitchingPlanModel sp = new SwitchingPlanModel
+                SwitchingPlanModel swPlan = new SwitchingPlanModel();
+                if (switchingPlan.Id == 0)
                 {
-                    Type = switchingPlan.Type,
-                    WorkRequest = switchingPlan.WorkRequest,
-                    Status = switchingPlan.Status,
-                    Incident = switchingPlan.Incident,
-                    Street = switchingPlan.Street,
-                    startDate = switchingPlan.startDate,
-                    endDate = switchingPlan.endDate,
-                    Crew = switchingPlan.Crew,
-                    CreatedBy = switchingPlan.CreatedBy,
-                    Notes = switchingPlan.Notes,
-                    Company = switchingPlan.Company,
-                    Phone = switchingPlan.Phone,
-                    DateCreated = switchingPlan.DateCreated,
-                    ImageData = switchingPlan.ImageData,
-                    Equipment = switchingPlan.Equipment,
 
-                };
+                    SwitchingPlanModel sp = new SwitchingPlanModel
+                    {
+                        Type = switchingPlan.Type,
+                        WorkRequest = switchingPlan.WorkRequest,
+                        Status = switchingPlan.Status,
+                        Incident = switchingPlan.Incident,
+                        Street = switchingPlan.Street,
+                        startDate = switchingPlan.startDate,
+                        endDate = switchingPlan.endDate,
+                        Crew = switchingPlan.Crew,
+                        CreatedBy = switchingPlan.CreatedBy,
+                        Notes = switchingPlan.Notes,
+                        Company = switchingPlan.Company,
+                        Phone = switchingPlan.Phone,
+                        DateCreated = switchingPlan.DateCreated,
+                        ImageData = switchingPlan.ImageData,
+                        Equipment = switchingPlan.Equipment,
 
-                _context.SwitchingPlans.Add(sp);
+                    };
+                    swPlan = sp;
+                    _context.SwitchingPlans.Add(sp);
+                }
+                else
+                {
+                    SwitchingPlanModel switchingP = new SwitchingPlanModel();
+                    foreach (SwitchingPlanModel sw in _context.SwitchingPlans)
+                    {
+                        if (sw.Id == switchingPlan.Id)
+                        {
+                            switchingP = sw;
+                            break;
+                        }
+                    }
+
+                    switchingP.Type = switchingPlan.Type;
+                    switchingP.WorkRequest = switchingPlan.WorkRequest;
+                    switchingP.Status = switchingPlan.Status;
+                    switchingP.Incident = switchingPlan.Incident;
+                    switchingP.Street = switchingPlan.Street;
+                    switchingP.startDate = switchingPlan.startDate;
+                    switchingP.endDate = switchingPlan.endDate;
+                    switchingP.Crew = switchingPlan.Crew;
+                    switchingP.CreatedBy = switchingPlan.CreatedBy;
+                    switchingP.Notes = switchingPlan.Notes;
+                    switchingP.Company = switchingPlan.Company;
+                    switchingP.Phone = switchingPlan.Phone;
+                    switchingP.DateCreated = switchingPlan.DateCreated;
+                    switchingP.ImageData = switchingPlan.ImageData;
+                    switchingP.Equipment = switchingPlan.Equipment;
+
+                    swPlan = switchingP;
+
+                }
+
 
                 string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
 
@@ -67,7 +104,7 @@ namespace Web2Backend.Controllers
 
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("SaveSwitchingPlan", sp);
+                return CreatedAtAction("SaveSwitchingPlan", swPlan);
             }
             else
             {
@@ -160,7 +197,7 @@ namespace Web2Backend.Controllers
 
             foreach (InstructionModel i in _context.Instructions)
             {
-                if (i.DocumentId == id)
+                if (i.DocumentId == id && i.Deleted == false)
                 {
                     ins.Add(i);
                 }
