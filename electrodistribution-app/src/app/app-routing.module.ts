@@ -41,6 +41,13 @@ import { SwitchingPlanComponent } from './switching-plan/switching-plan.componen
 import { ConsumersComponent } from './consumer/consumers/consumers.component';
 import { NewConsumerComponent } from './consumer/new-consumer/new-consumer.component';
 import { ModifyConsumerComponent } from './consumer/modify-consumer/modify-consumer.component';
+import { NewIncidentComponent } from './new-incident/new-incident.component';
+import { IncidentsBasicInfoComponent } from './incidents-basic-info/incidents-basic-info.component';
+import { IncidentsDevicesComponent } from './incidents-devices/incidents-devices.component';
+import { ResolutionComponent } from './resolution/resolution.component';
+import { CallsComponent } from './calls/calls.component';
+import { IncidentsCrewComponent } from './incidents-crew/incidents-crew.component';
+import { IncidentsMultimediaAttachmentsComponent } from './incidents-multimedia-attachments/incidents-multimedia-attachments.component';
 //import { Type } from '@angular/compiler';
 
 
@@ -102,12 +109,43 @@ const routes: Routes = [
     children: [
       {
         path: '', // child route path
-        component: IncidentsComponent, // child route component that the router renders
-      },
-      {
-        path: 'table', // child route path
-        component: IncidentsComponent, // child route component that the router renders
-      },
+      component: IncidentsComponent,
+      children: [{
+        path: 'new',
+        component: NewIncidentComponent,
+        children: [
+          {
+            path: 'basic-info',
+            component: IncidentsBasicInfoComponent
+          },
+          {
+            path: 'incident-devices',
+            component: IncidentsDevicesComponent
+          }
+          ,
+          {
+            path: 'resolution',
+            component: ResolutionComponent
+          }
+          ,
+          {
+            path: 'calls',
+            component: CallsComponent
+          }
+          ,
+          {
+            path: 'incident-crew',
+            component: IncidentsCrewComponent
+          }
+          ,
+          {
+            path: 'incident-multimedia-attachments',
+            component: IncidentsMultimediaAttachmentsComponent
+          }
+        ]
+      }
+      ] // child route component that the router renders
+      }
     ]
     
   },

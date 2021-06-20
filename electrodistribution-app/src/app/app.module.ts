@@ -82,6 +82,8 @@ import { ConsumersComponent } from './consumer/consumers/consumers.component';
 import { NewConsumerComponent } from './consumer/new-consumer/new-consumer.component';
 import { ModifyConsumerComponent } from './consumer/modify-consumer/modify-consumer.component';
 import { CreateInstructionSpComponent } from './switching-plan/create-instruction-sp/create-instruction-sp.component';
+import { NewIncidentComponent } from './new-incident/new-incident.component';
+import { IncidentsCrewComponent } from './incidents-crew/incidents-crew.component';
 export function getToken() {
   return localStorage.getItem("jwt");
 }
@@ -139,7 +141,9 @@ export function getToken() {
       ConsumersComponent,
       NewConsumerComponent,
       ModifyConsumerComponent,
-      CreateInstructionSpComponent
+      CreateInstructionSpComponent,
+      NewIncidentComponent,
+      IncidentsCrewComponent
    ],
   imports: [
     BrowserModule,
