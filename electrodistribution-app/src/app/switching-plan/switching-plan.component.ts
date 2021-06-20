@@ -38,6 +38,18 @@ export class SwitchingPlanComponent implements OnInit {
         }
       );
 
+      (async () => { 
+        console.log("Primljena");
+        await this.delay(1000);
+        console.log("Izvrsena")
+        this.documentService.getSwitchingPlans()
+        .subscribe(
+          data => {
+            this.switchingPlans = data;
+          }
+        )
+    })();
+
   }
 
 
@@ -59,6 +71,10 @@ export class SwitchingPlanComponent implements OnInit {
     this.swpService.setIdValue(id);
     this.router.navigate(['/switching-plans/new/basic-info']);
 
+  }
+
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
   formatDate(dat:string):string{

@@ -54,15 +54,26 @@ export class InstructionsSpComponent implements OnInit {
   save(){
     if(this.validate()){
 
-      var switchingPlan = new SwitchingPlan(this.basicInfo.controls.type.value, this.basicInfo.controls.workRequest.value, this.basicInfo.controls.status.value,
-      this.basicInfo.controls.incident.value, this.basicInfo.controls.street.value, this.basicInfo.controls.startDate.value,
-      this.basicInfo.controls.endDate.value, this.basicInfo.controls.crew.value, this.basicInfo.controls.createdBy.value,
-      this.basicInfo.controls.notes.value, this.basicInfo.controls.company.value, this.basicInfo.controls.phoneNo.value,
-      this.basicInfo.controls.dateCreated.value, this.multimedia.controls.imageData.value, "");
-
-      if(this.equipment.controls.equipmentId.value != null){
-        switchingPlan.equipment = this.equipment.controls.equipmentId.value.toString();
-      }
+      if(!this.basicInfo.controls.id.value){
+        var switchingPlan = new SwitchingPlan(this.basicInfo.controls.type.value, this.basicInfo.controls.workRequest.value, this.basicInfo.controls.status.value,
+        this.basicInfo.controls.incident.value, this.basicInfo.controls.street.value, this.basicInfo.controls.startDate.value,
+        this.basicInfo.controls.endDate.value, this.basicInfo.controls.crew.value, this.basicInfo.controls.createdBy.value,
+        this.basicInfo.controls.notes.value, this.basicInfo.controls.company.value, this.basicInfo.controls.phoneNo.value,
+        this.basicInfo.controls.dateCreated.value, this.multimedia.controls.imageData.value, "");
+        if(this.equipment.controls.equipmentId.value != null){
+          switchingPlan.equipment = this.equipment.controls.equipmentId.value.toString();
+        }
+        }else{
+          var switchingPlan = new SwitchingPlan(this.basicInfo.controls.type.value, this.basicInfo.controls.workRequest.value, this.basicInfo.controls.status.value,
+            this.basicInfo.controls.incident.value, this.basicInfo.controls.street.value, this.basicInfo.controls.startDate.value,
+            this.basicInfo.controls.endDate.value, this.basicInfo.controls.crew.value, this.basicInfo.controls.createdBy.value,
+            this.basicInfo.controls.notes.value, this.basicInfo.controls.company.value, this.basicInfo.controls.phoneNo.value,
+            this.basicInfo.controls.dateCreated.value, this.multimedia.controls.imageData.value, "");
+            switchingPlan.id = this.basicInfo.controls.id.value;
+            if(this.equipment.controls.equipmentId.value != null){
+              switchingPlan.equipment = this.equipment.controls.equipmentId.value.toString();
+            }
+        }
 
       console.log('Result: ' + switchingPlan);
 
@@ -187,6 +198,8 @@ export class InstructionsSpComponent implements OnInit {
 
 
   }
+
+  
 
   delete(id:number){
     console.log("Delete: " + id)
