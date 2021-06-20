@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import { Crew } from '../entities/crew';
+import { CrewService } from '../services/crew/crew.service';
 
 
 @Component({
@@ -9,9 +11,13 @@ import * as L from 'leaflet';
 })
 export class MapComponent implements OnInit {
 
-  
+  public maxLat = 45.26;
+  public minLat = 45.23;
+  public maxLng =19.8;
+  public minLng = 19.75;
   private map: any;
   private centroid: L.LatLngExpression = [45.267136, 19.833549];
+  public allCrews: Crew[] = [];
 
  
   private initMap(): void{
@@ -26,14 +32,14 @@ export class MapComponent implements OnInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
-    const minja = L.icon({
-      iconUrl: 'https://media-exp1.licdn.com/dms/image/C4D03AQGcblh7OiDW_Q/profile-displayphoto-shrink_200_200/0/1586350639640?e=1626912000&v=beta&t=G9Nj8ZZI_2dumKftW7backGx799b2CqMR3Z7Izl7hG0',
-      iconSize: [25, 41]
+    const crew = L.icon({
+      iconUrl: '/assets/crew.png',
+      iconSize: [41, 25]
       // ...
    });
-   const branja = L.icon({
-    iconUrl: 'https://scontent.fbeg2-1.fna.fbcdn.net/v/t1.18169-9/11822513_10203322246056209_8113395076672532518_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=vM1A-53ZvXEAX9yu_z9&_nc_ht=scontent.fbeg2-1.fna&oh=c910dade9bdd625f9bbc03540bd7edf0&oe=60C6EFBA',
-    iconSize: [25, 41]
+   const incident = L.icon({
+    iconUrl: '/assets/incident.png',
+    iconSize: [25, 25]
     // ...
  });
 
@@ -42,8 +48,21 @@ export class MapComponent implements OnInit {
     tiles.addTo(this.map);
 
 
-    L.marker([45.242769, 19.838032], {icon:minja}).addTo(this.map).bindPopup("Zivotinje");
-    L.marker([45.247469, 19.832979], {icon:branja}).addTo(this.map).bindPopup("Matori");
+    console.log("mapaaa " + this.allCrews.length);
+
+    this.allCrews.forEach(element => {
+      const lng = this.randomLngFromInterval(this.minLng,this.maxLng);
+      const lat = this.randomLatFromInterval(this.minLat,this.minLat);
+     L.marker([lat, lng], {icon:crew}).addTo(this.map).bindPopup("Name of crew: " + element.name + ", Id: " + element.id);
+      
+    });
+
+    L.marker([ 45.23542467770837, 19.810201331843633], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc1, Priority: 2");
+    L.marker([45.28247091404771, 19.876006701124208], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc2, Priority: 5");
+    L.marker([45.28031633188242, 19.782101876509856], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc3, Priority: 1");
+    L.marker([45.25330530572664, 19.760462938660375], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc4, Priority: 2");
+    L.marker([ 45.302719979032716, 19.82293006113152], {icon:incident}).addTo(this.map).bindPopup("Incident id: Inc5, Priority: 3");
+
 
     //nakon klika na mapu kordinate se smestaju u ove dve promenjice
     var xlng;
@@ -61,13 +80,24 @@ export class MapComponent implements OnInit {
   }
 
 
-  constructor() {
+  constructor(private crewService: CrewService) {
     this.map = "";
    }
 
   ngOnInit() {
-    this.initMap();
+    this.crewService.loadlCrew().subscribe(data => {this.allCrews = data as Crew[]
+      console.log(this.allCrews);
+    
+      this.initMap();
+    });
+   
+
     
   }
-
+   randomLatFromInterval(minLat:number, maxLat:number) { // min and max included 
+    return ((Math.random()/10) * (minLat - maxLat + 1) + minLat)
+  }
+  randomLngFromInterval(minLng:number, maxLng:number) { // min and max included 
+    return ((Math.random()/10) * (minLng - maxLng + 1) + minLng)
+  }
 }

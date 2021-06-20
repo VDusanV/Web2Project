@@ -16,13 +16,13 @@ export interface WorkRequestsItem {
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: WorkRequestsItem[] = [
-  {id: "WR1", name: 'Hydrogen',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Draft", address: "Cirpanova 39"},
-  {id: "WR2", name: 'Helium',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Draft", address: "Cirpanova 39"},
-  {id: "WR3", name: 'Lithium',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Submitted", address: "Bulevar"},
-  {id: "WR4", name: 'Beryllium',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Draft", address: "Cirpanova 39"},
-  {id: "WR5", name: 'Boron',startdate: "1.1.2021", phonenumber:"351-661453252", status: "Submitted", address: "Cirpanova 39"},
-  {id: "6", name: 'Carbon',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Draft", address: "Bulevar 39"},
-  {id: "7", name: 'Nitrogen',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Draft", address: "Cirpanova 39"},
+  {id: "WR1", name: 'Pera',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Draft", address: "Cirpanova 39"},
+  {id: "WR2", name: 'Zika',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Draft", address: "Cirpanova 39"},
+  {id: "WR3", name: 'Mika',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Submitted", address: "Bulevar"},
+  {id: "WR4", name: 'Admin',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Draft", address: "Cirpanova 39"},
+  {id: "WR5", name: 'Marko',startdate: "1.1.2021", phonenumber:"351-661453252", status: "Submitted", address: "Cirpanova 39"},
+  {id: "6", name: 'Zika',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Draft", address: "Bulevar 39"},
+  {id: "7", name: 'Luka',startdate: "1.1.2021", phonenumber:"351-6613252", status: "Draft", address: "Cirpanova 39"},
 
 ];
 

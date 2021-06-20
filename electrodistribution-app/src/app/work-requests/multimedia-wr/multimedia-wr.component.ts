@@ -17,7 +17,7 @@ export class MultimediaWrComponent implements OnInit {
   public component = "multimedia";
   public toNavbar = [this.multimediaForm, this.component];
 
-  imageUrl="";
+  imageUrl="/assets/default-picture.png";
   fileToUpload : any;
   progress: any;
   message: any;

@@ -23,6 +23,7 @@ export class WorkRequestsComponent implements AfterViewInit {
   type!: string;
   checked = false;
   searchKey! : string;
+  user! :string;
   constructor(private router:Router) {
     this.dataSource = new WorkRequestsDataSource();
   
@@ -33,6 +34,7 @@ export class WorkRequestsComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
     this.OriginDataSource = this.dataSource.data;
+    this.user =<string>localStorage.getItem("username");
   }
 
   openDialog(){
@@ -42,7 +44,7 @@ export class WorkRequestsComponent implements AfterViewInit {
     if(!this.checked)
     {
       //to do podesiti za moje naloge
-      this.dataSource.data=this.dataSource.data.filter(item => item.status.toLowerCase().indexOf("draft")>-1);
+      this.dataSource.data=this.dataSource.data.filter(item => item.name.toLowerCase().indexOf(this.user)>-1);
       this.paginator._changePageSize(this.paginator.pageSize); 
     }
     else{
