@@ -45,56 +45,63 @@ namespace Web2Backend.Controllers
         [Route("SaveConsumer")]
         public async Task<ActionResult<ConsumerModel>> SaveConsumer(ConsumerModel consumer)
         {
-            ConsumerModel cons = new ConsumerModel
+            if (ModelState.IsValid)
             {
-                Name = consumer.Name,
-                Surname = consumer.Surname,
-                Street = consumer.Street,
-                City = consumer.City,
-                Postal = consumer.Postal,
-                Phone = consumer.Phone,
-                Type = consumer.Type
-            };
-
-            char[] separators = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-
-            string newStreet = consumer.Street.Split(separators, 2)[0].Trim();
-            bool contain = false;
-            foreach (StreetModel street in _context.Streets)
-            {
-                if (street.Name == newStreet)
+                ConsumerModel cons = new ConsumerModel
                 {
-                    contain = true;
-                    cons.Priority = street.cPriority;
+                    Name = consumer.Name,
+                    Surname = consumer.Surname,
+                    Street = consumer.Street,
+                    City = consumer.City,
+                    Postal = consumer.Postal,
+                    Phone = consumer.Phone,
+                    Type = consumer.Type
+                };
+
+                char[] separators = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+                string newStreet = consumer.Street.Split(separators, 2)[0].Trim();
+                bool contain = false;
+                foreach (StreetModel street in _context.Streets)
+                {
+                    if (street.Name == newStreet)
+                    {
+                        contain = true;
+                        cons.Priority = street.cPriority;
+                    }
                 }
+
+                if (!contain)
+                {
+                    cons.Priority = 1;
+                }
+
+                string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+                NotificationsModel notification = new NotificationsModel()
+                {
+                    Type = "Success",
+                    Text = "Consumer created",
+                    Status = "Unread",
+                    TimeStamp = DateTime.Now.ToString(),
+                    User = _context.Users.FirstOrDefault(u => u.Username == username),
+                    Visible = true
+                };
+
+                _context.Notifications.Add(notification);
+
+
+                _context.Consumers.Add(cons);
+
+
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("SaveConsumer", cons);
             }
-
-            if (!contain)
+            else
             {
-                cons.Priority = 1;
+                return BadRequest();
             }
-
-            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
-
-            NotificationsModel notification = new NotificationsModel()
-            {
-                Type = "Success",
-                Text = "Consumer created",
-                Status = "Unread",
-                TimeStamp = DateTime.Now.ToString(),
-                User = _context.Users.FirstOrDefault(u => u.Username == username),
-                Visible = true
-            };
-
-            _context.Notifications.Add(notification);
-
-
-            _context.Consumers.Add(cons);
-
-
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("SaveConsumer", cons);
 
         }
 

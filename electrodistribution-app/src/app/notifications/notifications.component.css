@@ -1,6 +1,7 @@
 .gridara{
     display: grid;
     grid-template-columns: 25% 75%;
+    width: 100%;
     
 }
 
@@ -14,7 +15,7 @@
 .not-content{
     display: grid;
     margin-top: 3.33%;
-    width: 120%;
+    width: 100%;
     
 }
 
@@ -25,16 +26,26 @@
     height: 90%;
     color: black;
     justify-content: space-between;
+    width: 100%;
 
 }
 
-.container__pagination{
-    display: grid;
-    grid-template-columns: 10% 12% 10%;
-    column-gap: 3%;
-    height: 3%;
+.paginator{
+    display: flex;
+    justify-content: center;
 }
+
 
 .notButton{
     height: 2.5em;
+}
+
+.sve{
+    display: grid;
+    width: 60%;
+}
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

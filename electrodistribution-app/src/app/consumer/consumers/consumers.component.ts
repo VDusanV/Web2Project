@@ -14,7 +14,7 @@ export class ConsumersComponent implements OnInit {
   consumers: Consumer[] = [];
 
   public page = 10;
-  public pageSize = 3;
+  public pageSize = 5;
 
   activeId!:number;
 
