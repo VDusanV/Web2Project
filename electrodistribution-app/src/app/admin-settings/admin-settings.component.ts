@@ -90,4 +90,8 @@ export class AdminSettingsComponent implements OnInit {
     this.settingsService.visibleNotifications(this.selected);
   }
 
+  resetSettings(){
+    this.settingsService.resetSettings();
+  }
+
 }

@@ -40,5 +40,11 @@ export class SettingsService {
         );
         }
 
+  resetSettings(){
+          this.http.put("https://localhost:44364/api/Settings/ResetSettings", null)
+          .subscribe(
+            error => console.log('oops', error)
+          );
+          }
 
 }

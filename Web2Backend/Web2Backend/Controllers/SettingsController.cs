@@ -105,9 +105,9 @@ namespace Web2Backend.Controllers
         }
 
         [HttpPut]
-        [Route("ResetPriority")]
+        [Route("ResetSettings")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<StreetModel>> ResetPriority()
+        public async Task<ActionResult<StreetModel>> ResetSettings()
         {
             var street1 = new StreetModel();
 
@@ -117,10 +117,47 @@ namespace Web2Backend.Controllers
                 street1.cPriority = street1.dPriority;
             }
 
-          
+            char[] separators = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+            //string streetName = address.Split(separators, 2)[0].Trim();
+
+
+            foreach (StreetModel street in _context.Streets)
+            {
+                foreach (ConsumerModel cons in _context.Consumers)
+                {
+                    string consStreet = cons.Street.Split(separators, 2)[0].Trim();
+
+                    if (street.Name.Equals(consStreet))
+                    {
+                        cons.Priority = street.cPriority;
+                    }
+                }
+            }
+
+            foreach (NotificationsModel not in _context.Notifications)
+            {
+                not.Visible = true;
+            }
+
+            /*foreach (StreetModel street in _context.Streets)
+            {
+                foreach (Inciden cons in _context.Consumers)
+                {
+                    string consStreet = cons.Street.Split(separators, 2)[0].Trim();
+
+                    if (street.Name.Equals(consStreet))
+                    {
+                        cons.Priority = street.cPriority;
+                    }
+                }
+            }*/
+
+
             await _context.SaveChangesAsync();
             return CreatedAtAction("ResetPriority", street1);
-            
+
+
 
         }
 
