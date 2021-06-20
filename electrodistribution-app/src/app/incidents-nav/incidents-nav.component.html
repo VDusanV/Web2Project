@@ -1,1 +1,27 @@
-<p>incidents-nav works!</p>
+<ul ngbNav #nav="ngbNav" [(activeId)]="activeId" class="nav-tabs">
+ 
+    <li [ngbNavItem]="1">
+      <a ngbNavLink class="inactiveLink" routerLink="/incidents/new/basic-info" > Basic information</a>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink class="inactiveLink" routerLink="/incidents/new/incident-devices"> Devices</a>
+    </li>
+    <li ngbNavItem [ngbNavItem]="3">
+      <a ngbNavLink class="inactiveLink" routerLink="/incidents/new/resolution"> Resolution</a>
+    </li>
+    <li ngbNavItem [ngbNavItem]="4">
+      <a ngbNavLink class="inactiveLink" routerLink="/incidents/new/calls"> Calls</a>
+    </li>
+    
+    <li ngbNavItem [ngbNavItem]="5">
+      <a ngbNavLink class="inactiveLink" routerLink="/incidents/new/incident-crew"> Crew</a>
+    </li>
+    <li ngbNavItem [ngbNavItem]="6">
+      <a ngbNavLink class="inactiveLink" routerLink="/incidents/new/incident-multimedia-attachments"> Multimedia-attachments</a>
+    </li>
+    
+  </ul>
+  
+  <div [ngbNavOutlet]="nav"></div>
+  <router-outlet></router-outlet>
+  

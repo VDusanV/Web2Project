@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./incidents-nav.component.css']
 })
 export class IncidentsNavComponent implements OnInit {
+  public currentTab = "";
+  public activeId = 1;
+
 
   constructor() { }
 
