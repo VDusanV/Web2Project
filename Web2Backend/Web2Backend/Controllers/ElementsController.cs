@@ -122,9 +122,31 @@ namespace Web2Backend.Controllers
 
             };
 
-
-
             _context.Elements.Add(element1);
+
+            char[] separators = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+            string newStreet = element.Address.Split(separators, 2)[0].Trim();
+            bool contain = false;
+            foreach (StreetModel street in _context.Streets)
+            {
+                if (street.Name == newStreet)
+                {
+                    contain = true;
+                }
+            }
+
+            if (!contain)
+            {
+                Random rand = new Random();
+                StreetModel street = new StreetModel
+                {
+                    Name = newStreet,
+                    dPriority = rand.Next(1, 6),
+                    cPriority = rand.Next(1, 6)
+                };
+                _context.Streets.Add(street);
+            }
 
             await _context.SaveChangesAsync();
 

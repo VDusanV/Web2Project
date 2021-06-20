@@ -39,7 +39,7 @@ export class NewConsumerComponent implements OnInit {
   save(){
     if(this.validate()){
       let consumer = new Consumer(this.consumerForm.controls.name.value, this.consumerForm.controls.surname.value, 
-        this.consumerForm.controls.street.value, this.consumerForm.controls.city.value, this.consumerForm.controls.postal.value,
+        this.consumerForm.controls.street.value, this.consumerForm.controls.city.value,
         this.consumerForm.controls.phone.value, this.consumerForm.controls.type.value);
 
       this.consumerService.saveConsumer(consumer);

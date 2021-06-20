@@ -4,7 +4,7 @@ export class Consumer {
     surname:string;
     street:string;
     city:string;
-    postal:string;
+    postal!:string;
     priority!:number;
     phone:string;
     type:string
@@ -15,7 +15,6 @@ export class Consumer {
     surname:string,
     street:string,
     city:string,
-    postal:string,
     phone:string,
     type:string
         )       
@@ -24,7 +23,6 @@ export class Consumer {
         this.surname = surname;
         this.street = street;
         this.city = city;
-        this.postal = postal;
         this.phone = phone;
         this.type = type;
         

@@ -38,6 +38,8 @@ namespace Web2Backend.Controllers
             var street1 = new StreetModel();
             bool success = false;
 
+            char[] separators = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
             foreach (StreetModel street in _context.Streets)
             {
                 if(street.Name == cp.Name)
@@ -48,6 +50,32 @@ namespace Web2Backend.Controllers
                     break;
                 }
             }
+
+            foreach (StreetModel street in _context.Streets)
+            {
+                foreach (ConsumerModel cons in _context.Consumers)
+                {
+                    string consStreet = cons.Street.Split(separators, 2)[0].Trim();
+
+                    if (street.Name.Equals(consStreet))
+                    {
+                        cons.Priority = street.cPriority;
+                    }
+                }
+            }
+
+            /*foreach (StreetModel street in _context.Streets)
+            {
+                foreach (Inciden cons in _context.Consumers)
+                {
+                    string consStreet = cons.Street.Split(separators, 2)[0].Trim();
+
+                    if (street.Name.Equals(consStreet))
+                    {
+                        cons.Priority = street.cPriority;
+                    }
+                }
+            }*/
 
             if (success)
             {

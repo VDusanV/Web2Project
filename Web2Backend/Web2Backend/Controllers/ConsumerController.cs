@@ -55,6 +55,24 @@ namespace Web2Backend.Controllers
                 Type = consumer.Type
             };
 
+            char[] separators = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+            string newStreet = consumer.Street.Split(separators, 2)[0].Trim();
+            bool contain = false;
+            foreach (StreetModel street in _context.Streets)
+            {
+                if (street.Name == newStreet)
+                {
+                    contain = true;
+                    cons.Priority = street.cPriority;
+                }
+            }
+
+            if (!contain)
+            {
+                cons.Priority = 1;
+            }
+
 
             _context.Consumers.Add(cons);
 
