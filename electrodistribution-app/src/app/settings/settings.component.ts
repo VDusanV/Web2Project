@@ -36,7 +36,8 @@ export class SettingsComponent implements OnInit {
     console.log('password: ' + credentials);
     var password = JSON.parse(credentials);
     password = password['password'].toString();
-    if(password.length < 6){  //validacija za duzinu sifre
+    console.log("Password: " + password.legth)
+    if(password.length < 5){  //validacija za duzinu sifre
       this.minimumCharacters = true;
       return false;
     }

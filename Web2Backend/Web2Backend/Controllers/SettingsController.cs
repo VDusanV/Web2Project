@@ -9,6 +9,7 @@ using Web2Backend.Models.FormModels;
 using Web2Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Web2Backend.Controllers
 {
@@ -77,8 +78,24 @@ namespace Web2Backend.Controllers
                 }
             }*/
 
+
+
             if (success)
             {
+                string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+                NotificationsModel notification = new NotificationsModel()
+                {
+                    Type = "Info",
+                    Text = "Street priority change",
+                    Status = "Unread",
+                    TimeStamp = DateTime.Now.ToString(),
+                    User = _context.Users.FirstOrDefault(u => u.Username == username),
+                    Visible = true
+                };
+
+                _context.Notifications.Add(notification);
+
                 await _context.SaveChangesAsync();
                 return CreatedAtAction("ChangePriority", street1);
             }

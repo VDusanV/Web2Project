@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Web2Backend.Data;
 using Web2Backend.Models;
@@ -47,6 +48,20 @@ namespace Web2Backend.Controllers
             };
 
             _context.SwitchingPlans.Add(sp);
+
+            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            NotificationsModel notification = new NotificationsModel()
+            {
+                Type = "Success",
+                Text = "Switching plan created",
+                Status = "Unread",
+                TimeStamp = DateTime.Now.ToString(),
+                User = _context.Users.FirstOrDefault(u => u.Username == username),
+                Visible = true
+            };
+
+            _context.Notifications.Add(notification);
 
 
             await _context.SaveChangesAsync();
@@ -157,6 +172,20 @@ namespace Web2Backend.Controllers
 
             ins.Executed = true;
 
+            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            NotificationsModel notification = new NotificationsModel()
+            {
+                Type = "Warning",
+                Text = "Instruction " + id + " executed",
+                Status = "Unread",
+                TimeStamp = DateTime.Now.ToString(),
+                User = _context.Users.FirstOrDefault(u => u.Username == username),
+                Visible = true
+            };
+
+            _context.Notifications.Add(notification);
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("ExecuteInstruction", ins);
@@ -179,6 +208,20 @@ namespace Web2Backend.Controllers
             }
 
             ins.Deleted = true;
+
+            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            NotificationsModel notification = new NotificationsModel()
+            {
+                Type = "Info",
+                Text = "Instruction " + id + " deleted",
+                Status = "Unread",
+                TimeStamp = DateTime.Now.ToString(),
+                User = _context.Users.FirstOrDefault(u => u.Username == username),
+                Visible = true
+            };
+
+            _context.Notifications.Add(notification);
 
             await _context.SaveChangesAsync();
 

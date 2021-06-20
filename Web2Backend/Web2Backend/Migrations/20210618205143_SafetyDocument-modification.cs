@@ -6,12 +6,12 @@ namespace Web2Backend.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
+           /* migrationBuilder.AddColumn<bool>(
                 name: "InSafetyDocument",
                 table: "Elements",
                 type: "bit",
                 nullable: false,
-                defaultValue: false);
+                defaultValue: false);*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

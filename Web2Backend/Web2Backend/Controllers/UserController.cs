@@ -285,6 +285,21 @@ namespace Web2Backend.Controllers
                 }
             }
             u1.Password = passwordForm.Password;
+
+            //string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            NotificationsModel notification = new NotificationsModel()
+            {
+                Type = "Success",
+                Text = "Password changed",
+                Status = "Unread",
+                TimeStamp = DateTime.Now.ToString(),
+                User = _context.Users.FirstOrDefault(u => u.Username == username),
+                Visible = true
+            };
+
+            _context.Notifications.Add(notification);
+
             await _context.SaveChangesAsync();
             return CreatedAtAction("ChangePassword", u1);
 

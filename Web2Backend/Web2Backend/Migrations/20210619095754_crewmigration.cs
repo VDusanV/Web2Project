@@ -6,7 +6,7 @@ namespace Web2Backend.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            /*migrationBuilder.CreateTable(
                 name: "CrewRequests",
                 columns: table => new
                 {
@@ -18,7 +18,7 @@ namespace Web2Backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CrewRequests", x => x.Name);
-                });
+                });*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

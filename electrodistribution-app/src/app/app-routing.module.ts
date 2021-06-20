@@ -80,6 +80,10 @@ const routes: Routes = [
   
   },
   {
+    path: 'register',
+     component:RegistrationComponentComponent,
+  },
+  {
     path: 'crew',
      component:NavSideComponent,
      children: [
@@ -287,7 +291,7 @@ const routes: Routes = [
     children: [
      {
        path: '', // child route path
-       canActivate: [ViewGuard],
+       canActivate: [AuthGuard],
        component: ConsumersComponent, // child route component that the router renders
      }
    ]
@@ -300,7 +304,7 @@ const routes: Routes = [
     children: [
      {
        path: '', // child route path
-       canActivate: [ViewGuard],
+       canActivate: [AuthGuard],
        component: NewConsumerComponent, // child route component that the router renders
      }
    ]
@@ -313,7 +317,7 @@ const routes: Routes = [
       children: [
        {
          path: '', // child route path
-         canActivate: [ViewGuard],
+         canActivate: [AuthGuard],
          component: ModifyConsumerComponent, // child route component that the router renders
        }
      ]

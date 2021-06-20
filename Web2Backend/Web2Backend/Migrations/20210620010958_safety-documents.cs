@@ -6,7 +6,7 @@ namespace Web2Backend.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+           /* migrationBuilder.CreateTable(
                 name: "Consumers",
                 columns: table => new
                 {
@@ -114,7 +114,7 @@ namespace Web2Backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SwitchingPlans", x => x.Id);
-                });
+                });*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
