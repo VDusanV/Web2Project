@@ -73,6 +73,9 @@ export class InstructionsSpComponent implements OnInit {
             if(this.equipment.controls.equipmentId.value != null){
               switchingPlan.equipment = this.equipment.controls.equipmentId.value.toString();
             }
+            if(this.history.controls.newStatus.value != null){
+              switchingPlan.status = this.history.controls.newStatus.value;
+            }
         }
 
       console.log('Result: ' + switchingPlan);
