@@ -6,7 +6,7 @@ namespace Web2Backend.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<bool>(
+            /*migrationBuilder.AlterColumn<bool>(
                 name: "TagsRemoved",
                 table: "SafetyDocuments",
                 type: "bit",
@@ -44,7 +44,7 @@ namespace Web2Backend.Migrations
                 defaultValue: false,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
-                oldNullable: true);
+                oldNullable: true);*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -6,7 +6,7 @@ namespace Web2Backend.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            /*migrationBuilder.AlterColumn<string>(
                 name: "UserType",
                 table: "Users",
                 type: "nvarchar(max)",
@@ -184,7 +184,7 @@ namespace Web2Backend.Migrations
                 defaultValue: "",
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
-                oldNullable: true);
+                oldNullable: true);*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

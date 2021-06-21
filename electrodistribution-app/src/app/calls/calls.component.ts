@@ -18,7 +18,7 @@ export class CallsComponent implements OnInit {
     
   });
 
-  public component = "devices";
+  public component = "calls";
   public toNavbar = [this.callsForm, this.component];
 
   public allCalls : Call[] = [];

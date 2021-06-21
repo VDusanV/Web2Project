@@ -8,7 +8,7 @@ namespace Web2Backend.Migrations
         {
             
 
-            migrationBuilder.CreateTable(
+            /*migrationBuilder.CreateTable(
                 name: "SafetyDocuments",
                 columns: table => new
                 {
@@ -37,7 +37,7 @@ namespace Web2Backend.Migrations
                     table.PrimaryKey("PK_SafetyDocuments", x => x.SafetyDocumentId);
                 });
 
-            
+            */
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
