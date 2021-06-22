@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Web2Backend.Models
 {
-    public class StreetModel
+    public class IncidentModel
     {
         [Key]
-        public string Name { get; set; }
-
-        public int dPriority { get; set; }
-        [ConcurrencyCheck]
-        public int cPriority { get; set; }
+        public string IncidentID { get; set; }
+        public string StartDate { get; set; }
+        public string Status { get; set; }
+        
     }
 }

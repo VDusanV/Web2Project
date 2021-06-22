@@ -12,18 +12,25 @@
 
 <!--LOGIN -->
 <div class="grid-container__element grid-container__element--right">
+
+<div class="heading"> <h1> Electrical distribution solutions </h1></div>    
 <div class="register-and-report">
+    <div>
+    If you have an account login through our form below. No account? 
     <a href="/register">
-    <div>register</div>
-    </a>
-    <a href="#">
-    <div><mat-icon class="icon">report_problem</mat-icon>report an outage &nbsp; &nbsp; &nbsp; &nbsp;</div>
-    </a>
+        <span>register</span>
+    </a>.
+    </div>
+    <!--<a href="#">
+    <div ><mat-icon class="icon">report_problem</mat-icon>report an outage &nbsp; &nbsp; &nbsp; &nbsp;</div>
+    </a>-->
 </div>
 <div class="align-center">
 <form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
     <div class="container-fluid">
+        <div class="login-container">
         <h2 class="form-signin-heading">Login</h2>
+        </div>
         <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password.</div>
         <br/>
         <label for="username" class="sr-only">Email address</label>
@@ -32,7 +39,7 @@
         <label for="password" class="sr-only">Password</label>
         <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password" required>
         <br/>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" id="btn" type="submit">Sign in</button>
     </div>
 </form>
 </div>

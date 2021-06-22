@@ -15,31 +15,29 @@
           <tr>
               <th scope="col">Id</th>
               <th scope="col">Start date</th>
-              <th scope="col">Phone No.</th>
+            
               <th scope="col">Status</th>
-              <th scope="col">Address</th>
           </tr>
       </thead>
       <tbody>
-        <!--<tr *ngFor="let document of allDocuments | slice: (page-1) * pageSize : page * pageSize">
-          <td>{{document.id.toString()}}</td>
-          <td>{{document.startDate}}</td>
-          <td>{{document.phoneNo}}</td>
-          <td>{{document.status}}</td>
-          <td>{{document.address}}</td>
+        <tr *ngFor="let incident of allIncidents | slice: (page-1) * pageSize : page * pageSize">
+          <td>{{incident.incidentId.toString()}}</td>
+          <td>{{incident.startDate}}</td>
+          <td>{{incident.status}}</td>
+          
     
-        </tr> -->
+        </tr> 
       </tbody>
       </table>
   
       <br> <br>
-   <!-- <div class="container__pagination">
+   <div class="container__pagination">
       <ngb-pagination 
         [(page)]="page"
         [pageSize]="pageSize"
-        [collectionSize]="allDocuments.length"></ngb-pagination>
+        [collectionSize]="allIncidents.length"></ngb-pagination>
       </div>
-    -->
+    
     </div>
     
   

@@ -11,7 +11,7 @@ namespace Web2Backend.Models
         [Key]
         public long Id { get; set; }
         public long DocumentId { get; set; }
-
+        [Required]
         public string Action { get; set; }
 
         public string Element { get; set; }

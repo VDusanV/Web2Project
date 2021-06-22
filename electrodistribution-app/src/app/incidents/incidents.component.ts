@@ -1,7 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { isJSDocThisTag } from 'typescript';
 import { Incident } from '../entities/incident';
+import { IncidentModel } from '../entities/incidentModel';
 import { IncidentService } from '../services/incident-service/incident.service';
 import { NavigationService } from '../services/navigation/navigation.service';
+import { SafetyDocumentsService } from '../services/safety-documents/safety-documents.service';
 
 
 
@@ -16,11 +19,23 @@ import { NavigationService } from '../services/navigation/navigation.service';
 export class IncidentsComponent  implements OnInit{
   public displayIncidentContent = true;
 
-  constructor(private incidentService: IncidentService, private navigationService: NavigationService, private cdref: ChangeDetectorRef) { 
+  public allIncidents: IncidentModel[] = [];
+
+  public page = 10;
+  public pageSize = 3;
+  
+
+  constructor(private incidentService: IncidentService, private navigationService: NavigationService, private cdref: ChangeDetectorRef, private _safetyDocumentsService: SafetyDocumentsService) { 
     
   }
   ngOnInit(): void {
-    
+    this.allIncidents = [{incidentId: "dsam3232d23", startDate: "22/3/2019", status: "dispatched"},{incidentId: "20203dmdsa", startDate: "4/5/2021", status: "dispatched"},{incidentId: "dmasm29dka2", startDate: "22/3/2021", status: "dispatched"},
+    {incidentId: "dasdsma304ms", startDate: "5/6/2019", status: "dispatched"}
+  ]
+
+   // this._safetyDocumentsService.loadIncident()
+    //.subscribe(data => this.allIncidents = data);
+    //console.log(this.allIncidents);
   }
 
   ngAfterContentChecked() {
@@ -39,6 +54,9 @@ export class IncidentsComponent  implements OnInit{
       } else 
       {
         this.displayIncidentContent = true;
+
+        //this._safetyDocumentsService.loadIncident()
+          //                      .subscribe(data => this.allIncidents = data);
       }
     });
   }

@@ -28,6 +28,7 @@ namespace Web2Backend.Data
         public DbSet<InstructionModel> Instructions { get; set; }
         public DbSet<ConsumerModel> Consumers { get; set; }
         public DbSet<SafetyDocumentModel> SafetyDocuments { get; set; }
+        public DbSet<IncidentModel> Incidents { get; set; }
 
 
     }

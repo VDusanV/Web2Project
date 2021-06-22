@@ -11,8 +11,10 @@ namespace Web2Backend.Models
     {
         [Key]
         public long Id { get; set; }
+        [ConcurrencyCheck]
 
         public bool Deleted { get; set; }
+        [ConcurrencyCheck]
         public bool Visible { get; set; }
         public string Type { get; set; }
         public string Text { get; set; }

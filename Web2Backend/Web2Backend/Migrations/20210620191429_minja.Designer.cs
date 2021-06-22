@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web2Backend.Data;
 
 namespace Web2Backend.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20210620191429_minja")]
+    partial class minja
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,44 +50,35 @@ namespace Web2Backend.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("City")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Deleted")
-                        .IsConcurrencyToken()
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Postal")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Priority")
-                        .IsConcurrencyToken()
                         .HasColumnType("int");
 
                     b.Property<string>("Street")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -100,14 +93,12 @@ namespace Web2Backend.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CrewMembers")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Name");
@@ -215,22 +206,6 @@ namespace Web2Backend.Migrations
                     b.ToTable("IncidentBasicInfoModels");
                 });
 
-            modelBuilder.Entity("Web2Backend.Models.IncidentModel", b =>
-                {
-                    b.Property<string>("IncidentID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("StartDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IncidentID");
-
-                    b.ToTable("Incidents");
-                });
-
             modelBuilder.Entity("Web2Backend.Models.InstructionModel", b =>
                 {
                     b.Property<long>("Id")
@@ -267,7 +242,6 @@ namespace Web2Backend.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Deleted")
-                        .IsConcurrencyToken()
                         .HasColumnType("bit");
 
                     b.Property<string>("Status")
@@ -286,7 +260,6 @@ namespace Web2Backend.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("Visible")
-                        .IsConcurrencyToken()
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -388,7 +361,6 @@ namespace Web2Backend.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("cPriority")
-                        .IsConcurrencyToken()
                         .HasColumnType("int");
 
                     b.Property<int>("dPriority")
@@ -431,69 +403,54 @@ namespace Web2Backend.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Company")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Crew")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DateCreated")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Equipment")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageData")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Incident")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Notes")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Street")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("WorkRequest")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("endDate")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("startDate")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -505,41 +462,33 @@ namespace Web2Backend.Migrations
             modelBuilder.Entity("Web2Backend.Models.UserModel", b =>
                 {
                     b.Property<string>("Username")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ActiveStatus")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Address")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("BirthDate")
-                        .IsConcurrencyToken()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageData")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameAndLastname")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserType")
-                        .IsConcurrencyToken()
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

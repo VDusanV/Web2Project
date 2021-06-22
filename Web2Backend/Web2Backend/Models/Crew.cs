@@ -11,7 +11,9 @@ namespace Web2Backend.Models
         [Key]
         public string Name { get; set; }
         public string Id { get; set; }
+        [ConcurrencyCheck]
         public string CrewMembers { get; set; }
+        [ConcurrencyCheck]
         public string Status { get; set; }
     }
 }

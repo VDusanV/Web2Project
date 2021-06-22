@@ -15,7 +15,7 @@
     <tr *ngFor="let user of allUsers | slice: (page-1) * pageSize : page * pageSize">
       <td>{{user.username}}</td>
       <td>{{user.nameAndLastname}}</td>
-      <td>{{user.birthDate}}</td>
+      <td>{{formatDate(user.birthDate)}}</td>
       <td>{{user.address}}</td>
       <td>{{user.userType}}</td>
         <td><button type="submit" (click)="activate(user.username, user.id)">Confirm</button></td>

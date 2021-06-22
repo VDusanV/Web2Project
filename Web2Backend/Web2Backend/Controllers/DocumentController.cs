@@ -26,47 +26,90 @@ namespace Web2Backend.Controllers
         [Route("SaveSwitchingPlan")]
         public async Task<ActionResult<SwitchingPlanModel>> SaveSwitchingPlan(SwitchingPlanModel switchingPlan)
         {
-
-            SwitchingPlanModel sp = new SwitchingPlanModel
+            if (ModelState.IsValid)
             {
-                Type = switchingPlan.Type,
-                WorkRequest = switchingPlan.WorkRequest,
-                Status = switchingPlan.Status,
-                Incident = switchingPlan.Incident,
-                Street = switchingPlan.Street,
-                startDate = switchingPlan.startDate,
-                endDate = switchingPlan.endDate,
-                Crew = switchingPlan.Crew,
-                CreatedBy = switchingPlan.CreatedBy,
-                Notes = switchingPlan.Notes,
-                Company = switchingPlan.Company,
-                Phone = switchingPlan.Phone,
-                DateCreated = switchingPlan.DateCreated,
-                ImageData = switchingPlan.ImageData,
-                Equipment = switchingPlan.Equipment,
+                SwitchingPlanModel swPlan = new SwitchingPlanModel();
+                if (switchingPlan.Id == 0)
+                {
 
-            };
+                    SwitchingPlanModel sp = new SwitchingPlanModel
+                    {
+                        Type = switchingPlan.Type,
+                        WorkRequest = switchingPlan.WorkRequest,
+                        Status = switchingPlan.Status,
+                        Incident = switchingPlan.Incident,
+                        Street = switchingPlan.Street,
+                        startDate = switchingPlan.startDate,
+                        endDate = switchingPlan.endDate,
+                        Crew = switchingPlan.Crew,
+                        CreatedBy = switchingPlan.CreatedBy,
+                        Notes = switchingPlan.Notes,
+                        Company = switchingPlan.Company,
+                        Phone = switchingPlan.Phone,
+                        DateCreated = switchingPlan.DateCreated,
+                        ImageData = switchingPlan.ImageData,
+                        Equipment = switchingPlan.Equipment,
 
-            _context.SwitchingPlans.Add(sp);
+                    };
+                    swPlan = sp;
+                    _context.SwitchingPlans.Add(sp);
+                }
+                else
+                {
+                    SwitchingPlanModel switchingP = new SwitchingPlanModel();
+                    foreach (SwitchingPlanModel sw in _context.SwitchingPlans)
+                    {
+                        if (sw.Id == switchingPlan.Id)
+                        {
+                            switchingP = sw;
+                            break;
+                        }
+                    }
 
-            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+                    switchingP.Type = switchingPlan.Type;
+                    switchingP.WorkRequest = switchingPlan.WorkRequest;
+                    switchingP.Status = switchingPlan.Status;
+                    switchingP.Incident = switchingPlan.Incident;
+                    switchingP.Street = switchingPlan.Street;
+                    switchingP.startDate = switchingPlan.startDate;
+                    switchingP.endDate = switchingPlan.endDate;
+                    switchingP.Crew = switchingPlan.Crew;
+                    switchingP.CreatedBy = switchingPlan.CreatedBy;
+                    switchingP.Notes = switchingPlan.Notes;
+                    switchingP.Company = switchingPlan.Company;
+                    switchingP.Phone = switchingPlan.Phone;
+                    switchingP.DateCreated = switchingPlan.DateCreated;
+                    switchingP.ImageData = switchingPlan.ImageData;
+                    switchingP.Equipment = switchingPlan.Equipment;
 
-            NotificationsModel notification = new NotificationsModel()
+                    swPlan = switchingP;
+
+                }
+
+
+                string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+                NotificationsModel notification = new NotificationsModel()
+                {
+                    Type = "Success",
+                    Text = "Switching plan created",
+                    Status = "Unread",
+                    TimeStamp = DateTime.Now.ToString(),
+                    User = _context.Users.FirstOrDefault(u => u.Username == username),
+                    Visible = true
+                };
+
+                _context.Notifications.Add(notification);
+
+
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("SaveSwitchingPlan", swPlan);
+            }
+            else
             {
-                Type = "Success",
-                Text = "Switching plan created",
-                Status = "Unread",
-                TimeStamp = DateTime.Now.ToString(),
-                User = _context.Users.FirstOrDefault(u => u.Username == username),
-                Visible = true
-            };
-
-            _context.Notifications.Add(notification);
-
-
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("SaveSwitchingPlan", sp);
+                return BadRequest();
+            }
 
         }
 
@@ -101,22 +144,30 @@ namespace Web2Backend.Controllers
         [Route("SaveInstruction")]
         public async Task<ActionResult<InstructionModel>> SaveInstruction(InstructionModel instruction)
         {
-            InstructionModel ins = new InstructionModel
+
+            if (ModelState.IsValid)
             {
-                DocumentId = instruction.DocumentId,
-                Action = instruction.Action,
-                Element = instruction.Element,
-                Executed = false,
-                Deleted = false
-            };
+                InstructionModel ins = new InstructionModel
+                {
+                    DocumentId = instruction.DocumentId,
+                    Action = instruction.Action,
+                    Element = instruction.Element,
+                    Executed = false,
+                    Deleted = false
+                };
 
 
-            _context.Instructions.Add(ins);
+                _context.Instructions.Add(ins);
 
 
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction("SaveInstruction", ins);
+                return CreatedAtAction("SaveInstruction", ins);
+            }
+            else
+            {
+                return BadRequest();
+            }
 
         }
 
@@ -146,7 +197,7 @@ namespace Web2Backend.Controllers
 
             foreach (InstructionModel i in _context.Instructions)
             {
-                if (i.DocumentId == id)
+                if (i.DocumentId == id && i.Deleted == false)
                 {
                     ins.Add(i);
                 }

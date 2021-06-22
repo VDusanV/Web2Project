@@ -9,14 +9,26 @@ namespace Web2Backend.Models
     public class UserModel
     {
         [Key]
+        [Required]
+        [ConcurrencyCheck]
         public string Username { get; set; }
+        [ConcurrencyCheck]
         public string Password { get; set; }
+        [Required]
+        [ConcurrencyCheck]
         public string NameAndLastname { get; set; }
+        [ConcurrencyCheck]
         public DateTime BirthDate { get; set; }
+        [Required]
+        [ConcurrencyCheck]
         public string Address { get; set; }
+        [ConcurrencyCheck]
         public string ImageData { get; set; }
-
+        [Required]
+        [ConcurrencyCheck]
         public string Email { get; set; }
+        [Required]
+        [ConcurrencyCheck]
         public string UserType { get; set; }
 
         public List<NotificationsModel> Notifications { get; set; }

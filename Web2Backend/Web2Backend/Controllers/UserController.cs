@@ -293,59 +293,66 @@ namespace Web2Backend.Controllers
         [Route("ChangeProfile")]
         public async Task<ActionResult<UserModel>> ChangeProfile([FromBody] UserModel userF)
         {
-            string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
-
-
-            UserModel u1 = new UserModel();
-            foreach (UserModel user in _context.Users)
+            if (ModelState.IsValid)
             {
-                if (user.Username == username)
+                string username = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+
+                UserModel u1 = new UserModel();
+                foreach (UserModel user in _context.Users)
                 {
-                    u1 = user;
-                    break;
+                    if (user.Username == username)
+                    {
+                        u1 = user;
+                        break;
 
-                }
-            }
-
-            if(u1.UserType == null)
-            {
-                u1.UserType = "Worker";
-            }
-
-            if (u1.UserType.Equals(userF.UserType))
-            {
-                u1.Username = userF.Username;
-                u1.NameAndLastname = userF.NameAndLastname;
-                u1.Email = userF.Email;
-                u1.Address = userF.Address;
-                if (userF.ImageData != null)
-                {
-                    u1.ImageData = userF.ImageData;
+                    }
                 }
 
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("ChangeProfile", u1);
+                if (u1.UserType == null)
+                {
+                    u1.UserType = "Worker";
+                }
+
+                if (u1.UserType.Equals(userF.UserType))
+                {
+                    u1.Username = userF.Username;
+                    u1.NameAndLastname = userF.NameAndLastname;
+                    u1.Email = userF.Email;
+                    u1.Address = userF.Address;
+                    if (userF.ImageData != null)
+                    {
+                        u1.ImageData = userF.ImageData;
+                    }
+
+                    await _context.SaveChangesAsync();
+                    return CreatedAtAction("ChangeProfile", u1);
+                }
+                else
+                {
+                    u1.Username = userF.Username;
+                    u1.NameAndLastname = userF.NameAndLastname;
+                    u1.Email = userF.Email;
+                    u1.Address = userF.Address;
+                    UserRequestModel newRequest = new UserRequestModel
+                    {
+                        Username = userF.Username,
+                        NameAndLastname = userF.NameAndLastname,
+                        Email = userF.Email,
+                        Address = userF.Address,
+                        BirthDate = userF.BirthDate,
+                        UserType = userF.UserType
+                    };
+
+                    _context.UserRequests.Add(newRequest);
+
+                    await _context.SaveChangesAsync();
+                    return CreatedAtAction("ChangeProfile", u1);
+                }
             }
             else
             {
-                u1.Username = userF.Username;
-                u1.NameAndLastname = userF.NameAndLastname;
-                u1.Email = userF.Email;
-                u1.Address = userF.Address;
-                UserRequestModel newRequest = new UserRequestModel
-                {
-                    Username = userF.Username,
-                    NameAndLastname = userF.NameAndLastname,
-                    Email = userF.Email,
-                    Address = userF.Address,
-                    BirthDate = userF.BirthDate,
-                    UserType = userF.UserType
-                };
-
-                _context.UserRequests.Add(newRequest);
-
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("ChangeProfile", u1);
+                return BadRequest();
             }
 
         }
