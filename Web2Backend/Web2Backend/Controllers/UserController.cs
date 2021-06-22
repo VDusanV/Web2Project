@@ -250,23 +250,7 @@ namespace Web2Backend.Controllers
             return CreatedAtAction("GetUsers", u1);
 
         }
-        private void sendEmail(string email, string msg)
-        {
-            using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
-            {
-                client.EnableSsl = true;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential("veselinovicdusan98@gmail.com", "privremenalozinka");
-                MailMessage msgObj = new MailMessage();
-                msgObj.To.Add(email);
-                msgObj.From = new MailAddress("veselinovicdusan98@gmail.com");
-                msgObj.Subject = "Account Verification";
-                msgObj.Body = "Your account has been " + msg.ToUpper();
-                client.Send(msgObj);
-
-            }
-        }
+   
 
         [HttpPut]
         [Route("ChangePassword")]
